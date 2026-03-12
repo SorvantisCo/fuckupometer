@@ -25,103 +25,104 @@ const BUTCHERS_BILL = [
 
 function HorizontalThermometer({ fuckupFactor }) {
   const pct = Math.min(100, Math.max(0, fuckupFactor));
-  const mercuryColor =
-    pct < 25 ? '#00cc44' :
-    pct < 50 ? '#aacc00' :
-    pct < 75 ? '#ff6600' :
-    '#ff2200';
 
-  const ticks = [
-    { pct: 0,   label: 'NOT\nFUCKED UP' },
-    { pct: 25,  label: 'A LITTLE\nFUCKED UP' },
-    { pct: 50,  label: 'SIGNIFICANTLY\nFUCKED UP' },
-    { pct: 75,  label: 'VERY\nFUCKED UP' },
-    { pct: 100, label: 'COMPLETELY\nUNBELIEVABLY\nFUCKED UP' },
+  const zones = [
+    { pct: 0,   label: 'NOT\nFUCKED UP',                  color: '#00cc44', activeColor: '#00ff55' },
+    { pct: 25,  label: 'A LITTLE\nFUCKED UP',             color: '#aacc00', activeColor: '#ddff00' },
+    { pct: 50,  label: 'SIGNIFICANTLY\nFUCKED UP',        color: '#ff6600', activeColor: '#ff8833' },
+    { pct: 75,  label: 'VERY\nFUCKED UP',                 color: '#ff2200', activeColor: '#ff4422' },
+    { pct: 100, label: 'COMPLETELY\nUNBELIEVABLY\nFUCKED UP', color: '#ff0000', activeColor: '#ff2200' },
   ];
 
+  // Active zone = highest zone whose pct threshold is <= current pct
+  const activeIdx = zones.reduce((best, z, i) => (pct >= z.pct ? i : best), 0);
+  const mercuryColor = zones[activeIdx].activeColor;
+
   return (
-    <div style={{ width: '100%', padding: '0.5rem 0 1.5rem' }}>
-      {/* Tick labels above */}
-      <div style={{ position: 'relative', height: '52px', marginBottom: '6px' }}>
-        {ticks.map(t => (
-          <div key={t.pct} style={{
-            position: 'absolute',
-            left: `${t.pct}%`,
-            transform: 'translateX(-50%)',
-            textAlign: 'center',
-            fontSize: '9px',
-            fontFamily: 'Courier New, monospace',
-            color: t.pct === 100 ? '#ff2200' : t.pct === 0 ? '#00cc44' : '#556655',
-            fontWeight: t.pct === 100 || t.pct === 0 ? 700 : 400,
-            letterSpacing: '0.05em',
-            whiteSpace: 'pre',
-            lineHeight: 1.3,
-          }}>
-            {t.label}
-          </div>
-        ))}
+    <div style={{ width: '100%', padding: '0.5rem 0 1rem' }}>
+
+      {/* Zone labels above — active one lights up */}
+      <div style={{ position: 'relative', height: '58px', marginBottom: '8px' }}>
+        {zones.map((z, i) => {
+          const isActive = i === activeIdx;
+          return (
+            <div key={z.pct} style={{
+              position: 'absolute',
+              left: i === zones.length - 1 ? 'auto' : `${z.pct}%`,
+              right: i === zones.length - 1 ? '0' : 'auto',
+              transform: i === 0 ? 'none' : i === zones.length - 1 ? 'none' : 'translateX(-50%)',
+              textAlign: i === 0 ? 'left' : i === zones.length - 1 ? 'right' : 'center',
+              fontSize: isActive ? '11px' : '9px',
+              fontFamily: 'Courier New, monospace',
+              color: isActive ? z.activeColor : '#3a5a3a',
+              fontWeight: isActive ? 700 : 400,
+              letterSpacing: isActive ? '0.08em' : '0.04em',
+              whiteSpace: 'pre',
+              lineHeight: 1.35,
+              textShadow: isActive ? `0 0 10px ${z.activeColor}cc` : 'none',
+              transition: 'all 0.6s ease',
+              padding: isActive ? '2px 6px' : '2px 0',
+              background: isActive ? `${z.activeColor}11` : 'none',
+              border: isActive ? `1px solid ${z.activeColor}44` : '1px solid transparent',
+              borderRadius: '3px',
+            }}>
+              {z.label}
+            </div>
+          );
+        })}
       </div>
 
-      {/* Tube */}
-      <div style={{ position: 'relative', height: '32px' }}>
-        {/* Track */}
+      {/* Track — full width, no ball */}
+      <div style={{ position: 'relative', height: '22px' }}>
         <div style={{
-          position: 'absolute', left: '16px', right: '16px', top: '50%',
-          transform: 'translateY(-50%)',
-          height: '18px', borderRadius: '9px',
+          position: 'absolute', inset: '0 0 0 0',
+          height: '22px', borderRadius: '3px',
           background: '#0a1a0a',
           border: '1px solid #1a4a1a',
           overflow: 'hidden',
         }}>
-          {/* Gradient zones */}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #003300 0%, #1a4400 25%, #443300 50%, #551100 75%, #440000 100%)', opacity: 0.5 }}/>
-          {/* Mercury fill */}
+          {/* Zone background tint */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #003300 0%, #1a4400 25%, #443300 50%, #551100 75%, #440000 100%)', opacity: 0.4 }}/>
+          {/* Mercury */}
           <div style={{
             position: 'absolute', left: 0, top: 0, bottom: 0,
             width: `${pct}%`,
-            background: mercuryColor,
-            boxShadow: `0 0 12px ${mercuryColor}88`,
-            transition: 'width 1.4s cubic-bezier(0.4,0,0.2,1), background 0.8s, box-shadow 0.8s',
-            borderRadius: '9px',
+            background: `linear-gradient(90deg, ${zones[0].color}, ${mercuryColor})`,
+            boxShadow: `0 0 14px ${mercuryColor}99, inset 0 1px 0 rgba(255,255,255,0.15)`,
+            transition: 'width 1.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.8s',
           }}/>
-          {/* Tick lines */}
-          {ticks.slice(1, -1).map(t => (
-            <div key={t.pct} style={{
-              position: 'absolute', left: `${t.pct}%`, top: 0, bottom: 0,
-              width: '1px', background: 'rgba(0,0,0,0.4)',
+          {/* Zone dividers */}
+          {zones.slice(1, -1).map(z => (
+            <div key={z.pct} style={{
+              position: 'absolute', left: `${z.pct}%`, top: 0, bottom: 0,
+              width: '1px', background: 'rgba(0,0,0,0.5)',
             }}/>
           ))}
         </div>
-        {/* Bulb left */}
-        <div style={{
-          position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)',
-          width: '24px', height: '24px', borderRadius: '50%',
-          background: mercuryColor,
-          border: '1px solid #1a4a1a',
-          boxShadow: `0 0 10px ${mercuryColor}88`,
-          transition: 'background 0.8s, box-shadow 0.8s',
-        }}/>
       </div>
 
-      {/* Tick lines below */}
-      <div style={{ position: 'relative', height: '8px', margin: '4px 16px 0' }}>
-        {ticks.map(t => (
-          <div key={t.pct} style={{
-            position: 'absolute', left: `${t.pct}%`, top: 0,
-            width: '1px', height: '8px',
-            background: '#1a4a1a',
-            transform: 'translateX(-50%)',
+      {/* Tick marks below track */}
+      <div style={{ position: 'relative', height: '6px', marginTop: '2px' }}>
+        {zones.map((z, i) => (
+          <div key={z.pct} style={{
+            position: 'absolute',
+            left: i === zones.length - 1 ? 'auto' : `${z.pct}%`,
+            right: i === zones.length - 1 ? '0' : 'auto',
+            top: 0, width: '1px', height: '6px',
+            background: i === activeIdx ? zones[activeIdx].activeColor : '#1a4a1a',
+            transform: i > 0 && i < zones.length - 1 ? 'translateX(-50%)' : 'none',
           }}/>
         ))}
       </div>
 
-      {/* Current reading */}
-      <div style={{ textAlign: 'center', marginTop: '10px' }}>
+      {/* Reading line */}
+      <div style={{ textAlign: 'center', marginTop: '12px' }}>
         <span style={{
           fontFamily: 'Courier New, monospace',
-          fontSize: '11px', letterSpacing: '0.1em',
+          fontSize: '12px', letterSpacing: '0.1em',
           color: mercuryColor,
-          textShadow: `0 0 8px ${mercuryColor}`,
+          textShadow: `0 0 10px ${mercuryColor}`,
+          fontWeight: 700,
         }}>
           FUCKUP READING: {pct.toFixed(1)}% OF MAXIMUM RECORDED CHAOS
         </span>
@@ -191,8 +192,8 @@ function CommodityCard({ c }) {
   const since  = c.sinceInaugPct >= 0;
   return (
     <div style={{ background: '#040d04', border: '1px solid #1a4a1a', borderRadius: '4px', padding: '0.75rem', fontFamily: 'Courier New, monospace' }}>
-      <p style={{ margin: '0 0 4px', fontSize: '10px', color: '#556655', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.label}</p>
-      {c.note && <p style={{ margin: '0 0 4px', fontSize: '9px', color: '#334433', fontStyle: 'italic' }}>{c.note}</p>}
+      <p style={{ margin: '0 0 4px', fontSize: '10px', color: '#88aa88', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{c.label}</p>
+      {c.note && <p style={{ margin: '0 0 4px', fontSize: '9px', color: '#6a8a6a', fontStyle: 'italic' }}>{c.note}</p>}
       <p style={{ margin: '0 0 3px', fontSize: '1.2rem', fontWeight: 700, color: '#00ff44', textShadow: '0 0 6px #00ff4488' }}>
         {c.unit === '$/gal' ? `$${c.price}` : c.unit.startsWith('cents') ? `${c.price}¢` : `$${c.price}`}
       </p>
@@ -206,14 +207,14 @@ function BillRow({ item }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '10px 0', borderBottom: '1px solid #0d2a0d', fontFamily: 'Courier New, monospace' }}>
       <div style={{ minWidth: '130px' }}>
-        <span style={{ fontSize: '10px', letterSpacing: '0.08em', color: '#556655', textTransform: 'uppercase' }}>{item.label}</span>
+        <span style={{ fontSize: '10px', letterSpacing: '0.08em', color: '#88aa88', textTransform: 'uppercase' }}>{item.label}</span>
       </div>
       <div style={{ minWidth: '80px' }}>
         <span style={{ fontSize: '1.1rem', fontWeight: 700, color: item.color, textShadow: `0 0 8px ${item.color}66` }}>{item.value}</span>
       </div>
       <div style={{ flex: 1 }}>
         <p style={{ margin: '0 0 2px', fontSize: '11px', color: '#aaaaaa', lineHeight: 1.5 }}>{item.note}</p>
-        <p style={{ margin: 0, fontSize: '9px', color: '#334433', letterSpacing: '0.04em' }}>SRC: {item.src}</p>
+        <p style={{ margin: 0, fontSize: '9px', color: '#6a8a6a', letterSpacing: '0.04em' }}>SRC: {item.src}</p>
       </div>
     </div>
   );
@@ -228,6 +229,11 @@ const SCANLINE_STYLE = `
   ::-webkit-scrollbar { width: 6px; background: #020802; }
   ::-webkit-scrollbar-thumb { background: #1a4a1a; border-radius: 3px; }
   ::selection { background: #00ff4433; }
+  /* Legibility helpers */
+  .dim  { color: #5a7a5a; }   /* timestamps, source tags */
+  .mid  { color: #88aa88; }   /* secondary body text */
+  .body { color: #b8d4b8; }   /* primary body text */
+  .hot  { color: #00ff44; }   /* bright green accent */
 `;
 
 export default function Home() {
@@ -267,7 +273,7 @@ export default function Home() {
 
   const S = {
     section: { background: '#020d02', border: '1px solid #1a4a1a', borderRadius: '4px', padding: '1.25rem 1.5rem', marginBottom: '1rem' },
-    sectionHead: { fontFamily: 'Courier New, monospace', fontSize: '10px', letterSpacing: '0.12em', color: '#556655', textTransform: 'uppercase', margin: '0 0 1rem', borderBottom: '1px solid #0d2a0d', paddingBottom: '8px' },
+    sectionHead: { fontFamily: 'Courier New, monospace', fontSize: '11px', letterSpacing: '0.12em', color: '#88aa88', textTransform: 'uppercase', margin: '0 0 1rem', borderBottom: '1px solid #0d2a0d', paddingBottom: '8px' },
     mono: { fontFamily: 'Courier New, monospace' },
   };
 
@@ -293,14 +299,14 @@ export default function Home() {
         <div style={{ borderBottom: '1px solid #1a4a1a', background: '#010d01', padding: '0.6rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: '#00ff44', textShadow: '0 0 8px #00ff44' }}>UNCLASSIFIED // SATIRICAL PURPOSES ONLY</span>
-            <span style={{ fontSize: '10px', color: '#334433' }}>|</span>
-            <span style={{ fontSize: '10px', letterSpacing: '0.08em', color: '#556655' }}>THE LONG MEMO // INTELLIGENCE DIVISION</span>
+            <span style={{ fontSize: '10px', color: '#3a5a3a' }}>|</span>
+            <span style={{ fontSize: '10px', letterSpacing: '0.08em', color: '#88aa88' }}>THE LONG MEMO // INTELLIGENCE DIVISION</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '10px' }}>
             <span style={{ color: '#ff2200', letterSpacing: '0.1em' }} className="blink">● LIVE</span>
-            <span style={{ color: '#334433' }}>|</span>
-            <span style={{ color: '#556655' }}>{lastUpdated ? `UPLINK: ${lastUpdated.toLocaleTimeString()}` : 'CONNECTING...'}</span>
-            <button onClick={fetchAll} style={{ background: 'none', border: '1px solid #1a4a1a', borderRadius: '2px', padding: '2px 8px', fontSize: '10px', cursor: 'pointer', color: '#556655', fontFamily: 'Courier New, monospace', letterSpacing: '0.06em' }}>↻ REFRESH</button>
+            <span style={{ color: '#3a5a3a' }}>|</span>
+            <span style={{ color: '#88aa88' }}>{lastUpdated ? `UPLINK: ${lastUpdated.toLocaleTimeString()}` : 'CONNECTING...'}</span>
+            <button onClick={fetchAll} style={{ background: 'none', border: '1px solid #1a4a1a', borderRadius: '2px', padding: '2px 8px', fontSize: '10px', cursor: 'pointer', color: '#88aa88', fontFamily: 'Courier New, monospace', letterSpacing: '0.06em' }}>↻ REFRESH</button>
           </div>
         </div>
 
@@ -308,12 +314,12 @@ export default function Home() {
 
           {/* Title block */}
           <div style={{ marginBottom: '1.5rem', textAlign: 'center', padding: '1.5rem', background: '#010d01', border: '1px solid #1a4a1a', borderRadius: '4px' }}>
-            <div style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#334433', marginBottom: '8px' }}>// SITUATION REPORT // MAR 12, 2026 //</div>
+            <div style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#5a7a5a', marginBottom: '8px' }}>// SITUATION REPORT // MAR 12, 2026 //</div>
             <h1 style={{ fontFamily: 'Courier New, monospace', fontSize: 'clamp(1.6rem, 5vw, 2.8rem)', fontWeight: 700, margin: '0 0 6px', letterSpacing: '0.08em', color: '#00ff44', textShadow: '0 0 20px #00ff4466', lineHeight: 1.1 }}>
               TRUMP FUCKUPOMETER™
             </h1>
-            <div style={{ fontSize: '10px', letterSpacing: '0.15em', color: '#556655', margin: '0 0 8px' }}>OPERATION EPIC FURY // WTI CRUDE OIL INDEX</div>
-            <p style={{ fontSize: '13px', color: '#669966', margin: 0, fontStyle: 'italic' }}>
+            <div style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#88aa88', margin: '0 0 8px' }}>OPERATION EPIC FURY // WTI CRUDE OIL INDEX</div>
+            <p style={{ fontSize: '14px', color: '#b8d4b8', margin: 0, fontStyle: 'italic' }}>
               For when "drill baby drill" meets a little excursion/war.
             </p>
           </div>
@@ -344,9 +350,9 @@ export default function Home() {
               },
             ].map((m, i) => (
               <div key={i} style={{ background: '#010d01', border: '1px solid #1a4a1a', borderRadius: '4px', padding: '1rem' }}>
-                <p style={{ margin: '0 0 6px', fontSize: '9px', letterSpacing: '0.12em', color: '#334433' }}>{m.label}</p>
+                <p style={{ margin: '0 0 6px', fontSize: '10px', letterSpacing: '0.12em', color: '#5a7a5a' }}>{m.label}</p>
                 <p style={{ margin: '0 0 4px', fontSize: m.small ? '0.9rem' : '1.6rem', fontWeight: 700, color: m.color, textShadow: `0 0 10px ${m.color}55`, lineHeight: 1.2, fontFamily: 'Courier New, monospace' }}>{m.value}</p>
-                <p style={{ margin: 0, fontSize: '9px', color: '#556655', letterSpacing: '0.06em' }}>{m.sub}</p>
+                <p style={{ margin: 0, fontSize: '10px', color: '#88aa88', letterSpacing: '0.06em' }}>{m.sub}</p>
               </div>
             ))}
           </div>
@@ -355,9 +361,9 @@ export default function Home() {
           <div style={{ ...S.section }}>
             <p style={{ ...S.sectionHead }}>FUCKUPOMETER™ // REAL-TIME GAUGE</p>
             <HorizontalThermometer fuckupFactor={fuckupFactor}/>
-            <div style={{ borderTop: '1px solid #0d2a0d', marginTop: '1rem', paddingTop: '1rem', fontSize: '12px', color: '#669966', fontStyle: 'italic', lineHeight: 1.7 }}>
+            <div style={{ borderTop: '1px solid #0d2a0d', marginTop: '1rem', paddingTop: '1rem', fontSize: '12px', color: '#b8d4b8', fontStyle: 'italic', lineHeight: 1.7 }}>
               "We're going to get the price of energy down... get it down fast... we're going to drill, baby, drill."
-              <span style={{ color: '#334433', fontStyle: 'normal' }}> — Donald J. Trump, Jan 20, 2026</span>
+              <span style={{ color: '#6a8a6a', fontStyle: 'normal' }}> — Donald J. Trump, Jan 20, 2026</span>
               <br/>
               <span style={{ color: '#ff6600', fontStyle: 'normal', fontWeight: 700 }}>WTI on that day: ~$76. &nbsp;Today: ${price.toFixed(2)}. &nbsp;The excursion/war continues.</span>
             </div>
@@ -368,12 +374,12 @@ export default function Home() {
             {/* 30-day chart */}
             <div style={{ ...S.section, marginBottom: 0 }}>
               <p style={{ ...S.sectionHead }}>WTI // 30-DAY PRICE HISTORY</p>
-              <div style={{ display: 'flex', gap: '16px', fontSize: '9px', color: '#334433', marginBottom: '10px', letterSpacing: '0.06em' }}>
+              <div style={{ display: 'flex', gap: '16px', fontSize: '9px', color: '#6a8a6a', marginBottom: '10px', letterSpacing: '0.06em' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '14px', height: '2px', background: '#00ff44', display: 'inline-block' }}/> WTI PRICE</span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '14px', borderTop: '2px dashed #ff6600', display: 'inline-block' }}/> INAUG. BASELINE</span>
               </div>
               <OilChart chartReady={chartReady}/>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '9px', color: '#334433', letterSpacing: '0.06em' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '9px', color: '#6a8a6a', letterSpacing: '0.06em' }}>
                 <span>30 DAYS AGO</span><span>TODAY</span>
               </div>
             </div>
@@ -383,7 +389,7 @@ export default function Home() {
               <p style={{ ...S.sectionHead, color: '#ff4444' }}>BUTCHER'S BILL // OP. EPIC FURY</p>
               <div style={{ fontSize: '9px', color: '#ff2200', letterSpacing: '0.08em', marginBottom: '8px' }}>COMMENCED: FEB 28, 2026 // STATUS: ONGOING</div>
               {BUTCHERS_BILL.map((item, i) => <BillRow key={i} item={item}/>)}
-              <p style={{ margin: '10px 0 0', fontSize: '9px', color: '#334433', lineHeight: 1.6, letterSpacing: '0.04em' }}>
+              <p style={{ margin: '10px 0 0', fontSize: '9px', color: '#6a8a6a', lineHeight: 1.6, letterSpacing: '0.04em' }}>
                 FIGURES AS OF MAR 12. IRANIAN TOTAL CASUALTY FIGURES HEAVILY DISPUTED BETWEEN US GOV'T, IRANIAN STATE MEDIA, AND INDEPENDENT MONITORS. ALL FIGURES FROM OPEN SOURCES.
               </p>
             </div>
@@ -392,7 +398,7 @@ export default function Home() {
           {/* War economy commodities */}
           <div style={{ ...S.section }}>
             <p style={{ ...S.sectionHead }}>WAR ECONOMY DASHBOARD // SINCE INAUGURATION</p>
-            <p style={{ fontSize: '11px', color: '#556655', margin: '0 0 1rem', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '11px', color: '#88aa88', margin: '0 0 1rem', lineHeight: 1.6 }}>
               WHAT ELSE MOVES WHEN A STRAIT CLOSES AND A PRESIDENT PROMISES CHEAP ENERGY.
             </p>
             {commodities ? (
@@ -400,9 +406,9 @@ export default function Home() {
                 {commodities.map((c, i) => <CommodityCard key={i} c={c}/>)}
               </div>
             ) : (
-              <div style={{ height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', color: '#334433', letterSpacing: '0.1em' }}>FETCHING COMMODITY DATA<span className="blink">_</span></div>
+              <div style={{ height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', color: '#6a8a6a', letterSpacing: '0.1em' }}>FETCHING COMMODITY DATA<span className="blink">_</span></div>
             )}
-            <p style={{ fontSize: '9px', color: '#334433', margin: '12px 0 0', lineHeight: 1.6, letterSpacing: '0.04em' }}>
+            <p style={{ fontSize: '9px', color: '#6a8a6a', margin: '12px 0 0', lineHeight: 1.6, letterSpacing: '0.04em' }}>
               FERTILIZER TRACKED VIA CF INDUSTRIES (NYSE: CF) — LARGEST US UREA PRODUCER. UREA = OTC MARKET, NO LIQUID EXCHANGE-TRADED FUTURES. INAUG. BASELINES EST. FROM JAN 20, 2026 MARKET CLOSE.
             </p>
           </div>
@@ -413,7 +419,7 @@ export default function Home() {
             {EVENTS.map((e, i) => (
               <div key={i} style={{ display: 'flex', gap: '12px', padding: '8px 0', borderBottom: i < EVENTS.length - 1 ? '1px solid #0d2a0d' : 'none' }}>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: e.color, flexShrink: 0, marginTop: '5px', boxShadow: `0 0 6px ${e.color}` }}/>
-                <span style={{ fontSize: '10px', color: '#334433', minWidth: '44px', letterSpacing: '0.06em', paddingTop: '2px' }}>{e.date}</span>
+                <span style={{ fontSize: '10px', color: '#6a8a6a', minWidth: '44px', letterSpacing: '0.06em', paddingTop: '2px' }}>{e.date}</span>
                 <span style={{ fontSize: '12px', color: '#aaaaaa', lineHeight: 1.6 }}>{e.label}</span>
               </div>
             ))}
@@ -421,20 +427,20 @@ export default function Home() {
 
           {/* CTA */}
           <div style={{ textAlign: 'center', padding: '1.5rem', background: '#010d01', border: '1px solid #1a4a1a', borderRadius: '4px', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '12px', color: '#556655', marginBottom: '12px', letterSpacing: '0.06em' }}>WANT THE ACTUAL ANALYSIS? READ THE LONG MEMO.</p>
+            <p style={{ fontSize: '12px', color: '#88aa88', marginBottom: '12px', letterSpacing: '0.06em' }}>WANT THE ACTUAL ANALYSIS? READ THE LONG MEMO.</p>
             <a href="https://thelongmemo.substack.com" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', padding: '10px 28px', background: 'transparent', color: '#00ff44', border: '1px solid #00ff44', borderRadius: '2px', fontSize: '12px', fontWeight: 700, textDecoration: 'none', fontFamily: 'Courier New, monospace', letterSpacing: '0.12em', textShadow: '0 0 8px #00ff4466', boxShadow: '0 0 12px #00ff4422' }}>
               &gt;&gt; READ THE LONG MEMO
             </a>
           </div>
 
           {/* Footer / Disclaimer */}
-          <div style={{ borderTop: '1px solid #0d2a0d', paddingTop: '1rem', fontSize: '10px', color: '#334433', lineHeight: 1.8, letterSpacing: '0.04em' }}>
+          <div style={{ borderTop: '1px solid #0d2a0d', paddingTop: '1rem', fontSize: '10px', color: '#6a8a6a', lineHeight: 1.8, letterSpacing: '0.04em' }}>
             DATA: WTI (CL=F), NG (NG=F), GASOLINE (RB=F), WHEAT (ZW=F), CORN (ZC=F), CF INDUSTRIES (CF) VIA YAHOO FINANCE. REFRESHES EVERY 5 MIN.
             CASUALTY FIGURES: PENTAGON, AL JAZEERA, BRITANNICA, HRANA, USNI NEWS — ALL OPEN SOURCE.
             NOT FINANCIAL ADVICE. THIS IS A GAG. A VERY ACCURATE GAG. &nbsp;·&nbsp;
-            <a href="https://thelongmemo.substack.com" style={{ color: '#334433' }}>THE LONG MEMO</a>
+            <a href="https://thelongmemo.substack.com" style={{ color: '#6a8a6a' }}>THE LONG MEMO</a>
             <br/>
-            <span style={{ color: '#556655', fontStyle: 'italic' }}>Heckuva job, Trumpy!</span>
+            <span style={{ color: '#88aa88', fontStyle: 'italic' }}>Heckuva job, Trumpy!</span>
             &nbsp;&nbsp;<span style={{ color: '#223322' }}>UNCLASSIFIED // FOR SATIRICAL PURPOSES ONLY // NOT AFFILIATED WITH THE UNITED STATES GOVERNMENT</span>
           </div>
         </div>
