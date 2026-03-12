@@ -2,19 +2,24 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-/* ─── Brand tokens — Borderless Media LLC / TLM ───────────────────────────── */
+/* ─── Brand tokens — The Long Memo (exact from tlm-brand-guide.html) ─────── */
 const T = {
-  bg:        '#F8F5F0',
+  bg:        '#F5F0E6',
   bgCard:    '#FFFFFF',
-  bgTint:    '#F2EDE6',
-  border:    '#E2DDD6',
-  borderDk:  '#C8C0B4',
-  ink:       '#1A1714',
-  inkMid:    '#4A4540',
-  inkMuted:  '#7A7268',
+  bgTint:    '#EDE8DC',
+  border:    '#CEC8B8',
+  borderDk:  '#B0A898',
+  ink:       '#1C1410',
+  inkMid:    '#6B6258',
+  inkMuted:  '#9C9590',
+  slate:     '#2B4870',
+  slateDk:   '#1A2535',
+  slateMid:  '#3D5F8F',
+  slateLt:   '#4E709C',
+  slatePale: '#E8EDF5',
   terra:     '#B85C38',
-  terraDk:   '#8B4228',
-  terraLt:   '#E8D0C4',
+  terraM:    '#C97A5E',
+  terraPale: '#F5E8E2',
   red:       '#C0392B',
   green:     '#2E7D4F',
   amber:     '#B8860B',
@@ -24,7 +29,7 @@ const FONTS = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
   * { box-sizing: border-box; }
   body { margin: 0; background: ${T.bg}; }
-  ::selection { background: ${T.terraLt}; }
+  ::selection { background: ${T.terraPale}; }
   ::-webkit-scrollbar { width: 6px; background: ${T.bg}; }
   ::-webkit-scrollbar-thumb { background: ${T.border}; border-radius: 3px; }
 `;
@@ -216,7 +221,7 @@ function CommodityCard({ c }) {
         {isUp ? '▲' : '▼'} {Math.abs(c.changePct)}% today
       </p>
       <div style={{ marginTop: '6px', paddingTop: '6px', borderTop: `1px solid ${T.border}` }}>
-        <span style={{ fontSize: '11px', fontFamily: "'Source Serif 4', Georgia, serif", fontWeight: 600, color: since ? T.terraDk : T.green }}>
+        <span style={{ fontSize: '11px', fontFamily: "'Source Serif 4', Georgia, serif", fontWeight: 600, color: since ? T.terra : T.green }}>
           {since ? '+' : ''}{c.sinceInaugPct}% since inauguration
         </span>
       </div>
@@ -290,15 +295,19 @@ export default function Home() {
 
       <div style={{ minHeight: '100vh', background: T.bg, color: T.ink }}>
 
-        {/* Masthead */}
-        <div style={{ background: T.ink, borderBottom: `3px solid ${T.terra}` }}>
-          <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0.9rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div>
-              <span style={{ ...serif, fontSize: '10px', letterSpacing: '0.28em', color: T.terraLt, textTransform: 'uppercase' }}>The Long Memo</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', ...serif, fontSize: '11px' }}>
-              {lastUpdated && <span style={{ color: T.inkMuted }}>Updated {lastUpdated.toLocaleTimeString()}</span>}
-              <button onClick={fetchAll} style={{ background: 'none', border: `1px solid ${T.terraDk}`, borderRadius: '2px', padding: '3px 10px', fontSize: '10px', cursor: 'pointer', color: T.terraLt, fontFamily: 'inherit', letterSpacing: '0.08em' }}>
+        {/* Masthead — TLM brand treatment */}
+        <div style={{ background: T.slateDk, borderTop: `3px solid ${T.terra}`, borderBottom: `1px solid rgba(255,255,255,0.08)` }}>
+          <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '56px' }}>
+            {/* Logo lockup: icon + wordmark */}
+            <a href="https://thelongmemo.substack.com" target="_blank" rel="noopener noreferrer"
+              style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+              <img src="/tlm-logo.png" alt="TLM" style={{ height: '34px', width: '34px', borderRadius: '3px', flexShrink: 0 }}/>
+              <img src="/tlm-wordmark-dark.png" alt="The Long Memo" style={{ height: '22px', opacity: 0.92 }}/>
+            </a>
+            {/* Right: meta + refresh */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: '11px' }}>
+              {lastUpdated && <span style={{ color: 'rgba(245,240,230,0.38)', letterSpacing: '0.04em' }}>Updated {lastUpdated.toLocaleTimeString()}</span>}
+              <button onClick={fetchAll} style={{ background: 'none', border: `1px solid rgba(184,92,56,0.5)`, borderRadius: '2px', padding: '3px 11px', fontSize: '10px', cursor: 'pointer', color: T.terraM, fontFamily: 'inherit', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Refresh
               </button>
             </div>
@@ -325,7 +334,7 @@ export default function Home() {
           </div>
 
           {error && (
-            <div style={{ background: '#FEF3EE', border: `1px solid ${T.terraLt}`, borderRadius: '2px', padding: '10px 14px', marginBottom: '1.25rem', ...serif, fontSize: '13px', color: T.terraDk }}>
+            <div style={{ background: '#FEF3EE', border: `1px solid ${T.terraPale}`, borderRadius: '2px', padding: '10px 14px', marginBottom: '1.25rem', ...serif, fontSize: '13px', color: T.terra }}>
               {error}
             </div>
           )}
@@ -344,7 +353,7 @@ export default function Home() {
                 eyebrow: 'Since Inauguration Day',
                 value: `+${data ? data.sinceInaugurationPct : '~27'}%`,
                 sub: `+$${data ? data.sinceInauguration : '~20'} above the $76 baseline`,
-                valueColor: T.terraDk,
+                valueColor: T.terra,
                 subColor: T.terra,
               },
               {
@@ -373,7 +382,7 @@ export default function Home() {
               </p>
               <p style={{ ...serif, fontSize: '12px', color: T.inkMuted, margin: 0 }}>
                 — Donald J. Trump, Inauguration Day, January 20, 2026. &nbsp;
-                <span style={{ color: T.terraDk, fontWeight: 600 }}>WTI that day: ~$76. Today: ${price.toFixed(2)}.</span>
+                <span style={{ color: T.terra, fontWeight: 600 }}>WTI that day: ~$76. Today: ${price.toFixed(2)}.</span>
               </p>
             </div>
           </div>
@@ -477,7 +486,7 @@ export default function Home() {
           </div>
 
           {/* CTA */}
-          <div style={{ background: T.ink, borderRadius: '2px', padding: '2rem', textAlign: 'center', marginBottom: '1.25rem' }}>
+          <div style={{ background: T.slateDk, borderRadius: '2px', padding: '2rem', textAlign: 'center', marginBottom: '1.25rem', borderTop: `3px solid ${T.terra}` }}>
             <p style={{ ...display, fontSize: '1.5rem', fontStyle: 'italic', color: '#F5F1EB', margin: '0 0 8px' }}>
               Want the actual analysis?
             </p>
@@ -485,7 +494,7 @@ export default function Home() {
               Read The Long Memo — institutional analysis for people who need to know what's actually happening.
             </p>
             <a href="https://thelongmemo.substack.com" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'inline-block', padding: '10px 28px', background: 'transparent', color: T.terraLt, border: `1px solid ${T.terraDk}`, borderRadius: '2px', fontSize: '12px', fontWeight: 400, textDecoration: 'none', ...serif, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              style={{ display: 'inline-block', padding: '10px 28px', background: 'transparent', color: T.terraPale, border: `1px solid ${T.terra}`, borderRadius: '2px', fontSize: '12px', fontWeight: 400, textDecoration: 'none', ...serif, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               Read The Long Memo →
             </a>
           </div>
