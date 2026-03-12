@@ -28,7 +28,7 @@ function HorizontalThermometer({ fuckupFactor }) {
 
   const zones = [
     { pct: 0,   label: 'NOT\nFUCKED UP',                  color: '#00cc44', activeColor: '#00ff55' },
-    { pct: 25,  label: 'A LITTLE\nFUCKED UP',             color: '#aacc00', activeColor: '#ddff00' },
+    { pct: 25,  label: 'MORE THAN A\nLITTLE FUCKED UP',    color: '#aacc00', activeColor: '#ddff00' },
     { pct: 50,  label: 'SIGNIFICANTLY\nFUCKED UP',        color: '#ff6600', activeColor: '#ff8833' },
     { pct: 75,  label: 'VERY\nFUCKED UP',                 color: '#ff2200', activeColor: '#ff4422' },
     { pct: 100, label: 'COMPLETELY\nUNBELIEVABLY\nFUCKED UP', color: '#ff0000', activeColor: '#ff2200' },
@@ -441,7 +441,8 @@ export default function Home() {
             <a href="https://thelongmemo.substack.com" style={{ color: '#6a8a6a' }}>THE LONG MEMO</a>
             <br/>
             <span style={{ color: '#88aa88', fontStyle: 'italic' }}>Heckuva job, Trumpy!</span>
-            &nbsp;&nbsp;<span style={{ color: '#223322' }}>UNCLASSIFIED // FOR SATIRICAL PURPOSES ONLY // NOT AFFILIATED WITH THE UNITED STATES GOVERNMENT</span>
+            <br/>
+            <span style={{ display: 'block', textAlign: 'center', color: '#88aa88', marginTop: '8px', letterSpacing: '0.08em' }}>UNCLASSIFIED // FOR SATIRICAL PURPOSES ONLY // NOT AFFILIATED WITH THE UNITED STATES GOVERNMENT</span>
           </div>
         </div>
       </div>
