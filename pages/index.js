@@ -501,17 +501,16 @@ export default function Home() {
 
           {/* Footer */}
           <div style={{ borderTop: `1px solid ${T.border}`, paddingTop: '1.25rem' }}>
-            <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, lineHeight: 1.8, margin: '0 0 6px' }}>
+            <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, lineHeight: 1.8, margin: '0 0 10px' }}>
               Data: WTI (CL=F), Natural Gas (NG=F), Gasoline (RB=F), Wheat (ZW=F), Corn (ZC=F), CF Industries (CF) via Yahoo Finance.
               Refreshes every five minutes. Not financial advice. This is a gag. A very accurate gag.
               &nbsp;·&nbsp;
               <a href="https://thelongmemo.substack.com" style={{ color: T.inkMuted }}>The Long Memo</a>
-            </p>
-            <p style={{ ...serif, fontSize: '11px', color: T.inkMid, margin: '0 0 8px', fontStyle: 'italic' }}>
-              Heckuva job, Trumpy!
+              &nbsp;·&nbsp;
+              <em>Heckuva job, Trumpy!</em>
             </p>
             <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, textAlign: 'center', letterSpacing: '0.06em', margin: 0 }}>
-              UNCLASSIFIED // FOR SATIRICAL PURPOSES ONLY // NOT AFFILIATED WITH THE UNITED STATES GOVERNMENT
+              FOR SATIRICAL PURPOSES ONLY // NOT AFFILIATED WITH THE UNITED STATES GOVERNMENT
             </p>
           </div>
 
