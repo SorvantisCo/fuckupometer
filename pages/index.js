@@ -467,12 +467,12 @@ function WhatItCouldBuy({ liveCost }) {
   const serif  = { fontFamily: "'Source Serif 4', Georgia, serif" };
   const display = { fontFamily: "'DM Serif Display', Georgia, serif" };
   const ITEMS = [
-    { icon: '🏥', cat: 'Healthcare', val: `${Math.round(warCostM / 6).toLocaleString()}`, unit: 'people with health insurance', note: 'ACA marketplace premium w/ subsidy ~$6,000/yr/person', src: 'KFF 2025', color: '#2E7D4F' },
+    { icon: '🏥', cat: 'Healthcare', val: `${Math.round(liveCost / 6000).toLocaleString()}`, unit: 'people with health insurance', note: 'ACA marketplace premium w/ subsidy ~$6,000/yr/person', src: 'KFF 2025', color: '#2E7D4F' },
     { icon: '🏫', cat: 'Public Education', val: `${Math.round(warCostM / 0.069).toLocaleString()}`, unit: 'teacher-years funded', note: 'Avg US public school teacher salary ~$69,000/yr (NEA 2024)', src: 'NEA 2024', color: T.slateLt },
     { icon: '🌉', cat: 'Infrastructure', val: `${(liveCost / 2.6e12 * 100).toFixed(1)}%`, unit: 'of the ASCE infrastructure gap', note: 'ASCE estimates $2.6T investment gap over 10 years', src: 'ASCE 2025', color: T.terra },
     { icon: '💰', cat: 'Tax Relief', val: `$${Math.round(warCostM / 100).toLocaleString()}`, unit: 'per working American', note: '~100M working Americans file taxes. Equal distribution.', src: 'IRS SOI 2024', color: T.amber },
-    { icon: '🍽️', cat: 'Food Security', val: `${Math.round(warCostM / 2.4 / 12).toLocaleString()}`, unit: 'families fed for a year', note: "SNAP avg benefit ~$2,400/yr per family of four", src: 'USDA FNS 2025', color: T.red },
-    { icon: '🎓', cat: 'Student Aid', val: `${Math.round(warCostM / 7.395).toLocaleString()}`, unit: 'max Pell Grants', note: 'Maximum Pell Grant: $7,395 for 2025–26 award year', src: 'Federal Student Aid 2025–26', color: '#1A2535' },
+    { icon: '🍽️', cat: 'Food Security', val: `${Math.round(liveCost / 2400).toLocaleString()}`, unit: 'families fed for a year', note: "SNAP avg benefit ~$2,400/yr per family of four", src: 'USDA FNS 2025', color: T.red },
+    { icon: '🎓', cat: 'Student Aid', val: `${Math.round(liveCost / 7395).toLocaleString()}`, unit: 'max Pell Grants', note: 'Maximum Pell Grant: $7,395 for 2025–26 award year', src: 'Federal Student Aid 2025–26', color: '#1A2535' },
   ];
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'rgba(255,255,255,0.06)' }}>
