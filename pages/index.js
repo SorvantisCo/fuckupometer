@@ -395,7 +395,7 @@ function WhatItCouldBuy({ dayCount }) {
       category: 'Food Security (SNAP)',
       headline: `${Math.round(warCostM / 2.4 / 12).toLocaleString()}`,
       unit: 'families fed for a year',
-      detail: 'Average SNAP benefit: ~$2,400/year for a family of four. War cost to date could fund that many families' food assistance for one year.',
+      detail: "Average SNAP benefit: ~$2,400/year for a family of four. War cost to date could fund that many families' food assistance for one year.",
       src: 'USDA FNS SNAP Data 2025; calculation by The Long Memo',
       color: '#C0392B',
     },
