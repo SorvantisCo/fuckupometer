@@ -65,10 +65,11 @@ const EVENTS_2026 = [
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
 
 const BILL = [
-  { label: 'US KIA',         value: '7',       sub: 'Pentagon confirmed, incl. 1 non-combat death in Kuwait',     src: 'Pentagon / Al Jazeera, Mar 10' },
+  { label: 'US KIA',         value: '13',      sub: '6 killed Kuwait (Mar 1), 1 non-combat (Mar 9), 6 killed KC-135 crash Iraq (Mar 13). CNN confirms all aboard lost.',  src: 'CENTCOM / CNN, Mar 13' },
   { label: 'US WIA',         value: '~140',    sub: '108 returned to duty; 8 remain severe',                       src: 'Pentagon, Mar 10' },
-  { label: 'Iranian dead',   value: '1,250+',  sub: 'Confirmed minimum. HRANA estimates up to 7,000. Trump administration claims 32,000.',  src: 'Al Jazeera / Britannica, Mar 12' },
-  { label: 'Civilians',      value: '742+',    sub: 'Human Rights Activists in Iran estimate; Red Crescent: 600+', src: 'HRANA / IRC, Mar 3' },
+  { label: 'Iranian dead',   value: '1,348+',  sub: 'Per Iran's UN representative. HRANA estimates up to 7,000. Trump administration claims 32,000.',  src: 'Al Jazeera / UN, Mar 13' },
+  { label: 'Iranian injured', value: '17,000+', sub: 'Confirmed by Iran's UN representative Amir Saeid Iravani', src: 'Al Jazeera, Mar 13' },
+  { label: 'Lebanon dead',   value: '687',     sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.',  src: 'Lebanon Information Minister, Mar 13' },
   { label: 'Minab school',   value: '148–180', sub: 'Girls school, Minab, near Bandar Abbas. US disputes intentionality.',  src: 'Iranian govt / Britannica (disputed)' },
   { label: 'Gulf civilians', value: 'Dozens',  sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes',     src: 'Reuters / official statements' },
 ];
