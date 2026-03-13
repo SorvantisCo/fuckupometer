@@ -357,7 +357,7 @@ export default function Home() {
           )}
 
           {/* Hero metrics */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '1px', background: T.border, border: `1px solid ${T.border}`, marginBottom: '1.25rem', borderRadius: '2px', overflow: 'hidden' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '1px', background: T.border, border: `1px solid ${T.border}`, marginBottom: '1.25rem', borderRadius: '2px', overflow: 'hidden' }}>
             {[
               {
                 eyebrow: 'WTI crude — live',
@@ -380,11 +380,24 @@ export default function Home() {
                 valueColor: T.red,
                 subColor: T.inkMuted,
               },
+              {
+                eyebrow: 'Brent crude — live',
+                value: loading ? '—' : `$${parseFloat(data?.brent?.price ?? 0).toFixed(2)}`,
+                sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) today` : null,
+                valueColor: T.ink,
+                subColor: parseFloat(data?.brent?.change ?? 0) >= 0 ? T.red : T.green,
+                sinceInaugPct: data?.brent?.sinceInaugPct,
+              },
             ].map((m, i) => (
               <div key={i} style={{ background: T.bgCard, padding: '1.25rem 1.5rem' }}>
                 <p style={{ ...serif, margin: '0 0 6px', fontSize: '10px', letterSpacing: '0.15em', color: T.terra, textTransform: 'uppercase' }}>{m.eyebrow}</p>
                 <p style={{ ...display, margin: '0 0 4px', fontSize: '2rem', lineHeight: 1.1, color: m.valueColor }}>{m.value}</p>
                 {m.sub && <p style={{ ...serif, margin: 0, fontSize: '12px', color: m.subColor }}>{m.sub}</p>}
+              {m.sinceInaugPct !== undefined && (
+                <p style={{ ...serif, margin: '4px 0 0', fontSize: '11px', fontWeight: 600, color: parseFloat(m.sinceInaugPct) >= 0 ? T.terra : T.green }}>
+                  {parseFloat(m.sinceInaugPct) >= 0 ? '+' : ''}{m.sinceInaugPct}% since inauguration
+                </p>
+              )}
               </div>
             ))}
           </div>
