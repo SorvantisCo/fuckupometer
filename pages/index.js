@@ -368,6 +368,14 @@ export default function Home() {
                 subColor: isUp ? T.red : T.green,
               },
               {
+                eyebrow: 'Brent crude — live',
+                value: loading ? '—' : `$${parseFloat(data?.brent?.price ?? 0).toFixed(2)}`,
+                sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) today` : null,
+                valueColor: T.ink,
+                subColor: parseFloat(data?.brent?.change ?? 0) >= 0 ? T.red : T.green,
+                sinceInaugPct: data?.brent?.sinceInaugPct,
+              },
+              {
                 eyebrow: 'Since 1/20/25',
                 value: `+${data ? data.sinceInaugurationPct : '~27'}%`,
                 sub: `+$${data ? data.sinceInauguration : '~20'} above the $76 baseline`,
@@ -380,14 +388,6 @@ export default function Home() {
                 sub: 'Israel strikes 30 Iranian oil depots',
                 valueColor: T.red,
                 subColor: T.inkMuted,
-              },
-              {
-                eyebrow: 'Brent crude — live',
-                value: loading ? '—' : `$${parseFloat(data?.brent?.price ?? 0).toFixed(2)}`,
-                sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) today` : null,
-                valueColor: T.ink,
-                subColor: parseFloat(data?.brent?.change ?? 0) >= 0 ? T.red : T.green,
-                sinceInaugPct: data?.brent?.sinceInaugPct,
               },
             ].map((m, i) => (
               <div key={i} style={{ background: T.bgCard, padding: '1.25rem 1.5rem' }}>
