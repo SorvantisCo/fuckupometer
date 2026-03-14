@@ -284,74 +284,77 @@ function Gauge({ pct }) {
 }
 
 /* ─── Oil Chart ──────────────────────────────────────────────────────────────── */
-function OilChart({ chartReady }) {
+/* shared history fetch — returns { points, brentPoints } */
+let _historyCache = null;
+function fetchHistory() {
+  if (_historyCache) return _historyCache;
+  _historyCache = fetch('/api/history').then(r => r.json()).catch(() => ({ points: [], brentPoints: [] }));
+  return _historyCache;
+}
+
+function PriceChart({ chartReady, dataKey, color, baseline, baselineLabel, yMin, yMax, showScenarios, tooltipLabel }) {
   const canvasRef = useRef(null);
   const chartRef  = useRef(null);
   useEffect(() => {
     if (!chartReady || !canvasRef.current) return;
     let cancelled = false;
-    fetch('/api/history').then(r => r.json()).then(data => {
-      if (cancelled || !data.points || !canvasRef.current) return;
+    fetchHistory().then(data => {
+      const pts = data[dataKey];
+      if (cancelled || !pts || !pts.length || !canvasRef.current) return;
       if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
-      const labels = data.points.map(p => {
+      const labels = pts.map(p => {
         const d = new Date(p.date + 'T12:00:00Z');
         return `${d.getUTCMonth()+1}/${d.getUTCDate()}`;
       });
-      const values = data.points.map(p => p.close);
+      const values = pts.map(p => p.close);
+      const n = labels.length;
 
-      /* Scenario annotations */
-      const scenarios = [
-        { x: labels.length - 1, y: 85,  label: 'Ceasefire tomorrow', color: T.green },
-        { x: labels.length - 1, y: 105, label: 'War +30 days',       color: T.amber },
-        { x: labels.length - 1, y: 130, label: 'Hormuz closed 90d',  color: T.red   },
+      const datasets = [
+        {
+          label: tooltipLabel,
+          data: values,
+          borderColor: color,
+          backgroundColor: `${color}12`,
+          borderWidth: 2,
+          pointRadius: 2.5,
+          pointBackgroundColor: color,
+          tension: 0.35,
+          fill: true,
+        },
+        {
+          label: baselineLabel,
+          data: labels.map(() => baseline),
+          borderColor: T.green,
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          fill: false,
+        },
       ];
+
+      if (showScenarios) {
+        datasets.push(
+          { label: 'Ceasefire ~$85',        data: labels.map(() => 85),  borderColor: T.green, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+          { label: 'War continues +30d ~$105', data: labels.map(() => 105), borderColor: T.amber, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+          { label: 'Hormuz closed 90d ~$130',  data: labels.map(() => 130), borderColor: T.red,   borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+        );
+      }
 
       chartRef.current = new window.Chart(canvasRef.current.getContext('2d'), {
         type: 'line',
-        data: {
-          labels,
-          datasets: [
-            {
-              label: 'WTI $/bbl',
-              data: values,
-              borderColor: T.terra,
-              backgroundColor: `${T.terra}12`,
-              borderWidth: 2,
-              pointRadius: 2.5,
-              pointBackgroundColor: T.terra,
-              tension: 0.35,
-              fill: true,
-            },
-            {
-              label: 'Inauguration baseline ($76)',
-              data: labels.map(() => 76),
-              borderColor: T.green,
-              borderWidth: 1.5,
-              borderDash: [4, 4],
-              pointRadius: 0,
-              fill: false,
-            },
-          ],
-        },
+        data: { labels, datasets },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
             legend: { display: false },
-            tooltip: { callbacks: { label: c => c.dataset.label.includes('baseline') ? ' Inaug. baseline: $76' : ` $${c.parsed.y.toFixed(2)}/bbl` } },
-            annotation: window.ChartAnnotation ? {
-              annotations: {
-                ceasefire: { type: 'line', yMin: 85, yMax: 85, borderColor: T.green, borderWidth: 1, borderDash: [3,3], label: { display: true, content: 'Ceasefire ~$85', color: T.green, font: { size: 9 }, position: 'end' } },
-                warPlus30: { type: 'line', yMin: 105, yMax: 105, borderColor: T.amber, borderWidth: 1, borderDash: [3,3], label: { display: true, content: 'War +30d ~$105', color: T.amber, font: { size: 9 }, position: 'end' } },
-                hormuz90:  { type: 'line', yMin: 130, yMax: 130, borderColor: T.red, borderWidth: 1, borderDash: [3,3], label: { display: true, content: 'Hormuz closed 90d ~$130', color: T.red, font: { size: 9 }, position: 'end' } },
-              }
-            } : undefined,
+            tooltip: { callbacks: { label: c => ` $${c.parsed.y.toFixed(2)}/bbl — ${c.dataset.label}` } },
           },
           scales: {
             y: {
-              min: 55, max: 135,
+              min: yMin, max: yMax,
               ticks: { callback: v => '$'+v, color: T.inkMuted, font: { size: 11, family: "'Source Serif 4', Georgia, serif" } },
-              grid: { color: `${T.border}` },
+              grid: { color: T.border },
               border: { color: T.border },
             },
             x: {
@@ -364,8 +367,20 @@ function OilChart({ chartReady }) {
       });
     });
     return () => { cancelled = true; };
-  }, [chartReady]);
+  }, [chartReady, dataKey]);
   return <div style={{ position: 'relative', width: '100%', height: '200px' }}><canvas ref={canvasRef}/></div>;
+}
+
+function OilChart({ chartReady }) {
+  return <PriceChart chartReady={chartReady} dataKey="points" color={T.terra}
+    baseline={76} baselineLabel="Inauguration baseline ($76)" tooltipLabel="WTI crude"
+    yMin={55} yMax={135} showScenarios={true} />;
+}
+
+function BrentChart({ chartReady }) {
+  return <PriceChart chartReady={chartReady} dataKey="brentPoints" color={T.slateMid}
+    baseline={79} baselineLabel="Inauguration baseline ($79)" tooltipLabel="Brent crude"
+    yMin={55} yMax={135} showScenarios={false} />;
 }
 
 /* ─── Commodity Card ─────────────────────────────────────────────────────────── */
@@ -1007,6 +1022,28 @@ export default function Home() {
               <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '10px 0 0', fontStyle: 'italic', lineHeight: 1.6 }}>
                 Iranian casualty figures remain heavily disputed between US government statements, Iranian state media, and independent monitors.
               </p>
+            </div>
+          </div>
+
+          {/* Brent Crude — 30-Day Price */}
+          <div style={{ ...section }}>
+            <p style={{ ...sectionHead }}>Brent Crude — 30-Day Price</p>
+            <div style={{ display: 'flex', gap: '16px', marginBottom: '12px', ...serif, fontSize: '11px', color: T.inkMuted }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ width: '16px', height: '2px', background: T.slateMid, display: 'inline-block', borderRadius: '1px' }}/>
+                Brent price
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                <span style={{ width: '16px', borderTop: `2px dashed ${T.green}`, display: 'inline-block' }}/>
+                Inaug. baseline ($79)
+              </span>
+              <span style={{ ...serif, fontSize: '10px', color: T.inkMuted, marginLeft: 'auto', fontStyle: 'italic' }}>
+                Brent (BZ=F) — global benchmark · typically trades $3–5 above WTI
+              </span>
+            </div>
+            <BrentChart chartReady={chartReady}/>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', ...serif, fontSize: '10px', color: T.inkMuted }}>
+              <span>30 days ago</span><span>Today</span>
             </div>
           </div>
 
