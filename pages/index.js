@@ -882,7 +882,7 @@ export default function Home() {
               For when &quot;drill baby drill&quot; meets a little excursion/war.
             </p>
             <p style={{ ...serif, fontSize: '13px', color: T.inkMuted, margin: 0, lineHeight: 1.7 }}>
-              WTI crude oil indexed to Inauguration Day 2025 (baseline ~$76/bbl). Prices refresh every five minutes.
+              WTI crude oil indexed to Inauguration Day 2025 (baseline ~$76/bbl). Last trade: {data?.lastTradeISO ? new Date(data.lastTradeISO).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York', timeZoneName: 'short' }) : 'loading…'}. {data?.marketOpen ? 'Market open — refreshes every 3 min.' : 'Market closed — showing last settlement price.'}
               Casualty figures sourced from Pentagon statements, Al Jazeera, Britannica, HRANA, and USNI News — all open source.
             </p>
           </div>
@@ -904,16 +904,16 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '1px', background: T.border, border: `1px solid ${T.border}`, marginBottom: '1.25rem', borderRadius: '2px', overflow: 'hidden' }}>
             {[
               {
-                eyebrow: 'WTI crude — live',
+                eyebrow: data?.marketOpen ? 'WTI crude — OPEN' : 'WTI crude — mkt closed',
                 value: loading ? '—' : `$${parseFloat(data?.price).toFixed(2)}`,
-                sub: data ? `${isUp ? '▲' : '▼'} $${Math.abs(parseFloat(data.change)).toFixed(2)} (${isUp?'+':''}${data.changePct}%) today` : null,
+                sub: data ? `${isUp ? '▲' : '▼'} $${Math.abs(parseFloat(data.change)).toFixed(2)} (${isUp?'+':''}${data.changePct}%) vs prior close` : null,
                 valueColor: T.ink,
                 subColor: isUp ? T.red : T.green,
               },
               {
-                eyebrow: 'Brent crude — live',
+                eyebrow: data?.brent?.marketState === 'REGULAR' ? 'Brent crude — OPEN' : 'Brent crude — mkt closed',
                 value: loading ? '—' : `$${parseFloat(data?.brent?.price ?? 0).toFixed(2)}`,
-                sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) today` : null,
+                sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) vs prior close` : null,
                 valueColor: T.ink,
                 subColor: parseFloat(data?.brent?.change ?? 0) >= 0 ? T.red : T.green,
                 sinceInaugPct: data?.brent?.sinceInaugPct,
@@ -1215,7 +1215,7 @@ export default function Home() {
           <div style={{ borderTop: `1px solid ${T.border}`, paddingTop: '1.25rem' }}>
             <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, lineHeight: 1.8, margin: '0 0 10px' }}>
               Data: WTI (CL=F), Brent (BZ=F), Natural Gas (NG=F), Gasoline (RB=F), Wheat (ZW=F), Corn (ZC=F), CF Industries (CF) via Yahoo Finance.
-              Refreshes every five minutes. Not financial advice. This is a gag. A very accurate gag.
+              Refreshes every 3 min when market is open; shows last settlement price when closed (futures trade Sun 6 PM – Fri 5 PM ET). Not financial advice. This is a gag. A very accurate gag.
               &nbsp;·&nbsp;
               <a href="https://thelongmemo.com" style={{ color: T.inkMuted }}>The Long Memo</a>
               &nbsp;·&nbsp;
