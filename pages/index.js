@@ -88,6 +88,16 @@ const TRUMP_SAID = [
     said: '"Iran is totally defeated and wants a deal" — but not one he "would accept."',
     reality: "Iran's Parliament Speaker warned the country would 'abandon all restraint' if its islands are attacked. Mojtaba Khamenei has not been seen publicly since Feb 28. His statement was read by a TV anchor over a still photo. Hegseth: he is 'wounded and likely disfigured.' The Strait remains closed. Day 14.",
   },
+  {
+    date: 'Mar 14, 2026',
+    said: '"We have already destroyed 100% of Iran\'s Military capability."',
+    reality: "In the same Truth Social post, Trump acknowledged Iran can still 'send a drone or two, drop a mine, or deliver a close range missile.' He then asked China, France, Japan, South Korea, and the UK to send warships to keep the Strait open. None confirmed. China and the UK specifically declined when asked by CNN. Iran's FM: the US is 'begging others, even China.' The Strait remains closed. Day 15.",
+  },
+  {
+    date: 'Mar 14, 2026',
+    said: '"Many Countries... will be sending War Ships, in conjunction with the United States of America, to keep the Strait open and safe."',
+    reality: "South Korea said it would decide after 'careful review.' France is 'seeking to assemble a coalition once the security situation stabilizes.' The UK is 'discussing a range of options.' Iran warned any country joining the coalition faces retaliation. No ships confirmed as of Day 15.",
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
@@ -160,7 +170,11 @@ const EVENTS_2026 = [
   { date: 'Mar 13', tier: 'critical', label: 'Hegseth announces Iranian drone launches are "down 95%" — then declares today will be the "highest volume of strikes yet." US has now struck over 6,000 targets in 13 days. Hegseth says Mojtaba Khamenei is "wounded and likely disfigured." JD Vance: "We know he\'s hurt." Iran has not produced public footage of its new Supreme Leader since Feb 28.' },
   { date: 'Mar 13', tier: 'critical', label: 'Trump: "Iran is totally defeated and wants a deal" — but not one he "would accept." Iran\'s Parliament Speaker simultaneously warns the country will "abandon all restraint" if Iranian islands are attacked. The Strait remains mined. The IRGC informs the UAE that US hideouts are "legitimate targets." Dubai building struck by debris from interception.' },
   { date: 'Mar 14', tier: 'critical', label: 'Brent closes Friday at $103.14 (+2.67%). WTI: $98.71 (+3.11%). National gas average: $3.68/gal — up 23% since Feb 28, per AAA. 31st Marine Expeditionary Unit (USS Tripoli) ordered to the Middle East. Analysts note it\'s the unit you\'d want for a potential Kharg Island seizure or nuclear site operation.' },
-  { date: 'Mar 14', tier: 'today',    label: 'Iran\'s ambassador to India confirms some Indian-flagged vessels are being allowed through the Strait — provided cargo is traded in Chinese yuan. First partial opening since Feb 28. The US did not negotiate this. China did. Today. Live price above. Day 14. The war is apparently not over.' },
+  { date: 'Mar 14', tier: 'critical', label: 'Iran\'s ambassador to India confirms some Indian-flagged vessels are being allowed through the Strait — provided cargo is traded in Chinese yuan. First partial opening since Feb 28. The US did not negotiate this. China did.' },
+  { date: 'Mar 14', tier: 'critical', label: 'UAE Ministry of Defense: 9 ballistic missiles and 33 drones launched from Iran. Debris from an intercepted drone hits Fujairah port — an oil export hub explicitly outside the Strait. Iran\'s IRGC formally designates UAE ports as legitimate targets, urging civilians to evacuate.' },
+  { date: 'Mar 14', tier: 'critical', label: 'US Navy extends USS Nimitz service life to March 2027 — was scheduled for decommission this May. The extension is a direct consequence of the carrier gap exposed when the Ford was sent to the Caribbean for Venezuela, leaving no carrier in the Middle East when Iran erupted.' },
+  { date: 'Mar 14', tier: 'critical', label: 'Zelensky: Russia has supplied Iran with intelligence and drones used against US forces. Iran\'s FM Araghchi: "good cooperation with these countries, politically, economically, even militarily." Neither confirms nor denies specifics.' },
+  { date: 'Mar 15', tier: 'today',    label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 15. The war is apparently not over.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
