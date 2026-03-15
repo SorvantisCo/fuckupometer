@@ -1,18 +1,27 @@
+// oil.js — WTI + Brent live quotes via stooq (replaces Yahoo Finance)
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
-  async function fetchQuote(ticker) {
-    const r = await fetch(
-      `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`,
-      { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; fuckupometer/1.0)', 'Accept': 'application/json' } }
-    );
-    if (!r.ok) throw new Error(`Yahoo Finance returned ${r.status} for ${ticker}`);
-    const data = await r.json();
-    const meta = data?.chart?.result?.[0]?.meta;
-    if (!meta) throw new Error(`No data for ${ticker}`);
-    const price    = meta.regularMarketPrice;
-    const prev     = meta.chartPreviousClose ?? meta.regularMarketPreviousClose ?? price;
+  const STOOQ_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  };
+
+  async function fetchStooq(ticker) {
+    const url = `https://stooq.com/q/l/?s=${ticker}&f=sd2t2ohlcp&h&e=csv`;
+    const r = await fetch(url, { headers: STOOQ_HEADERS });
+    if (!r.ok) throw new Error(`Stooq returned ${r.status} for ${ticker}`);
+    const text = await r.text();
+    const lines = text.trim().split('\n');
+    if (lines.length < 2) throw new Error(`No data rows for ${ticker}`);
+    const headers = lines[0].split(',');
+    const values  = lines[1].split(',');
+    const row = {};
+    headers.forEach((h, i) => { row[h.trim()] = (values[i] || '').trim(); });
+    if (!row.Close || row.Close === 'N/D') throw new Error(`N/D for ${ticker}`);
+    const price    = parseFloat(row.Close);
+    const prev     = parseFloat(row.Prev || row.Close);
     const change   = price - prev;
     const changePct = prev ? (change / prev) * 100 : 0;
     return {
@@ -20,13 +29,16 @@ export default async function handler(req, res) {
       prevClose: prev.toFixed(2),
       change:    change.toFixed(2),
       changePct: changePct.toFixed(2),
-      dayHigh:   meta.regularMarketDayHigh?.toFixed(2),
-      dayLow:    meta.regularMarketDayLow?.toFixed(2),
+      dayHigh:   row.High  ? parseFloat(row.High).toFixed(2)  : null,
+      dayLow:    row.Low   ? parseFloat(row.Low).toFixed(2)   : null,
     };
   }
 
   try {
-    const [wti, brent] = await Promise.all([fetchQuote('CL=F'), fetchQuote('BZ=F')]);
+    const [wti, brent] = await Promise.all([
+      fetchStooq('cl.f'),   // WTI crude
+      fetchStooq('cb.f'),   // Brent crude
+    ]);
 
     const INAUGURATION_PRICE = 76.0;
     const ALL_TIME_PEAK      = 119.48;
