@@ -94,9 +94,14 @@ const TRUMP_SAID = [
     reality: "In the same Truth Social post, Trump acknowledged Iran can still 'send a drone or two, drop a mine, or deliver a close range missile.' He then asked China, France, Japan, South Korea, and the UK to send warships to keep the Strait open. None confirmed. China and the UK specifically declined when asked by CNN. Iran's FM: the US is 'begging others, even China.' The Strait remains closed. Day 15.",
   },
   {
-    date: 'Mar 14, 2026',
-    said: '"Many Countries... will be sending War Ships, in conjunction with the United States of America, to keep the Strait open and safe."',
-    reality: "South Korea said it would decide after 'careful review.' France is 'seeking to assemble a coalition once the security situation stabilizes.' The UK is 'discussing a range of options.' Iran warned any country joining the coalition faces retaliation. No ships confirmed as of Day 15.",
+    date: 'Mar 15, 2026',
+    said: '"Iran wants to make a deal."',
+    reality: "Iran FM Araghchi on CBS the same day: \"No, we never asked for a ceasefire, and we have never asked even for negotiation. We are ready to defend ourselves as long as it takes.\" IRGC spokesman simultaneously announced its weapons cache is \"mostly intact\" and that the missiles used so far are \"from a decade ago\" — Iran has not yet deployed its newer-generation arsenal. Day 16.",
+  },
+  {
+    date: 'Mar 16, 2026',
+    said: '"We have literally destroyed everything on Kharg Island except for its oil facilities."',
+    reality: "At the same Kennedy Center board meeting, Trump left the door open to hitting the oil infrastructure \"a few more times just for fun.\" CENTCOM confirmed they deliberately avoided the oil infrastructure. The two US mine-countermeasure ships (USS Tulsa, USS Santa Barbara) — the vessels required for Strait clearance operations — were photographed in Malaysia, 3,500 miles from the Gulf. The Strait remains closed to US-aligned shipping. Iran FM: \"The Strait is open, but closed to our enemies.\" Day 17.",
   },
 ];
 
@@ -105,8 +110,8 @@ const HORMUZ = {
   dropPct: 95,
   kplerDropPct: 92,
   src: 'S&P Global Market Intelligence (95%, week of Mar 1); Kpler vessel tracking (92%, week of Mar 12)',
-  shipsStruck: 13,
-  shipsSrc: 'USNI News, Mar 10',
+  shipsStruck: 20,
+  shipsSrc: 'UKMTO / Reuters / Al Jazeera, Mar 16',
 };
 
 /* ─── War cost data (CSIS, Pentagon, Penn Wharton) ──────────────────────────── */
@@ -174,7 +179,8 @@ const EVENTS_2026 = [
   { date: 'Mar 14', tier: 'critical', label: 'UAE Ministry of Defense: 9 ballistic missiles and 33 drones launched from Iran. Debris from an intercepted drone hits Fujairah port — an oil export hub explicitly outside the Strait. Iran\'s IRGC formally designates UAE ports as legitimate targets, urging civilians to evacuate.' },
   { date: 'Mar 14', tier: 'critical', label: 'US Navy extends USS Nimitz service life to March 2027 — was scheduled for decommission this May. The extension is a direct consequence of the carrier gap exposed when the Ford was sent to the Caribbean for Venezuela, leaving no carrier in the Middle East when Iran erupted.' },
   { date: 'Mar 14', tier: 'critical', label: 'Zelensky: Russia has supplied Iran with intelligence and drones used against US forces. Iran\'s FM Araghchi: "good cooperation with these countries, politically, economically, even militarily." Neither confirms nor denies specifics.' },
-  { date: 'Mar 15', tier: 'today',    label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 15. The war is apparently not over.' },
+  { date: 'Mar 15', tier: 'critical', label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 15. The war is apparently not over.' },
+  { date: 'Mar 16', tier: 'today',   label: 'Day 17. Dubai International Airport suspends all flights after a drone strikes a fuel tank near the terminal — Emirates cancels dozens of routes. Israel destroys a facility in central Tehran it says was developing satellite-attack capabilities. Strikes continue across Tehran, Hamadan, and Isfahan. Iran FM Araghchi on CBS: "No, we never asked for a ceasefire, and we have never asked even for negotiation." IRGC spokesman: weapons cache "mostly intact" — missiles fired so far are "from a decade ago" and Iran has not yet deployed its newer-generation arsenal. First confirmed Strait transit in days: Pakistan-flagged tanker clears under implicit Iranian naval escort, cargo traded in yuan. Iran FM: "The Strait is open, but closed to our enemies." Saudi Arabia intercepts 37 drones in its Eastern province. Two US mine-clearing ships (USS Tulsa, USS Santa Barbara) photographed in Malaysia — 3,500 miles from the Gulf — the vessels you would want for Strait clearance operations, not where you would put them. CENTCOM confirms 100+ Iranian naval vessels destroyed, 6,000+ combat flights flown. Iranian casualties: 1,444 confirmed killed, 18,551 injured per Iranian Red Crescent. Brent: ~$105/bbl.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -182,8 +188,8 @@ const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: 
 const BILL = [
   { label: 'US KIA',          value: '13',       sub: '6 killed Kuwait (Mar 1), 1 non-combat (Mar 9), 6 killed KC-135 crash Iraq (Mar 13). CNN confirms all aboard lost.', src: 'CENTCOM / CNN, Mar 13' },
   { label: 'US WIA',          value: '~140',     sub: '108 returned to duty; 8 remain severe', src: 'Pentagon, Mar 10' },
-  { label: 'Iranian dead',    value: '1,348+',   sub: "Per Iran's UN representative. HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Al Jazeera / UN, Mar 13' },
-  { label: 'Iranian injured', value: '17,000+',  sub: "Confirmed by Iran's UN representative Amir Saeid Iravani", src: 'Al Jazeera, Mar 13' },
+  { label: 'Iranian dead',    value: '1,444+',   sub: "Per Iranian Red Crescent (Mar 16). HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Iranian Red Crescent / Al Jazeera, Mar 16' },
+  { label: 'Iranian injured', value: '18,551+',  sub: "Per Iranian Red Crescent Society as of March 16.", src: 'Iranian Red Crescent, Mar 16' },
   { label: 'Lebanon dead',    value: '773',      sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.', src: 'Lebanon Information Minister / NPR, Mar 14' },
   { label: 'Minab school',    value: '148–180',  sub: 'Girls school, Minab, near Bandar Abbas. US disputes intentionality.', src: 'Iranian govt / Britannica (disputed)' },
   { label: 'Ships struck',    value: '20+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel.', src: 'UKMTO / Reuters / Al Jazeera' },
