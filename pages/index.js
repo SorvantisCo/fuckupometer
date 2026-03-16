@@ -39,11 +39,12 @@ const FONTS = `
   .live-counter { font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 `;
 
-/* War started Feb 28, 2026 — Pentagon counts elapsed days (Feb 28 = Day 0) */
+/* War started Feb 28, 2026 — Feb 28 = Day 1 (inclusive, consistent with media/Pentagon usage)
+   Pentagon 'Day 6' briefing = Mar 5, which is 6 days inclusive from Feb 28. */
 const WAR_START = new Date('2026-02-28T00:00:00Z');
 function getDayCount() {
   const now = new Date();
-  return Math.max(0, Math.floor((now - WAR_START) / (1000 * 60 * 60 * 24)));
+  return Math.max(1, Math.floor((now - WAR_START) / (1000 * 60 * 60 * 24)) + 1);
 }
 
 /* ─── Trump Said vs Reality ──────────────────────────────────────────────────── */
@@ -181,7 +182,7 @@ const EVENTS_2026 = [
   { date: 'Mar 14', tier: 'critical', label: 'UAE Ministry of Defense: 9 ballistic missiles and 33 drones launched from Iran. Debris from an intercepted drone hits Fujairah port — an oil export hub explicitly outside the Strait. Iran\'s IRGC formally designates UAE ports as legitimate targets, urging civilians to evacuate.' },
   { date: 'Mar 14', tier: 'critical', label: 'US Navy extends USS Nimitz service life to March 2027 — was scheduled for decommission this May. The extension is a direct consequence of the carrier gap exposed when the Ford was sent to the Caribbean for Venezuela, leaving no carrier in the Middle East when Iran erupted.' },
   { date: 'Mar 14', tier: 'critical', label: 'Zelensky: Russia has supplied Iran with intelligence and drones used against US forces. Iran\'s FM Araghchi: "good cooperation with these countries, politically, economically, even militarily." Neither confirms nor denies specifics.' },
-  { date: 'Mar 15', tier: 'critical', label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 15. The war is apparently not over.' },
+  { date: 'Mar 15', tier: 'critical', label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 16. The war is apparently not over.' },
   { date: 'Mar 16', tier: 'today',   label: 'Dubai International Airport suspends all flights after an Iranian drone strikes a fuel tank near the terminal. Emirates cancels dozens of routes. Flights resume on a limited schedule by midday. A second fire breaks out at an industrial zone in Fujairah following a separate drone strike. Abu Dhabi: a missile hits a car, killing a Palestinian resident.' },
   { date: 'Mar 16', tier: 'today',   label: 'IRGC spokesman Brigadier-General Naini: the weapons cache is "mostly intact." The missiles used in the war so far are "from a decade ago." Iran has not yet deployed its newer-generation arsenal. Day 17 — and Tehran is telling you it has been holding back.' },
   { date: 'Mar 16', tier: 'today',   label: 'Iran FM Araghchi on CBS: "No, we never asked for a ceasefire, and we have never asked even for negotiation. We are ready to defend ourselves as long as it takes." Direct contradiction of Trump\'s repeated claim that Iran "wants a deal."' },
