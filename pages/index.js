@@ -115,15 +115,17 @@ const HORMUZ = {
 };
 
 /* ─── War cost data (CSIS, Pentagon, Penn Wharton) ──────────────────────────── */
-/* Pentagon confirmed $11.3B for first 6 days. CSIS: ~$891M/day peak (first 100hrs),
-   dropping to ~$220M/day sustained. Day 13 estimate: $11.3B + (7 × $220M) ≈ $12.8B */
+/* Pentagon confirmed $11.3B for first 6 days (Mar 5 briefing to Congress).
+   CSIS Day 12 update (Mar 12): $16.5B total → implied $867M/day for days 7–12.
+   Penn Wharton (Smetters): ~$800M/day sustained. Fortune/John Phillips: ~$1B/day.
+   We use $870M/day as midpoint of CSIS-derived and Penn Wharton estimates. */
 const WAR_COST_DAY6_B   = 11.3;  /* Pentagon briefing to Congress, Mar 5 */
 const WAR_COST_DAY6     = 6;
-const WAR_COST_DAILY_B  = 0.22;  /* $220M/day sustained after initial phase (CSIS) */
+const WAR_COST_DAILY_B  = 0.87;  /* ~$870M/day sustained: CSIS Day 12 total $16.5B minus Pentagon Day 6 $11.3B = $5.2B / 6 days (CSIS, Mar 12) */
 const PWBM_MIDPOINT_B   = 65;    /* Penn Wharton midpoint direct cost, 2-month scenario */
 const PWBM_TOTAL_B      = 180;   /* Penn Wharton total economic impact, midpoint */
 const US_HOUSEHOLDS     = 132;   /* million — US Census 2024 */
-const WAR_COST_PER_SEC  = (WAR_COST_DAILY_B * 1e9) / 86400; /* ~$2,546/sec sustained */
+const WAR_COST_PER_SEC  = (WAR_COST_DAILY_B * 1e9) / 86400; /* ~$10,069/sec sustained */
 
 function getWarCostEstimate(dayCount) {
   const sustainedDays = Math.max(0, dayCount - WAR_COST_DAY6);
@@ -195,7 +197,9 @@ const BILL = [
   { label: 'US WIA',          value: '~140',     sub: '108 returned to duty; 8 remain severe', src: 'Pentagon, Mar 10' },
   { label: 'Iranian dead',    value: '1,444+',   sub: "Per Iranian Red Crescent (Mar 16). HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Iranian Red Crescent / Al Jazeera, Mar 16' },
   { label: 'Iranian injured', value: '18,551+',  sub: "Per Iranian Red Crescent Society as of March 16.", src: 'Iranian Red Crescent, Mar 16' },
-  { label: 'Lebanon dead',    value: '773',      sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.', src: 'Lebanon Information Minister / NPR, Mar 14' },
+  { label: 'Lebanon dead',    value: '773',      sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
+  { label: 'Lebanon injured',  value: '1,933',    sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
+  { label: 'Israel dead',      value: '14',       sub: '12 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28.', src: 'Israeli authorities / NPR, Mar 13' },
   { label: 'Minab school',    value: '148–180',  sub: 'Girls school, Minab, near Bandar Abbas. US disputes intentionality.', src: 'Iranian govt / Britannica (disputed)' },
   { label: 'Ships struck',    value: '20+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel.', src: 'UKMTO / Reuters / Al Jazeera' },
   { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes', src: 'Reuters / official statements' },
@@ -459,8 +463,8 @@ function AverageAmericanCost({ liveCost }) {
     {
       label: 'War cost to date',
       value: fmtCost(liveCost),
-      sub: 'Pentagon confirmed $11.3B first 6 days. ~$220M/day sustained (CSIS). Live estimate — ticking.',
-      src: 'The Hill / Pentagon briefing to Congress, Mar 5; CSIS, Mar 5',
+      sub: 'Pentagon confirmed $11.3B for first 6 days. CSIS Day 12 update: $16.5B total — implying ~$870M/day sustained. Penn Wharton: ~$800M/day. Live estimate — ticking.',
+      src: 'Pentagon briefing to Congress, Mar 5; CSIS Mar 12 update; Penn Wharton / Fortune, Mar 11',
       color: '#C0392B',
       live: true,
     },
@@ -595,14 +599,16 @@ function WhatItCouldBuy({ liveCost }) {
 }
 
 /* ─── Gas Calculator ─────────────────────────────────────────────────────────── */
-function GasCalc({ rbobPrice }) {
+function GasCalc({ rbobPrice, retailGasPrice }) {
   const [mpg,   setMpg]   = useState(28);
   const [miles, setMiles] = useState(1000); /* ~avg American driver: 12k miles/year */
 
   /* RBOB futures → retail pump price: add ~$1.00 for federal/state taxes + retail margin */
-  const RETAIL_MARKUP   = 1.00;
   const INAUG_RETAIL    = 3.13;  /* EIA national avg retail Jan 20, 2025 */
-  const currentRetail   = rbobPrice ? parseFloat((rbobPrice + RETAIL_MARKUP).toFixed(2)) : 3.72;
+  /* Prefer AAA retail direct; fall back to RBOB futures + $1.00 markup */
+  const currentRetail   = retailGasPrice
+    ? parseFloat(retailGasPrice.toFixed(2))
+    : rbobPrice ? parseFloat((rbobPrice + 1.00).toFixed(2)) : 3.72;
   const extraPerGal     = currentRetail - INAUG_RETAIL;
   const galPerMonth     = miles / mpg;
   const extraPerMonth   = (extraPerGal * galPerMonth).toFixed(2);
@@ -659,7 +665,7 @@ function GasCalc({ rbobPrice }) {
         </div>
       </div>
       <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: 0, fontStyle: 'italic', lineHeight: 1.7 }}>
-        Pump price = RBOB futures + $1.00 (federal/state taxes + retail margin). Inauguration baseline: $3.13/gal (EIA national avg, Jan 20, 2025).
+        Pump price sourced from AAA national average when available; falls back to RBOB futures + $1.00 markup. Inauguration baseline: $3.13/gal (EIA national avg, Jan 20, 2025).
         Average US driver: ~1,000 miles/month, ~28 MPG. EIA projects retail gas could approach $5.00/gal in Q2 if Hormuz closure persists (JPMorgan, Mar 11).
       </p>
     </div>
@@ -1146,7 +1152,7 @@ export default function Home() {
             <p style={{ ...serif, fontSize: '13px', color: T.inkMid, margin: '0 0 1.25rem', lineHeight: 1.7 }}>
               Enter your vehicle specs. We&apos;ll tell you what the &quot;excursion&quot; in Iran is actually costing you at the pump vs. inauguration day.
             </p>
-            <GasCalc rbobPrice={commodities ? parseFloat(commodities.find(c => c.ticker === "RB=F")?.price || 2.72) : 2.72}/>
+            <GasCalc rbobPrice={commodities ? parseFloat(commodities.find(c => c.ticker === "RB=F")?.price || 2.72) : 2.72} retailGasPrice={data?.retailGasPrice ?? null}/>
           </div>
 
           {/* Broader economic impact */}
