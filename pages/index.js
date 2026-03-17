@@ -107,10 +107,15 @@ const TRUMP_SAID = [
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
+/* Status as of Mar 16: Effectively closed to US/Western-allied shipping.
+   Iran selectively allowing passage for China-linked, Pakistan, India, Turkey vessels
+   transacted in yuan or under bilateral arrangement. First full transit (Karachi, PAK-flagged)
+   confirmed Mar 16. Insurance withdrawn for Western operators Mar 5 — commercially unnavigable
+   for most operators regardless of military risk. */
 const HORMUZ = {
   dropPct: 95,
   kplerDropPct: 92,
-  src: 'S&P Global Market Intelligence (95%, week of Mar 1); Kpler vessel tracking (92%, week of Mar 12)',
+  src: 'S&P Global (95%, week of Mar 1); Kpler (92%, week of Mar 12); Bloomberg Mar 10',
   shipsStruck: 20,
   shipsSrc: 'UKMTO / Reuters / Al Jazeera, Mar 16',
 };
@@ -238,10 +243,9 @@ function OilJourney({ price }) {
           <span style={{ ...display, fontSize: '8px', color: T.terra, whiteSpace: 'nowrap', marginBottom: '2px' }}>MAR 9</span>
           <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: T.terra, border: `2px solid ${T.bgCard}` }}/>
         </div>
-        {/* $130 structural threshold marker */}
-        <div style={{ position: 'absolute', left: `${thresholdPct}%`, top: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        {/* $130 behavioral inflection marker — line only, no label */}
+        <div style={{ position: 'absolute', left: `${thresholdPct}%`, top: 0, bottom: 0 }}>
           <div style={{ position: 'absolute', top: 0, bottom: 0, width: '2px', background: T.red, opacity: 0.7, borderRadius: '1px' }}/>
-          <span style={{ ...display, fontSize: '8px', color: T.red, whiteSpace: 'nowrap', position: 'absolute', top: '-2px', transform: 'translateX(4px)', letterSpacing: '0.02em' }}>NO RETURN</span>
         </div>
         {/* Now marker */}
         <div style={{ position: 'absolute', left: `${nowPct}%`, top: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -253,7 +257,7 @@ function OilJourney({ price }) {
         {[
           { pct: inaugPct,     label: '$76',      sub: '1/20/25',  color: T.green },
           { pct: conflictPct,  label: '$119.48',  sub: 'Mar 9',    color: T.terra },
-          { pct: thresholdPct, label: '$130',      sub: 'Threshold', color: T.red },
+          { pct: thresholdPct, label: '$130',      sub: 'Inflection', color: T.red },
           { pct: nowPct,       label: `$${(price || 95).toFixed(2)}`, sub: 'NOW', color: T.terra },
         ].map((m, i) => (
           <div key={i} style={{ position: 'absolute', left: `${m.pct}%`, transform: 'translateX(-50%)', textAlign: 'center' }}>
@@ -264,7 +268,7 @@ function OilJourney({ price }) {
       </div>
       <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '8px 0 0', fontStyle: 'italic' }}>
         Scale: ${MIN}–${MAX}/bbl · WTI (CL=F) via Yahoo Finance ·
-        <span style={{ color: T.red }}> $130 = structural demand destruction / policy crisis threshold</span>
+        <span style={{ color: T.red }}> $130 = behavioral inflection — structural demand destruction begins</span>
       </p>
     </div>
   );
@@ -274,24 +278,30 @@ function OilJourney({ price }) {
 function HormuzVisualBar() {
   const serif   = { fontFamily: "'Source Serif 4', Georgia, serif" };
   const display = { fontFamily: "'DM Serif Display', Georgia, serif" };
-  const openPct = 5;
+  const closedPct = 95;   /* to US/Western-allied shipping */
+  const selectivePct = 5; /* selective access — yuan-denominated, China/India/Pakistan/Turkey */
   return (
     <div style={{ padding: '1rem 1.5rem', borderTop: `1px solid ${T.border}` }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
         <p style={{ ...serif, margin: 0, fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: T.red }}>Hormuz — Transit Status</p>
-        <p style={{ ...serif, margin: 0, fontSize: '10px', color: T.inkMuted, fontStyle: 'italic' }}>S&P Global / Kpler</p>
+        <p style={{ ...serif, margin: 0, fontSize: '10px', color: T.inkMuted, fontStyle: 'italic' }}>S&P Global / Kpler / Bloomberg</p>
       </div>
       <div style={{ position: 'relative', height: '32px', background: T.bgTint, borderRadius: '2px', overflow: 'hidden', border: `1px solid ${T.border}`, marginBottom: '6px' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${HORMUZ.dropPct}%`, background: `linear-gradient(90deg, ${T.red}cc, ${T.red}88)`, display: 'flex', alignItems: 'center', paddingLeft: '12px' }}>
-          <span style={{ ...display, fontSize: '1rem', color: 'rgba(255,255,255,0.95)', fontStyle: 'italic' }}>{HORMUZ.dropPct}% CLOSED</span>
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${closedPct}%`, background: `linear-gradient(90deg, ${T.red}cc, ${T.red}88)`, display: 'flex', alignItems: 'center', paddingLeft: '12px' }}>
+          <span style={{ ...display, fontSize: '1rem', color: 'rgba(255,255,255,0.95)', fontStyle: 'italic' }}>Closed to US &amp; Western-allied shipping</span>
         </div>
-        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: `${openPct}%`, background: `${T.green}22`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ ...serif, fontSize: '9px', color: T.green }}>{openPct}%</span>
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: `${selectivePct}%`, background: `${T.amber}44`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ ...serif, fontSize: '8px', color: T.amber, textAlign: 'center', lineHeight: 1.2 }}>CN/IN/<br/>PK/TR</span>
         </div>
       </div>
-      <p style={{ ...serif, margin: 0, fontSize: '11px', color: T.inkMid }}>
+      <p style={{ ...serif, margin: '0 0 3px', fontSize: '11px', color: T.inkMid }}>
         <strong style={{ color: T.red }}>{HORMUZ.shipsStruck}+</strong> commercial vessels struck since Feb 28 &nbsp;·&nbsp;
         <span style={{ color: T.inkMuted, fontStyle: 'italic' }}>{HORMUZ.shipsSrc}</span>
+      </p>
+      <p style={{ ...serif, margin: 0, fontSize: '10px', color: T.inkMuted, fontStyle: 'italic' }}>
+        Iran selectively allowing passage for China, India, Pakistan, Turkey vessels — yuan-denominated or by bilateral arrangement.
+        P&amp;I war risk insurance withdrawn for Western operators Mar 5. First confirmed Western-neutral transit: PAK-flagged <em>Karachi</em>, Mar 16.
+        The US did not arrange this. China did.
       </p>
     </div>
   );
@@ -1196,15 +1206,8 @@ export default function Home() {
               {
                 eyebrow: 'Crisis peak — Mar 9',
                 value: '$119.48',
-                sub: 'Conflict high · $10.52 below threshold',
+                sub: 'Conflict high · $10.52 from inflection',
                 valueColor: T.terra,
-                subColor: T.inkMuted,
-              },
-              {
-                eyebrow: 'Structural threshold',
-                value: '$130',
-                sub: 'Demand destruction / policy crisis zone',
-                valueColor: T.red,
                 subColor: T.inkMuted,
               },
             ].map((m, i) => (
