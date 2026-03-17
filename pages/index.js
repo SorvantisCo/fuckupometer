@@ -104,6 +104,16 @@ const TRUMP_SAID = [
     said: '"We have literally destroyed everything on Kharg Island except for its oil facilities."',
     reality: "At the same Kennedy Center board meeting, Trump left the door open to hitting the oil infrastructure \"a few more times just for fun.\" CENTCOM confirmed they deliberately avoided the oil infrastructure. The two US mine-countermeasure ships (USS Tulsa, USS Santa Barbara) — the vessels required for Strait clearance operations — were photographed in Malaysia, 3,500 miles from the Gulf. The Strait remains closed to US-aligned shipping. Iran FM: \"The Strait is open, but closed to our enemies.\" Day 17.",
   },
+  {
+    date: 'Mar 17, 2026',
+    said: '"This is a paper tiger we\'re dealing with."',
+    reality: "Day 18. Iran\'s Parliament Speaker Qalibaf simultaneously told state TV the Strait \"cannot be the same as before and return to its previous conditions\" and that \"there is no longer any security.\" He also revealed Iran redesigned its weapons systems after June 2025: \"They think they can destroy our facilities with bombers, but they don\'t know that our design has completely changed.\" Iran has fired approximately 700 missiles and 3,600 drones since Feb 28 and says it hasn\'t deployed its newer arsenal.",
+  },
+  {
+    date: 'Mar 17, 2026',
+    said: '"Numerous countries have told me they\'re on the way" to help secure the Strait.',
+    reality: "No countries confirmed or named. The EU formally decided against expanding naval operations. NATO said the Strait is outside the alliance\'s area of action. Australia and Japan said they are not sending ships. The UK gave no specifics. Meanwhile: Iran\'s FM quietly reached out to Trump\'s Middle East envoy to reopen a diplomatic channel. Trump told senior White House officials he does not want to negotiate now. The Strait remains closed. Day 18.",
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
@@ -116,8 +126,8 @@ const HORMUZ = {
   dropPct: 95,
   kplerDropPct: 92,
   src: 'S&P Global (95%, week of Mar 1); Kpler (92%, week of Mar 12); Bloomberg Mar 10',
-  shipsStruck: 20,
-  shipsSrc: 'UKMTO / Reuters / Al Jazeera, Mar 16',
+  shipsStruck: 21,
+  shipsSrc: 'UKMTO / Reuters / Al Jazeera, Mar 17',
 };
 
 /* ─── War cost data (CSIS, Pentagon, Penn Wharton) ──────────────────────────── */
@@ -188,12 +198,17 @@ const EVENTS_2026 = [
   { date: 'Mar 14', tier: 'critical', label: 'US Navy extends USS Nimitz service life to March 2027 — was scheduled for decommission this May. The extension is a direct consequence of the carrier gap exposed when the Ford was sent to the Caribbean for Venezuela, leaving no carrier in the Middle East when Iran erupted.' },
   { date: 'Mar 14', tier: 'critical', label: 'Zelensky: Russia has supplied Iran with intelligence and drones used against US forces. Iran\'s FM Araghchi: "good cooperation with these countries, politically, economically, even militarily." Neither confirms nor denies specifics.' },
   { date: 'Mar 15', tier: 'critical', label: 'Trump: "We have already destroyed 100% of Iran\'s Military capability" — then asked China, France, Japan, South Korea, and the UK to send warships. None confirmed. Iran warns any country joining the coalition faces retaliation. US and Israel strike multiple sites in Isfahan. Iranian attacks reported in central Israel and US bases in Iraq and Kuwait. Day 16. The war is apparently not over.' },
-  { date: 'Mar 16', tier: 'today',   label: 'Dubai International Airport suspends all flights after an Iranian drone strikes a fuel tank near the terminal. Emirates cancels dozens of routes. Flights resume on a limited schedule by midday. A second fire breaks out at an industrial zone in Fujairah following a separate drone strike. Abu Dhabi: a missile hits a car, killing a Palestinian resident.' },
-  { date: 'Mar 16', tier: 'today',   label: 'IRGC spokesman Brigadier-General Naini: the weapons cache is "mostly intact." The missiles used in the war so far are "from a decade ago." Iran has not yet deployed its newer-generation arsenal. Day 17 — and Tehran is telling you it has been holding back.' },
-  { date: 'Mar 16', tier: 'today',   label: 'Iran FM Araghchi on CBS: "No, we never asked for a ceasefire, and we have never asked even for negotiation. We are ready to defend ourselves as long as it takes." Direct contradiction of Trump\'s repeated claim that Iran "wants a deal."' },
-  { date: 'Mar 16', tier: 'today',   label: 'First confirmed Strait of Hormuz transit since the war began: Pakistan-flagged tanker Karachi clears the strait sailing close to Iran\'s coastline, cargo traded in Chinese yuan, under implicit Iranian naval escort. The US did not arrange this. Pakistan and China did. Iran FM: "The Strait is open, but closed to our enemies, to those who carried out this cowardly aggression against us and to their allies."' },
-  { date: 'Mar 16', tier: 'today',   label: 'USS Tulsa and USS Santa Barbara — the two US Navy mine-countermeasure ships assigned to the Persian Gulf before the war — photographed in Butterworth port, Penang, Malaysia. 3,500 miles from the Gulf. These are the vessels required for Strait clearance operations. They are not in the Strait.' },
-  { date: 'Mar 16', tier: 'today',   label: 'Israel strikes a facility in central Tehran it says was developing capabilities to attack satellites. US and Israeli strikes continue across Tehran, Hamadan, and Isfahan. Saudi Arabia intercepts 37 drones in its Eastern province. CENTCOM: 100+ Iranian naval vessels destroyed, 6,000+ combat flights flown since Feb 28. Iranian casualties per Iranian Red Crescent: 1,444 killed, 18,551 injured. Brent: ~$105/bbl.' },
+  { date: 'Mar 16', tier: 'critical',   label: 'Dubai International Airport suspends all flights after an Iranian drone strikes a fuel tank near the terminal. Emirates cancels dozens of routes. Flights resume on a limited schedule by midday. A second fire breaks out at an industrial zone in Fujairah following a separate drone strike. Abu Dhabi: a missile hits a car, killing a Palestinian resident.' },
+  { date: 'Mar 16', tier: 'critical',   label: 'IRGC spokesman Brigadier-General Naini: the weapons cache is "mostly intact." The missiles used in the war so far are "from a decade ago." Iran has not yet deployed its newer-generation arsenal. Day 17 — and Tehran is telling you it has been holding back.' },
+  { date: 'Mar 16', tier: 'critical',   label: 'Iran FM Araghchi on CBS: "No, we never asked for a ceasefire, and we have never asked even for negotiation. We are ready to defend ourselves as long as it takes." Direct contradiction of Trump\'s repeated claim that Iran "wants a deal."' },
+  { date: 'Mar 16', tier: 'critical',   label: 'First confirmed Strait of Hormuz transit since the war began: Pakistan-flagged tanker Karachi clears the strait sailing close to Iran\'s coastline, cargo traded in Chinese yuan, under implicit Iranian naval escort. The US did not arrange this. Pakistan and China did. Iran FM: "The Strait is open, but closed to our enemies, to those who carried out this cowardly aggression against us and to their allies."' },
+  { date: 'Mar 16', tier: 'critical',   label: 'USS Tulsa and USS Santa Barbara — the two US Navy mine-countermeasure ships assigned to the Persian Gulf before the war — photographed in Butterworth port, Penang, Malaysia. 3,500 miles from the Gulf. These are the vessels required for Strait clearance operations. They are not in the Strait.' },
+  { date: 'Mar 16', tier: 'critical',   label: 'Israel strikes a facility in central Tehran it says was developing capabilities to attack satellites. US and Israeli strikes continue across Tehran, Hamadan, and Isfahan. Saudi Arabia intercepts 37 drones in its Eastern province. CENTCOM: 100+ Iranian naval vessels destroyed, 6,000+ combat flights flown since Feb 28. Iranian casualties per Iranian Red Crescent: 1,444 killed, 18,551 injured. Brent: ~$105/bbl.' },
+  { date: 'Mar 17', tier: 'today',   label: 'Amnesty International publishes investigation confirming US responsibility for the Minab girls\' school strike — at least 170 killed, more than 160 of them schoolgirls. A 3-day-old infant and his 2-year-old sister killed in a US-Israeli strike on their home in Arak, along with their mother and grandmother, per IRGC. ACLED has documented nearly 2,000 distinct events across 29 of Iran\'s 31 provinces since Feb 28. Iranian internet blackout enters Day 18, per Netblocks.' },
+  { date: 'Mar 17', tier: 'today',   label: 'Iran Parliament Speaker Qalibaf on state TV: the Strait of Hormuz \"cannot be the same as before and return to its previous conditions\" and \"there is no longer any security.\" Reveals Iran redesigned its weapons systems after June 2025: \"They think they can destroy our facilities with bombers, but they don\'t know that our design has completely changed.\" Kpler analyst: even if war ended today, 1–3 months to reopen the Strait.' },
+  { date: 'Mar 17', tier: 'today',   label: 'Israel announces the killing of Gholamreza Soleimani — head of the IRGC Basij force, the internal suppression unit deployed against protesters. Iran does not confirm. Israel also claims the killing of Ali Larijani, former parliament speaker and senior security figure. Iran has not confirmed.' },
+  { date: 'Mar 17', tier: 'today',   label: 'A fire aboard the USS Gerald R. Ford burned for 30+ hours last week, leaving dozens of crew members with smoke inhalation, per the New York Times. The Ford is the carrier previously repositioned to the Caribbean for Venezuela operations — the gap that forced the USS Nimitz service life extension through March 2027. The Ford is now operating in theater while damaged.' },
+  { date: 'Mar 17', tier: 'today',   label: 'UAE Shah gas field — the world\'s largest ultra-sour gas development — remains suspended after a drone attack sparked a fire. Fujairah Oil Industry Zone struck again. A tanker struck at anchor 23 nautical miles east of Fujairah — the 21st vessel incident since Feb 28 per UKMTO. Iran warns oil could reach $200/bbl if Strait closure continues. Brent: $102.36. WTI: $95.55. Day 18.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -206,8 +221,8 @@ const BILL = [
   { label: 'Lebanon dead',    value: '773',      sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
   { label: 'Lebanon injured',  value: '1,933',    sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
   { label: 'Israel dead',      value: '14',       sub: '12 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28.', src: 'Israeli authorities / NPR, Mar 13' },
-  { label: 'Minab school',    value: '148–180',  sub: 'Girls school, Minab, near Bandar Abbas. US disputes intentionality.', src: 'Iranian govt / Britannica (disputed)' },
-  { label: 'Ships struck',    value: '20+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel.', src: 'UKMTO / Reuters / Al Jazeera' },
+  { label: 'Minab school',    value: '170+',     sub: 'Girls school, Minab. Amnesty International investigation (Mar 17) confirms US responsibility — at least 170 killed, 160+ of them schoolgirls. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Iranian govt / Britannica' },
+  { label: 'Ships struck',    value: '21+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel. Latest: tanker struck at anchor 23nm east of Fujairah, Mar 17.', src: 'UKMTO / Reuters / Al Jazeera, Mar 17' },
   { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes', src: 'Reuters / official statements' },
 ];
 
