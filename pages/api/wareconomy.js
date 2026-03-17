@@ -1,16 +1,11 @@
-// wareconomy.js — Gold, DXY, defense contractors, European TTF gas via stooq
+// wareconomy.js — Gold, DXY, defense contractors via stooq
 
 const ASSETS = [
-  // Gold futures
-  { ticker: 'gc.f',   key: 'gold',  label: 'Gold',                  unit: '$/oz',    inaugBaseline: 2736,  warBaseline: 2900,  decimals: 2 },
-  // US Dollar Index
-  { ticker: 'dxy.f',  key: 'dxy',   label: 'US Dollar Index',        unit: 'index',   inaugBaseline: 109.2, warBaseline: 105.9, decimals: 2 },
-  // Defense contractors
-  { ticker: 'rtx.us', key: 'rtx',   label: 'Raytheon Technologies',  unit: '$/sh',    inaugBaseline: 117.0, warBaseline: 127.5, decimals: 2 },
-  { ticker: 'lmt.us', key: 'lmt',   label: 'Lockheed Martin',        unit: '$/sh',    inaugBaseline: 529.0, warBaseline: 548.0, decimals: 2 },
-  { ticker: 'noc.us', key: 'noc',   label: 'Northrop Grumman',       unit: '$/sh',    inaugBaseline: 497.0, warBaseline: 508.0, decimals: 2 },
-  // European TTF natural gas (Dutch TTF front-month)
-  { ticker: 'ttf.f',  key: 'ttf',   label: 'European TTF Gas',       unit: '€/MWh',   inaugBaseline: 45.8,  warBaseline: 38.4,  decimals: 2 },
+  { ticker: 'gc.f',   key: 'gold', label: 'Gold',               unit: '$/oz',  inaugBaseline: 2740,  warBaseline: 2870, decimals: 2 },
+  { ticker: 'dxy.f',  key: 'dxy',  label: 'US Dollar Index',    unit: 'index', inaugBaseline: 109.2, warBaseline: 105.9, decimals: 2 },
+  { ticker: 'rtx.us', key: 'rtx',  label: 'Raytheon Tech.',     unit: '$/sh',  inaugBaseline: 117.0, warBaseline: 127.5, decimals: 2 },
+  { ticker: 'lmt.us', key: 'lmt',  label: 'Lockheed Martin',    unit: '$/sh',  inaugBaseline: 529.0, warBaseline: 548.0, decimals: 2 },
+  { ticker: 'noc.us', key: 'noc',  label: 'Northrop Grumman',   unit: '$/sh',  inaugBaseline: 497.0, warBaseline: 508.0, decimals: 2 },
 ];
 
 const STOOQ_HEADERS = {
@@ -48,29 +43,23 @@ export default async function handler(req, res) {
 
   try {
     const results = {};
-
     await Promise.all(
       ASSETS.map(async (a) => {
         const quote = await fetchStooq(a.ticker, a.decimals);
         if (!quote) return;
-        const sinceInaugPct  = ((quote.price - a.inaugBaseline) / a.inaugBaseline * 100).toFixed(1);
-        const sinceWarPct    = ((quote.price - a.warBaseline)   / a.warBaseline   * 100).toFixed(1);
-        const sinceInaugAbs  = (quote.price - a.inaugBaseline).toFixed(a.decimals);
-        const sinceWarAbs    = (quote.price - a.warBaseline).toFixed(a.decimals);
         results[a.key] = {
-          label:         a.label,
-          unit:          a.unit,
-          inaugBaseline: a.inaugBaseline,
-          warBaseline:   a.warBaseline,
+          label:          a.label,
+          unit:           a.unit,
+          inaugBaseline:  a.inaugBaseline,
+          warBaseline:    a.warBaseline,
           ...quote,
-          sinceInaugPct:  parseFloat(sinceInaugPct),
-          sinceWarPct:    parseFloat(sinceWarPct),
-          sinceInaugAbs:  parseFloat(sinceInaugAbs),
-          sinceWarAbs:    parseFloat(sinceWarAbs),
+          sinceInaugPct:  parseFloat(((quote.price - a.inaugBaseline) / a.inaugBaseline * 100).toFixed(1)),
+          sinceWarPct:    parseFloat(((quote.price - a.warBaseline)   / a.warBaseline   * 100).toFixed(1)),
+          sinceInaugAbs:  parseFloat((quote.price - a.inaugBaseline).toFixed(a.decimals)),
+          sinceWarAbs:    parseFloat((quote.price - a.warBaseline).toFixed(a.decimals)),
         };
       })
     );
-
     res.json({ warEconomy: results });
   } catch (err) {
     res.status(500).json({ error: err.message });
