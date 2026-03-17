@@ -109,9 +109,10 @@ export default async function handler(req, res) {
       fetchAAAGasPrice(),
     ]);
 
-    const INAUGURATION_PRICE = 76.0;
-    const ALL_TIME_PEAK      = 119.48;
-    const BRENT_INAUG        = 79.0;
+    const INAUGURATION_PRICE    = 76.0;
+    const FUCKUP_CEILING        = 130.0;   /* structural demand destruction / policy crisis threshold */
+    const CONFLICT_PEAK_ACTUAL  = 119.48;  /* Mar 9 intraday high — tracked for reference */
+    const BRENT_INAUG           = 79.0;
 
     const price = parseFloat(wti.price);
     const marketOpen = wti.marketState === 'REGULAR';
@@ -119,10 +120,11 @@ export default async function handler(req, res) {
     res.json({
       ...wti,
       inaugurationPrice:    INAUGURATION_PRICE,
-      peakPrice:            ALL_TIME_PEAK,
+      peakPrice:            FUCKUP_CEILING,
+      conflictPeakActual:   CONFLICT_PEAK_ACTUAL,
       sinceInauguration:    (price - INAUGURATION_PRICE).toFixed(2),
       sinceInaugurationPct: (((price - INAUGURATION_PRICE) / INAUGURATION_PRICE) * 100).toFixed(1),
-      fuckupFactor:         Math.min(100, Math.max(0, ((price - INAUGURATION_PRICE) / (ALL_TIME_PEAK - INAUGURATION_PRICE)) * 100)).toFixed(1),
+      fuckupFactor:         Math.min(100, Math.max(0, ((price - INAUGURATION_PRICE) / (FUCKUP_CEILING - INAUGURATION_PRICE)) * 100)).toFixed(1),
       marketOpen,
       brent: {
         ...brent,

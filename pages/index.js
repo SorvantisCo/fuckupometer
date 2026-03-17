@@ -208,11 +208,12 @@ const BILL = [
 
 /* ─── Oil price journey visual ───────────────────────────────────────────────── */
 function OilJourney({ price }) {
-  const MIN = 55, MAX = 125;
-  const pct      = v => Math.min(100, Math.max(0, ((v - MIN) / (MAX - MIN)) * 100));
-  const inaugPct = pct(76);
-  const peakPct  = pct(119.48);
-  const nowPct   = pct(price || 95);
+  const MIN = 55, MAX = 145;
+  const pct           = v => Math.min(100, Math.max(0, ((v - MIN) / (MAX - MIN)) * 100));
+  const inaugPct      = pct(76);
+  const conflictPct   = pct(119.48);  /* Mar 9 actual peak */
+  const thresholdPct  = pct(130);     /* structural demand destruction threshold */
+  const nowPct        = pct(price || 95);
   const serif    = { fontFamily: "'Source Serif 4', Georgia, serif" };
   const display  = { fontFamily: "'DM Serif Display', Georgia, serif" };
   return (
@@ -223,16 +224,24 @@ function OilJourney({ price }) {
       {/* Track */}
       <div style={{ position: 'relative', height: '44px', marginBottom: '4px' }}>
         <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: '4px', background: T.bgTint, borderRadius: '2px', transform: 'translateY(-50%)', border: `1px solid ${T.border}` }}/>
-        <div style={{ position: 'absolute', top: '50%', left: 0, width: `${nowPct}%`, height: '4px', background: `linear-gradient(90deg, ${T.green}, ${T.amber} 40%, ${T.terra} 70%, ${T.red})`, borderRadius: '2px', transform: 'translateY(-50%)', transition: 'width 1s ease' }}/>
+        {/* $130+ zone highlight */}
+        <div style={{ position: 'absolute', top: '50%', left: `${thresholdPct}%`, right: 0, height: '4px', background: `${T.red}33`, borderRadius: '0 2px 2px 0', transform: 'translateY(-50%)' }}/>
+        {/* Filled progress bar */}
+        <div style={{ position: 'absolute', top: '50%', left: 0, width: `${nowPct}%`, height: '4px', background: `linear-gradient(90deg, ${T.green}, ${T.amber} 40%, ${T.terra} 65%, ${T.red})`, borderRadius: '2px', transform: 'translateY(-50%)', transition: 'width 1s ease' }}/>
         {/* Inauguration marker */}
         <div style={{ position: 'absolute', left: `${inaugPct}%`, top: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ width: '3px', height: '20px', background: T.green, borderRadius: '2px' }}/>
           <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: T.green, border: `2px solid ${T.bgCard}`, marginTop: '-5px' }}/>
         </div>
-        {/* Peak marker */}
-        <div style={{ position: 'absolute', left: `${peakPct}%`, top: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <span style={{ ...display, fontSize: '9px', color: T.red, whiteSpace: 'nowrap', marginBottom: '2px' }}>PEAK</span>
-          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: T.red, border: `2px solid ${T.bgCard}` }}/>
+        {/* Mar 9 actual conflict peak */}
+        <div style={{ position: 'absolute', left: `${conflictPct}%`, top: '50%', transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <span style={{ ...display, fontSize: '8px', color: T.terra, whiteSpace: 'nowrap', marginBottom: '2px' }}>MAR 9</span>
+          <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: T.terra, border: `2px solid ${T.bgCard}` }}/>
+        </div>
+        {/* $130 structural threshold marker */}
+        <div style={{ position: 'absolute', left: `${thresholdPct}%`, top: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ position: 'absolute', top: 0, bottom: 0, width: '2px', background: T.red, opacity: 0.7, borderRadius: '1px' }}/>
+          <span style={{ ...display, fontSize: '8px', color: T.red, whiteSpace: 'nowrap', position: 'absolute', top: '-2px', transform: 'translateX(4px)', letterSpacing: '0.02em' }}>NO RETURN</span>
         </div>
         {/* Now marker */}
         <div style={{ position: 'absolute', left: `${nowPct}%`, top: '50%', transform: 'translate(-50%, -50%)' }}>
@@ -240,11 +249,12 @@ function OilJourney({ price }) {
         </div>
       </div>
       {/* Labels */}
-      <div style={{ position: 'relative', height: '36px' }}>
+      <div style={{ position: 'relative', height: '40px' }}>
         {[
-          { pct: inaugPct, label: '$76', sub: '1/20/25', color: T.green },
-          { pct: peakPct,  label: '$119.48', sub: 'Mar 9', color: T.red },
-          { pct: nowPct,   label: `$${(price || 95).toFixed(2)}`, sub: 'NOW', color: T.terra },
+          { pct: inaugPct,     label: '$76',      sub: '1/20/25',  color: T.green },
+          { pct: conflictPct,  label: '$119.48',  sub: 'Mar 9',    color: T.terra },
+          { pct: thresholdPct, label: '$130',      sub: 'Threshold', color: T.red },
+          { pct: nowPct,       label: `$${(price || 95).toFixed(2)}`, sub: 'NOW', color: T.terra },
         ].map((m, i) => (
           <div key={i} style={{ position: 'absolute', left: `${m.pct}%`, transform: 'translateX(-50%)', textAlign: 'center' }}>
             <p style={{ ...display, margin: 0, fontSize: '1rem', color: m.color, lineHeight: 1 }}>{m.label}</p>
@@ -252,8 +262,9 @@ function OilJourney({ price }) {
           </div>
         ))}
       </div>
-      <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '6px 0 0', fontStyle: 'italic' }}>
-        Scale: ${MIN}–${MAX}/bbl · WTI (CL=F) via Yahoo Finance
+      <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '8px 0 0', fontStyle: 'italic' }}>
+        Scale: ${MIN}–${MAX}/bbl · WTI (CL=F) via Yahoo Finance ·
+        <span style={{ color: T.red }}> $130 = structural demand destruction / policy crisis threshold</span>
       </p>
     </div>
   );
@@ -378,9 +389,9 @@ function PriceChart({ chartReady, dataKey, color, baseline, baselineLabel, yMin,
 
       if (showScenarios) {
         datasets.push(
-          { label: 'Ceasefire ~$85',        data: labels.map(() => 85),  borderColor: T.green, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
-          { label: 'War continues +30d ~$105', data: labels.map(() => 105), borderColor: T.amber, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
-          { label: 'Hormuz closed 90d ~$130',  data: labels.map(() => 130), borderColor: T.red,   borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+          { label: 'Ceasefire ~$85',                    data: labels.map(() => 85),  borderColor: T.green, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+          { label: 'War continues +30d ~$105',          data: labels.map(() => 105), borderColor: T.amber, borderWidth: 1.5, borderDash: [6, 3], pointRadius: 0, fill: false },
+          { label: '$130 — Structural demand destruction', data: labels.map(() => 130), borderColor: T.red,   borderWidth: 2,   borderDash: [6, 3], pointRadius: 0, fill: false },
         );
       }
 
@@ -418,13 +429,13 @@ function PriceChart({ chartReady, dataKey, color, baseline, baselineLabel, yMin,
 function OilChart({ chartReady }) {
   return <PriceChart chartReady={chartReady} dataKey="points" color={T.terra}
     baseline={76} baselineLabel="Inauguration baseline ($76)" tooltipLabel="WTI crude"
-    yMin={55} yMax={135} showScenarios={true} />;
+    yMin={55} yMax={145} showScenarios={true} />;
 }
 
 function BrentChart({ chartReady }) {
   return <PriceChart chartReady={chartReady} dataKey="brentPoints" color={T.slateMid}
     baseline={79} baselineLabel="Inauguration baseline ($79)" tooltipLabel="Brent crude"
-    yMin={55} yMax={135} showScenarios={false} />;
+    yMin={55} yMax={145} showScenarios={false} />;
 }
 
 /* ─── Commodity Card ─────────────────────────────────────────────────────────── */
@@ -1185,7 +1196,14 @@ export default function Home() {
               {
                 eyebrow: 'Crisis peak — Mar 9',
                 value: '$119.48',
-                sub: 'Israel strikes 30 Iranian oil depots',
+                sub: 'Conflict high · $10.52 below threshold',
+                valueColor: T.terra,
+                subColor: T.inkMuted,
+              },
+              {
+                eyebrow: 'Structural threshold',
+                value: '$130',
+                sub: 'Demand destruction / policy crisis zone',
                 valueColor: T.red,
                 subColor: T.inkMuted,
               },
@@ -1275,11 +1293,11 @@ export default function Home() {
                     {[
                       { label: 'Ceasefire tomorrow', price: '~$85', color: T.green },
                       { label: 'War continues 30 days', price: '~$105', color: T.amber },
-                      { label: 'Hormuz closed 90 days', price: '~$130', color: T.red },
+                      { label: '$130 — Structural demand destruction', price: 'Threshold', color: T.red },
                     ].map((s, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ width: '20px', borderTop: `2px dashed ${s.color}`, display: 'inline-block', flexShrink: 0 }}/>
-                        <span style={{ ...serif, fontSize: '11px', color: T.inkMid }}>{s.label}</span>
+                        <span style={{ width: '20px', borderTop: `${i === 2 ? '2.5px' : '2px'} dashed ${s.color}`, display: 'inline-block', flexShrink: 0 }}/>
+                        <span style={{ ...serif, fontSize: '11px', color: i === 2 ? T.red : T.inkMid, fontWeight: i === 2 ? 600 : 400 }}>{s.label}</span>
                         <span style={{ ...serif, fontSize: '11px', color: s.color, fontWeight: 600, marginLeft: 'auto' }}>{s.price}</span>
                       </div>
                     ))}
