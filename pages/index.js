@@ -820,7 +820,6 @@ function WarEconomyWinners({ we }) {
   const rtx  = we.rtx  || {};
   const lmt  = we.lmt  || {};
   const noc  = we.noc  || {};
-  const ttf  = we.ttf  || {};
 
   const defenseGainB = (
     ((rtx.sinceInaugPct || 0) / 100 * 135) +
@@ -849,8 +848,6 @@ function WarEconomyWinners({ we }) {
   const fmtGoldPct = (v) => v != null ? `${pctSign(v)}${Math.abs(v)}%` : null;
   const fmtDxyAbs  = (v) => v != null ? `${pctSign(v)}${Math.abs(v).toFixed(1)}` : '—';
   const fmtDxyPct  = (v, dir) => v != null ? `${pctSign(v)}${Math.abs(v)}% · dollar ${dir}` : null;
-  const fmtEurAbs  = (v) => v != null ? `${pctSign(v)}€${Math.abs(v).toFixed(1)}` : '—';
-  const fmtEurPct  = (v) => v != null ? `${pctSign(v)}${Math.abs(v)}% since Feb 28` : null;
 
   return (
     <>
@@ -872,7 +869,7 @@ function WarEconomyWinners({ we }) {
             sub={gold.sinceWarPct != null ? `${pctSign(gold.sinceWarPct)}${Math.abs(gold.sinceWarPct)}% war premium` : null}
             vc={pctColor(gold.sinceWarAbs)}/>
         </div>
-        <Verdict t={'Institutional investors vote with their hedges. Every time Trump says the war is "over soon," gold goes up. A $300+ per-ounce gain since inauguration is a multi-hundred-dollar vote of no confidence. Inflation hedges don\'t surge when leadership has this handled.'}/>
+        <Verdict t={'Institutional investors vote with their hedges. Gold was ~$2,740 on inauguration day. It is now above $5,000 — an 83% gain, roughly $2,285/oz, in 14 months. Inflation hedges don\'t move like this when leadership has things handled.'}/>
         <Note t="GC=F via stooq · Inaug baseline: Jan 20, 2025 settlement · War baseline: Feb 28, 2026 close"/>
       </div>
 
@@ -936,28 +933,6 @@ function WarEconomyWinners({ we }) {
         <Note t="RTX, LMT, NOC via stooq · Market cap gain approximate using float-weighted inauguration baselines (RTX ~$135B, LMT ~$108B, NOC ~$33B) · Not financial advice"/>
       </div>
 
-      {/* ── TTF / LNG ── */}
-      <div>
-        <p style={eyebrowStyle}>European TTF Gas · What the War Costs People Who Weren&apos;t Asked</p>
-        <div style={grid4}>
-          <Cell ey="TTF spot (€/MWh)"
-            val={ttf.price != null ? `€${ttf.price.toFixed(1)}` : '—'}
-            sub={ttf.change != null ? `${ttf.change >= 0 ? '▲' : '▼'} €${Math.abs(ttf.change).toFixed(2)} (${ttf.change >= 0 ? '+' : ''}${ttf.changePct}%) today` : null}
-            vc={T.red}/>
-          <Cell ey="Pre-war (Feb 27)" val="€38.4" sub="Last close before Op. Epic Fury" vc={T.inkMid}/>
-          <Cell ey="Since war start"
-            val={fmtEurAbs(ttf.sinceWarAbs)}
-            sub={fmtEurPct(ttf.sinceWarPct)}
-            vc={pctColor(ttf.sinceWarAbs)}/>
-          <div style={{ background: T.bgCard, padding: '1rem 1.25rem' }}>
-            <p style={{ ...serif, margin: '0 0 5px', fontSize: '10px', letterSpacing: '0.13em', textTransform: 'uppercase', color: T.terra }}>Ras Laffan</p>
-            <p style={{ ...display, margin: '0 0 3px', fontSize: '1.4rem', lineHeight: 1, color: T.red }}>Offline</p>
-            <p style={{ ...serif, margin: 0, fontSize: '11px', color: T.inkMuted }}>Since Mar 2 · 77 mtpa capacity</p>
-          </div>
-        </div>
-        <Verdict t="QatarEnergy shut Ras Laffan — the world's largest LNG export facility — on March 2. It supplies roughly 20% of European LNG imports. Germany, France, and Italy have all declined to send warships. Their citizens are paying the surcharge anyway."/>
-        <Note t="TTF Dutch front-month via stooq · QatarEnergy Ras Laffan shutdown confirmed Mar 2, 2026 · European LNG import share: BloombergNEF 2025"/>
-      </div>
     </>
   );
 }
@@ -1308,9 +1283,8 @@ export default function Home() {
           <div style={{ ...section }}>
             <p style={{ ...sectionHead }}>Who&apos;s Winning</p>
             <p style={{ ...serif, fontSize: '13px', color: T.inkMid, margin: '0 0 1.25rem', lineHeight: 1.7 }}>
-              Four markets that tell you what institutional money thinks about &ldquo;it will be over soon.&rdquo;
+              Three markets that tell you what institutional money thinks about &ldquo;it will be over soon.&rdquo;
               Gold measures inflation fear. The dollar measures reserve-currency confidence. Defense contractors measure who&apos;s billing.
-              European TTF gas measures what US foreign policy costs people who weren&apos;t asked.
               All indexed to Inauguration Day, January 20, 2025.
             </p>
             <WarEconomyWinners we={warEconomy}/>
