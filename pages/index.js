@@ -114,6 +114,11 @@ const TRUMP_SAID = [
     said: '"Numerous countries have told me they\'re on the way" to help secure the Strait.',
     reality: "No countries confirmed or named. The EU formally decided against expanding naval operations. NATO said the Strait is outside the alliance\'s area of action. Australia and Japan said they are not sending ships. The UK gave no specifics. Meanwhile: Iran\'s FM quietly reached out to Trump\'s Middle East envoy to reopen a diplomatic channel. Trump told senior White House officials he does not want to negotiate now. The Strait remains closed. Day 18.",
   },
+  {
+    date: 'Mar 18, 2026',
+    said: '"Do you mind if I take a little excursion? Because we have to do something. And it\'ll be a short-term excursion."',
+    reality: "Day 19. Confirmed at a Capitol Hill lunch honoring the Irish PM: Trump described the war as a \"little excursion\" he asked chief of staff Susie Wiles if she \"minded.\" Iran simultaneously launched missile and drone barrages at Saudi Arabia, Qatar, Kuwait, UAE, and Israel. Iran killed two Israeli civilians in Ramat Gan. US and Israel struck South Pars — the world\'s largest natural gas field. Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigned, stating Iran \"posed no imminent threat to our nation.\"",
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
@@ -207,8 +212,12 @@ const EVENTS_2026 = [
   { date: 'Mar 17', tier: 'today',   label: 'Amnesty International publishes investigation confirming US responsibility for the Minab girls\' school strike — at least 170 killed, more than 160 of them schoolgirls. A 3-day-old infant and his 2-year-old sister killed in a US-Israeli strike on their home in Arak, along with their mother and grandmother, per IRGC. ACLED has documented nearly 2,000 distinct events across 29 of Iran\'s 31 provinces since Feb 28. Iranian internet blackout enters Day 18, per Netblocks.' },
   { date: 'Mar 17', tier: 'today',   label: 'Iran Parliament Speaker Qalibaf on state TV: the Strait of Hormuz \"cannot be the same as before and return to its previous conditions\" and \"there is no longer any security.\" Reveals Iran redesigned its weapons systems after June 2025: \"They think they can destroy our facilities with bombers, but they don\'t know that our design has completely changed.\" Kpler analyst: even if war ended today, 1–3 months to reopen the Strait.' },
   { date: 'Mar 17', tier: 'today',   label: 'Israel announces the killing of Gholamreza Soleimani — head of the IRGC Basij force, the internal suppression unit deployed against protesters. Iran does not confirm. Israel also claims the killing of Ali Larijani, former parliament speaker and senior security figure. Iran has not confirmed.' },
-  { date: 'Mar 17', tier: 'today',   label: 'A fire aboard the USS Gerald R. Ford burned for 30+ hours last week, leaving dozens of crew members with smoke inhalation, per the New York Times. The Ford is the carrier previously repositioned to the Caribbean for Venezuela operations — the gap that forced the USS Nimitz service life extension through March 2027. The Ford is now operating in theater while damaged.' },
-  { date: 'Mar 17', tier: 'today',   label: 'UAE Shah gas field — the world\'s largest ultra-sour gas development — remains suspended after a drone attack sparked a fire. Fujairah Oil Industry Zone struck again. A tanker struck at anchor 23 nautical miles east of Fujairah — the 21st vessel incident since Feb 28 per UKMTO. Iran warns oil could reach $200/bbl if Strait closure continues. Brent: $102.36. WTI: $95.55. Day 18.' },
+  { date: 'Mar 17', tier: 'critical',   label: 'A fire aboard the USS Gerald R. Ford burned for 30+ hours last week, leaving dozens of crew members with smoke inhalation, per the New York Times. The Ford is the carrier previously repositioned to the Caribbean for Venezuela operations — the gap that forced the USS Nimitz service life extension through March 2027. The Ford is now operating in theater while damaged.' },
+  { date: 'Mar 17', tier: 'critical',   label: 'UAE Shah gas field — the world\'s largest ultra-sour gas development — remains suspended after a drone attack sparked a fire. Fujairah Oil Industry Zone struck again. A tanker struck at anchor 23 nautical miles east of Fujairah — the 21st vessel incident since Feb 28 per UKMTO. Iran warns oil could reach $200/bbl if Strait closure continues. Brent: $102.36. WTI: $95.55. Day 18.' },
+  { date: 'Mar 18', tier: 'today',   label: 'US and Israel strike South Pars natural gas field in the Persian Gulf — the world\'s largest, shared between Iran and Qatar, responsible for the majority of Iran\'s LNG exports. Refineries alongside the field also targeted. The strike represents a significant escalation beyond military targets into Iran\'s primary energy export infrastructure. Day 19.' },
+  { date: 'Mar 18', tier: 'today',   label: 'Iran launches missile barrage at Israel. Two Israeli civilians — a man and woman — killed by "serious shrapnel injuries" in Ramat Gan, near Tel Aviv, per Magen David Adom. Saudi Arabia, Qatar, Kuwait, and UAE air defenses simultaneously engaged intercepting Iranian drones and ballistic missiles. Israel launches limited ground operations in southern Lebanon against Hezbollah. At least 6 killed in Israeli strikes on Beirut.' },
+  { date: 'Mar 18', tier: 'today',   label: 'Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigns — stating Iran "posed no imminent threat to our nation." Kent is the first senior Trump administration official to publicly break with the president over the war. Trump had previously described the war as a "little excursion" he asked chief of staff Susie Wiles if she "minded." The EU\'s top diplomat: "nobody is ready to put their people in harm\'s way in the Strait of Hormuz."' },
+  { date: 'Mar 18', tier: 'today',   label: 'Hormuz transit data shows a modest uptick: 8 non-Iranian vessels detected transiting Monday via AIS — nearly double recent daily figures, per maritime intelligence firm Windward. All are assessed as permission-based transits through Iranian territorial waters, primarily Chinese, Indian, and Pakistani-flagged. Western-affiliated shipping remains shut out. US drops GBU-72 5,000-lb bunker-buster bombs on hardened Iranian missile sites along the Hormuz coastline — the first combat use of the weapon against hardened targets of this type.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -218,9 +227,9 @@ const BILL = [
   { label: 'US WIA',          value: '~140',     sub: '108 returned to duty; 8 remain severe', src: 'Pentagon, Mar 10' },
   { label: 'Iranian dead',    value: '1,444+',   sub: "Per Iranian Red Crescent (Mar 16). HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Iranian Red Crescent / Al Jazeera, Mar 16' },
   { label: 'Iranian injured', value: '18,551+',  sub: "Per Iranian Red Crescent Society as of March 16.", src: 'Iranian Red Crescent, Mar 16' },
-  { label: 'Lebanon dead',    value: '773',      sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
-  { label: 'Lebanon injured',  value: '1,933',    sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry / NPR, Mar 14' },
-  { label: 'Israel dead',      value: '14',       sub: '12 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28.', src: 'Israeli authorities / NPR, Mar 13' },
+  { label: 'Lebanon dead',    value: '779+',     sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children. At least 6 more killed in Beirut strikes Mar 18.', src: 'Lebanon Health Ministry / ABC News, Mar 18' },
+  { label: 'Lebanon injured',  value: '1,957+',   sub: 'Since Israel renewed widespread attacks Mar 2. 24 additional injured in Mar 18 Beirut strikes.', src: 'Lebanon Health Ministry / ABC News, Mar 18' },
+  { label: 'Israel dead',      value: '16',       sub: '14 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28. Two killed (man and woman) by shrapnel in Ramat Gan, Mar 18.', src: 'Magen David Adom / ABC News, Mar 18' },
   { label: 'Minab school',    value: '170+',     sub: 'Girls school, Minab. Amnesty International investigation (Mar 17) confirms US responsibility — at least 170 killed, 160+ of them schoolgirls. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Iranian govt / Britannica' },
   { label: 'Ships struck',    value: '21+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel. Latest: tanker struck at anchor 23nm east of Fujairah, Mar 17.', src: 'UKMTO / Reuters / Al Jazeera, Mar 17' },
   { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes', src: 'Reuters / official statements' },
@@ -320,6 +329,17 @@ function HormuzVisualBar() {
       </p>
     </div>
   );
+}
+
+/* ─── Market state label ─────────────────────────────────────────────────────── */
+/* Oil futures (CL=F, BZ=F) trade nearly 24/5: Sun 6 PM – Fri 5 PM ET.
+   Yahoo Finance returns REGULAR only during official pit/electronic session hours.
+   PRE and POST both mean live prices — never show "closed" for those states. */
+function mktLabel(state) {
+  if (state === 'REGULAR') return 'live';
+  if (state === 'PRE')     return 'pre-mkt · active';
+  if (state === 'POST')    return 'post-mkt · active';
+  return 'last close';
 }
 
 /* ─── Gauge ─────────────────────────────────────────────────────────────────── */
@@ -938,7 +958,7 @@ export default function Home() {
               For when &quot;drill baby drill&quot; meets a little excursion/war.
             </p>
             <p style={{ ...serif, fontSize: '13px', color: T.inkMuted, margin: 0, lineHeight: 1.7 }}>
-              WTI crude oil indexed to Inauguration Day 2025 (baseline ~$76/bbl). Last trade: {data?.lastTradeISO ? new Date(data.lastTradeISO).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York', timeZoneName: 'short' }) : 'loading…'}. {data?.marketOpen ? 'Market open — refreshes every 3 min.' : 'Market closed — showing last settlement price.'}
+              WTI crude oil indexed to Inauguration Day 2025 (baseline ~$76/bbl). Last trade: {data?.lastTradeISO ? new Date(data.lastTradeISO).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York', timeZoneName: 'short' }) : 'loading…'}. {data ? (data.marketState === 'REGULAR' ? 'Market open — refreshes every 3 min.' : data.marketState === 'CLOSED' ? 'Market closed — showing last settlement price.' : 'Futures active — refreshes every 3 min.') : ''}
               Casualty figures sourced from Pentagon statements, Al Jazeera, Britannica, HRANA, and USNI News — all open source.
             </p>
           </div>
@@ -960,14 +980,14 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '1px', background: T.border, border: `1px solid ${T.border}`, marginBottom: '1.25rem', borderRadius: '2px', overflow: 'hidden' }}>
             {[
               {
-                eyebrow: data?.marketOpen ? 'WTI crude — OPEN' : 'WTI crude — mkt closed',
+                eyebrow: `WTI crude — ${data ? mktLabel(data.marketState) : '—'}`,
                 value: loading ? '—' : `$${parseFloat(data?.price).toFixed(2)}`,
                 sub: data ? `${isUp ? '▲' : '▼'} $${Math.abs(parseFloat(data.change)).toFixed(2)} (${isUp?'+':''}${data.changePct}%) vs prior close` : null,
                 valueColor: T.ink,
                 subColor: isUp ? T.red : T.green,
               },
               {
-                eyebrow: data?.brent?.marketState === 'REGULAR' ? 'Brent crude — OPEN' : 'Brent crude — mkt closed',
+                eyebrow: `Brent crude — ${data?.brent ? mktLabel(data.brent.marketState) : '—'}`,
                 value: loading ? '—' : `$${parseFloat(data?.brent?.price ?? 0).toFixed(2)}`,
                 sub: data?.brent ? `${parseFloat(data.brent.change) >= 0 ? '▲' : '▼'} $${Math.abs(parseFloat(data.brent.change)).toFixed(2)} (${parseFloat(data.brent.change) >= 0 ? '+' : ''}${data.brent.changePct}%) vs prior close` : null,
                 valueColor: T.ink,
