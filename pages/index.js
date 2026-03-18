@@ -117,7 +117,7 @@ const TRUMP_SAID = [
   {
     date: 'Mar 18, 2026',
     said: '"Do you mind if I take a little excursion? Because we have to do something. And it\'ll be a short-term excursion."',
-    reality: "Day 19. Confirmed at a Capitol Hill lunch honoring the Irish PM: Trump described the war as a \"little excursion\" he asked chief of staff Susie Wiles if she \"minded.\" Iran simultaneously launched missile and drone barrages at Saudi Arabia, Qatar, Kuwait, UAE, and Israel. Iran killed two Israeli civilians in Ramat Gan. US and Israel struck South Pars — the world\'s largest natural gas field. Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigned, stating Iran \"posed no imminent threat to our nation.\"",
+    reality: "Day 19. Confirmed at a Capitol Hill lunch honoring the Irish PM. On the same day: Iran\'s Intelligence Minister killed by Israel. Iran issues named evacuation warnings for Saudi, UAE, and Qatar energy infrastructure. South Pars — the world\'s largest gas field — struck for the first time. Brent hits $108.60. Iran\'s FM: \"I do not know why the Americans and Israelis still have not understood this point.\" Joe Kent, Trump\'s NCC Director, resigns, stating Iran \"posed no imminent threat to our nation.\"",
   },
 ];
 
@@ -214,13 +214,86 @@ const EVENTS_2026 = [
   { date: 'Mar 17', tier: 'today',   label: 'Israel announces the killing of Gholamreza Soleimani — head of the IRGC Basij force, the internal suppression unit deployed against protesters. Iran does not confirm. Israel also claims the killing of Ali Larijani, former parliament speaker and senior security figure. Iran has not confirmed.' },
   { date: 'Mar 17', tier: 'critical',   label: 'A fire aboard the USS Gerald R. Ford burned for 30+ hours last week, leaving dozens of crew members with smoke inhalation, per the New York Times. The Ford is the carrier previously repositioned to the Caribbean for Venezuela operations — the gap that forced the USS Nimitz service life extension through March 2027. The Ford is now operating in theater while damaged.' },
   { date: 'Mar 17', tier: 'critical',   label: 'UAE Shah gas field — the world\'s largest ultra-sour gas development — remains suspended after a drone attack sparked a fire. Fujairah Oil Industry Zone struck again. A tanker struck at anchor 23 nautical miles east of Fujairah — the 21st vessel incident since Feb 28 per UKMTO. Iran warns oil could reach $200/bbl if Strait closure continues. Brent: $102.36. WTI: $95.55. Day 18.' },
-  { date: 'Mar 18', tier: 'today',   label: 'US and Israel strike South Pars natural gas field in the Persian Gulf — the world\'s largest, shared between Iran and Qatar, responsible for the majority of Iran\'s LNG exports. Refineries alongside the field also targeted. The strike represents a significant escalation beyond military targets into Iran\'s primary energy export infrastructure. Day 19.' },
-  { date: 'Mar 18', tier: 'today',   label: 'Iran launches missile barrage at Israel. Two Israeli civilians — a man and woman — killed by "serious shrapnel injuries" in Ramat Gan, near Tel Aviv, per Magen David Adom. Saudi Arabia, Qatar, Kuwait, and UAE air defenses simultaneously engaged intercepting Iranian drones and ballistic missiles. Israel launches limited ground operations in southern Lebanon against Hezbollah. At least 6 killed in Israeli strikes on Beirut.' },
-  { date: 'Mar 18', tier: 'today',   label: 'Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigns — stating Iran "posed no imminent threat to our nation." Kent is the first senior Trump administration official to publicly break with the president over the war. Trump had previously described the war as a "little excursion" he asked chief of staff Susie Wiles if she "minded." The EU\'s top diplomat: "nobody is ready to put their people in harm\'s way in the Strait of Hormuz."' },
-  { date: 'Mar 18', tier: 'today',   label: 'Hormuz transit data shows a modest uptick: 8 non-Iranian vessels detected transiting Monday via AIS — nearly double recent daily figures, per maritime intelligence firm Windward. All are assessed as permission-based transits through Iranian territorial waters, primarily Chinese, Indian, and Pakistani-flagged. Western-affiliated shipping remains shut out. US drops GBU-72 5,000-lb bunker-buster bombs on hardened Iranian missile sites along the Hormuz coastline — the first combat use of the weapon against hardened targets of this type.' },
+  { date: 'Mar 18', tier: 'today',   label: 'Israel strikes South Pars gas field — coordinated with the US — hitting Asaluyeh processing facilities in Bushehr province. South Pars is the world\'s largest natural gas reserve (est. 1,800 trillion cubic feet), shared between Iran and Qatar. It accounts for 70–75% of Iran\'s total gas output and the majority of its LNG exports. Qatar\'s North Dome — the same field — supplies roughly one-fifth of global LNG. Brent spikes to $108.60 (+5%). European gas benchmark up 7.9%. Bloomberg\'s Javier Blas: "Both sides are now targeting upstream oil and natural gas assets. Is this an attempt to escalate to de-escalate? Or is it simply a sign that escalation is spiraling out of control?" Marks the first strike on upstream energy production assets since the war began. Day 19.' },
+  { date: 'Mar 18', tier: 'today',   label: 'Following the South Pars strike, Iran issues named evacuation warnings for Gulf energy infrastructure, declaring it "will be targeted in the coming hours": Saudi Arabia\'s Samref Refinery and Jubail Petrochemical Complex; UAE\'s Al Hosn Gas Field; Qatar\'s Mesaieed Petrochemical Complex, Mesaieed Holding Company, and Ras Laffan Refinery. Iran\'s semi-official Fars: attacks on Iran\'s energy infrastructure "will not go unanswered, and Iran\'s response will target enemy infrastructure previously thought to be safe." Qatar FM: targeting energy infrastructure "constitutes a threat to global energy security." Rapidan Energy: "The question now is whether Tehran shifts from signaling to targeting critical components that could take months, if not years, to repair."' },
+  { date: 'Mar 18', tier: 'today',   label: 'Israel confirms killing of Iranian Intelligence Minister Esmail Khatib — sanctioned by the US and EU for cyber operations against Western targets. Netanyahu and Defense Minister Katz have now granted the IDF standing authorization to eliminate additional senior Iranian officials with no case-by-case approval required. Israel\'s decapitation campaign is, in Katz\'s framing, on autopilot. Iran\'s FM Araghchi: "I do not know why the Americans and the Israelis still have not understood this point. The Islamic Republic of Iran has a strong political structure with established political, economic, and social [institutions]."' },
+  { date: 'Mar 18', tier: 'today',   label: 'Iran launches missile barrage at Israel. Two Israeli civilians — a man and woman — killed by shrapnel in Ramat Gan, near Tel Aviv, per Magen David Adom. Saudi Arabia, Qatar, Kuwait, and UAE air defenses simultaneously engaged Iranian drones and ballistic missiles. Israel launches limited ground operations in southern Lebanon against Hezbollah. At least 6 killed in Israeli strikes on Beirut.' },
+  { date: 'Mar 18', tier: 'today',   label: 'Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigns — stating Iran "posed no imminent threat to our nation." Kent is the first senior Trump administration official to publicly break with the president over the war. The EU\'s top diplomat: "nobody is ready to put their people in harm\'s way in the Strait of Hormuz." Trump, at a Capitol Hill lunch honoring the Irish PM, describes the war as a "little excursion" he asked chief of staff Susie Wiles if she "minded."' },
+  { date: 'Mar 18', tier: 'today',   label: 'Hormuz transit data: 8 non-Iranian vessels detected transiting Monday per AIS — nearly double recent daily figures (Windward). All assessed as permission-based transits through Iranian territorial waters: Chinese, Indian, Pakistani-flagged. Western shipping remains shut out. US separately drops GBU-72 5,000-lb bunker-buster bombs on hardened Iranian missile sites along the Strait coastline — first combat use against hardened targets of this type. Brent closes near $108. WTI near $100. Day 19.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
+
+/* ─── Structural floor conditions ───────────────────────────────────────────── */
+/* Each condition holds until explicitly reversed by a named, observable event.
+   Floors stack additively. Current floor = sum of all active contributions. */
+const FLOOR_CONDITIONS = [
+  { id: 'hormuz',       label: 'Hormuz closed to Western/US-aligned shipping',  contribution: 25, active: true,  reversal: 'Confirmed Western-flagged commercial transit without Iranian escort or yuan settlement' },
+  { id: 'kinetic',      label: 'Active kinetic operations ongoing (both sides)', contribution: 12, active: true,  reversal: '72-hour cessation of strikes confirmed by both CENTCOM and IRGC' },
+  { id: 'mineclear',    label: 'No US mine-clearance capability in theater',     contribution: 10, active: true,  reversal: 'USS Tulsa or USS Santa Barbara confirmed operating in the Persian Gulf' },
+  { id: 'negotiations', label: 'Iran publicly refusing negotiations',            contribution: 8,  active: true,  reversal: 'FM-level statement accepting ceasefire talks — not Trump claiming they want a deal' },
+  { id: 'coalition',    label: 'No allied coalition for Hormuz reopening',       contribution: 8,  active: true,  reversal: 'Two or more named nations confirm warships en route for escort operations' },
+  { id: 'yuan',         label: 'Yuan-denominated transit arrangement in place',  contribution: 7,  active: true,  reversal: 'Arrangement formally dissolved or Western vessels granted equivalent access' },
+  { id: 'arsenal',      label: "Iran's newer-generation arsenal undeployed",     contribution: 5,  active: true,  reversal: 'IRGC confirms or deploys — score rises on deployment, floor condition removed' },
+  { id: 'dissent',      label: 'US internal dissent confirmed public (Kent)',     contribution: 3,  active: true,  reversal: 'Confirmed replacement, no further senior public resignations' },
+];
+
+const CURRENT_FLOOR = FLOOR_CONDITIONS.filter(c => c.active).reduce((s, c) => s + c.contribution, 0);
+
+/* ─── Daily XY assessments ───────────────────────────────────────────────────── */
+/* X = Fuckedness (0–100, floor-anchored + event push above)
+   Y = Ease of Unfuckability (1–10; 10=walk it back tomorrow, 1=chiseled in rock)
+   yNote = analyst rationale for Y call. Bryan makes the Y call. */
+const DAILY_ASSESSMENTS = [
+  { day: 1,  date: 'Feb 28', x: 38, y: 7.0,
+    xNote: 'War commenced. Floor conditions activating. WTI +15% intraday. Structural damage not yet locked in.',
+    yNote: 'Path theoretically open. No structural foreclosure yet. Ceasefire achievable with political will if either side blinked in week one.' },
+  { day: 2,  date: 'Mar 1',  x: 44, y: 6.5,
+    xNote: 'First US KIA (6 in Kuwait). OPEC+ response fails. QatarEnergy halts Ras Laffan LNG. Gulf targets expanding.',
+    yNote: 'Back-channels structurally intact. Iran hasn\'t formalized closure posture yet. Window exists.' },
+  { day: 3,  date: 'Mar 2',  x: 50, y: 6.0,
+    xNote: 'Kuwait embassy struck. Girls school Minab hit. Iraq southern oilfields collapse 70%.',
+    yNote: 'Civilian casualties begin complicating US domestic political path home. Still reversible.' },
+  { day: 4,  date: 'Mar 3',  x: 54, y: 5.5,
+    xNote: 'Goldman Sachs: $14/bbl war premium embedded. Kuwait and UAE announce precautionary cuts.',
+    yNote: 'Economic pressure building on both sides — theoretically creates negotiation incentive. In practice, Iran has endured sanctions for 40 years.' },
+  { day: 8,  date: 'Mar 7',  x: 57, y: 5.0,
+    xNote: 'War settling into operational pattern. Hormuz effectively closed commercially — P&I insurance withdrawn Mar 5.',
+    yNote: 'Insurance withdrawal is structural, not declaratory. Market reality forming independent of political decisions.' },
+  { day: 9,  date: 'Mar 8',  x: 62, y: 5.0,
+    xNote: 'IRGC formally confirms selective Hormuz closure — strategic formalization of what had been tactical.',
+    yNote: 'Formalization is worse than the original closure. Ad hoc threats can be walked back. Official policy requires face-saving construct to reverse.' },
+  { day: 10, date: 'Mar 9',  x: 74, y: 4.5,
+    xNote: 'WTI $119.48 — 3.75yr high. Mojtaba Khamenei appointed Supreme Leader. Markets read Tehran digging in.',
+    yNote: 'New Supreme Leader whose entire legitimacy rests on not blinking. Negotiating flexibility is existential risk for him, not political inconvenience.' },
+  { day: 11, date: 'Mar 10', x: 76, y: 4.5,
+    xNote: 'Trump floats Hormuz takeover. Iran mines strait. Yuan transit arrangement emerging. Saudi Safaniya/Zuluf fields shut.',
+    yNote: 'Yuan transit structure beginning to form as market reality — not a policy decision that gets reversed at a summit.' },
+  { day: 12, date: 'Mar 11', x: 77, y: 4.0,
+    xNote: 'IEA 400M barrel release — largest in history — fails to move price. G7 finance ministers convene.',
+    yNote: 'Reserve release failure signals structural supply problem, not a liquidity problem. Cannot be papered over. Fix difficulty rising.' },
+  { day: 13, date: 'Mar 12', x: 79, y: 4.0,
+    xNote: 'Mojtaba first statement — vows Strait stays closed. UK confirms Iran laying mines. 3.2M Iranians displaced.',
+    yNote: 'New leadership\'s first public posture is maximalist. No signals of back-channel interest. Larijani still alive — still a path.' },
+  { day: 14, date: 'Mar 13', x: 85, y: 3.5,
+    xNote: 'KC-135 crash — 6 KIA. Oil above $100 despite all interventions. Kharg struck. Hegseth contradicts himself in one briefing. Dubai building hit.',
+    yNote: 'Larijani still alive and warned publicly — still the most credible interlocutor. Channels technically open. Getting harder to use them.' },
+  { day: 15, date: 'Mar 14', x: 86, y: 3.5,
+    xNote: 'Brent $103. India-Iran yuan transit confirmed. 31st MEU ordered to theater. UAE formally targeted by IRGC.',
+    yNote: 'Yuan transit now confirmed market arrangement — commercial infrastructure forming around the blockade. Structural hardening accelerating.' },
+  { day: 16, date: 'Mar 15', x: 87, y: 3.5,
+    xNote: 'Trump claims 100% military capability destroyed, simultaneously asks 5 nations for warships. None confirm.',
+    yNote: 'US credibility gap widening. Harder to lead a coalition you\'ve already alienated. EU posture calcifying.' },
+  { day: 17, date: 'Mar 16', x: 87, y: 3.5,
+    xNote: 'Mine-clearance ships photographed in Malaysia — 3,500mi from Gulf. First PAK transit yuan-denominated. Dubai airport struck.',
+    yNote: 'Mine-clearance gap is now a confirmed physical constraint on resolution — not just political. Cannot be solved by a phone call.' },
+  { day: 18, date: 'Mar 17', x: 88, y: 3.5,
+    xNote: 'Amnesty confirms Minab school (170+ killed). Larijani and Soleimani killed. Ford fire. Qalibaf: Hormuz "cannot return to previous conditions."',
+    yNote: 'Larijani eliminated — most credible interlocutor gone. Path narrowing structurally. Qalibaf statement signals Iranian consensus: this is permanent.' },
+  { day: 19, date: 'Mar 18', x: 91, y: 3.5,
+    xNote: 'South Pars struck — first upstream energy asset. Brent $108.60 (+5%). Iran names Gulf energy targets. Khatib killed. Kent resigns.',
+    yNote: 'Bryan Day 19: 3.5/10. Path exists but losing lanes, not just getting longer. No architect of a deal on either side. South Pars strike may eliminate Iranian economic incentive to deal short-term.' },
+];
 
 const BILL = [
   { label: 'US KIA',          value: '13',       sub: '6 killed Kuwait (Mar 1), 1 non-combat (Mar 9), 6 killed KC-135 crash Iraq (Mar 13). CNN confirms all aboard lost.', src: 'CENTCOM / CNN, Mar 13' },
@@ -340,6 +413,213 @@ function mktLabel(state) {
   if (state === 'PRE')     return 'pre-mkt · active';
   if (state === 'POST')    return 'post-mkt · active';
   return 'last close';
+}
+
+/* ─── XY Trajectory Plot ─────────────────────────────────────────────────────── */
+function FuckupXYPlot({ chartReady }) {
+  const canvasRef = useRef(null);
+  const chartRef  = useRef(null);
+  const serif   = { fontFamily: "'Source Serif 4', Georgia, serif" };
+  const display = { fontFamily: "'DM Serif Display', Georgia, serif" };
+
+  useEffect(() => {
+    if (!chartReady || !canvasRef.current) return;
+    if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; }
+
+    const n = DAILY_ASSESSMENTS.length;
+
+    /* Quadrant background plugin */
+    const quadrantPlugin = {
+      id: 'quadrants',
+      beforeDraw(chart) {
+        const { ctx, chartArea: { left, right, top, bottom }, scales } = chart;
+        const xMid = scales.x.getPixelForValue(50);
+        const yMid = scales.y.getPixelForValue(5.5);
+        ctx.save();
+        /* TL — low fuckedness, easy to fix: Fine */
+        ctx.fillStyle = `${T.green}18`;
+        ctx.fillRect(left, top, xMid - left, yMid - top);
+        /* TR — high fuckedness, easy to fix: Bad Day */
+        ctx.fillStyle = `${T.amber}18`;
+        ctx.fillRect(xMid, top, right - xMid, yMid - top);
+        /* BL — low fuckedness, hard to fix: Quietly Deteriorating */
+        ctx.fillStyle = `${T.amber}22`;
+        ctx.fillRect(left, yMid, xMid - left, bottom - yMid);
+        /* BR — high fuckedness, hard to fix: Cooked */
+        ctx.fillStyle = `${T.red}1A`;
+        ctx.fillRect(xMid, yMid, right - xMid, bottom - yMid);
+        /* Midpoint lines */
+        ctx.strokeStyle = `${T.border}`;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath(); ctx.moveTo(xMid, top); ctx.lineTo(xMid, bottom); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(left, yMid); ctx.lineTo(right, yMid); ctx.stroke();
+        ctx.restore();
+      },
+    };
+
+    chartRef.current = new window.Chart(canvasRef.current.getContext('2d'), {
+      type: 'scatter',
+      plugins: [quadrantPlugin],
+      data: {
+        datasets: [
+          {
+            label: 'Trajectory',
+            data: DAILY_ASSESSMENTS.map(d => ({ x: d.x, y: d.y })),
+            showLine: true,
+            tension: 0.35,
+            borderColor: `${T.terra}99`,
+            borderWidth: 2,
+            pointRadius: DAILY_ASSESSMENTS.map((_, i) => i === n - 1 ? 10 : 4),
+            pointHoverRadius: DAILY_ASSESSMENTS.map((_, i) => i === n - 1 ? 13 : 7),
+            pointBackgroundColor: DAILY_ASSESSMENTS.map((_, i) => i === n - 1 ? T.red : T.terra),
+            pointBorderColor: DAILY_ASSESSMENTS.map((_, i) => i === n - 1 ? '#fff' : T.bgCard),
+            pointBorderWidth: DAILY_ASSESSMENTS.map((_, i) => i === n - 1 ? 3 : 1.5),
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: T.slateDk,
+            titleColor: T.terraM,
+            bodyColor: 'rgba(245,241,235,0.85)',
+            borderColor: `${T.terra}55`,
+            borderWidth: 1,
+            padding: 12,
+            callbacks: {
+              title: (items) => {
+                const d = DAILY_ASSESSMENTS[items[0].dataIndex];
+                return `Day ${d.day} — ${d.date}`;
+              },
+              label: () => null,
+              afterLabel: () => null,
+              beforeBody: (items) => {
+                const d = DAILY_ASSESSMENTS[items[0].dataIndex];
+                return [
+                  `Fuckedness: ${d.x}/100   Unfuckability: ${d.y}/10`,
+                  '',
+                  `State: ${d.xNote}`,
+                  '',
+                  `Fix: ${d.yNote}`,
+                ];
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            min: 0, max: 100,
+            title: {
+              display: true,
+              text: 'How Fucked Is It →',
+              color: T.terra,
+              font: { family: "'Source Serif 4', Georgia, serif", size: 11, style: 'italic' },
+            },
+            ticks: {
+              color: T.inkMuted,
+              font: { size: 10, family: "'Source Serif 4', Georgia, serif" },
+              callback: v => v === 0 ? 'Fine' : v === 50 ? 'Bad' : v === 100 ? 'Cooked' : v,
+            },
+            grid: { color: `${T.border}88` },
+            border: { color: T.border },
+          },
+          y: {
+            min: 1, max: 10,
+            title: {
+              display: true,
+              text: '← Ease of Unfuckability',
+              color: T.slateMid,
+              font: { family: "'Source Serif 4', Georgia, serif", size: 11, style: 'italic' },
+            },
+            ticks: {
+              color: T.inkMuted,
+              font: { size: 10, family: "'Source Serif 4', Georgia, serif" },
+              callback: v => v === 1 ? 'Chiseled in rock' : v === 5 ? 'Hard' : v === 10 ? 'Easy' : v,
+            },
+            grid: { color: `${T.border}88` },
+            border: { color: T.border },
+          },
+        },
+      },
+    });
+    return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
+  }, [chartReady]);
+
+  const latest = DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1];
+
+  return (
+    <div>
+      {/* Quadrant label overlay — positioned relative to chart area */}
+      <div style={{ position: 'relative', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: T.border, borderRadius: '2px', overflow: 'hidden', marginBottom: '12px' }}>
+          {[
+            { label: 'Fine',                   sub: 'Low fuckedness · Easy to fix',    color: T.green,   dim: false },
+            { label: 'Bad Day',                sub: 'High fuckedness · Easy to fix',   color: T.amber,   dim: false },
+            { label: 'Quietly Deteriorating',  sub: 'Low fuckedness · Hard to fix',    color: T.amber,   dim: false },
+            { label: 'Cooked',                 sub: 'High fuckedness · Hard to fix',   color: T.red,     dim: true  },
+          ].map((q, i) => (
+            <div key={i} style={{ background: q.dim ? `${T.red}08` : T.bgCard, padding: '8px 14px', borderLeft: `3px solid ${q.color}` }}>
+              <span style={{ ...display, fontSize: '0.85rem', fontStyle: 'italic', color: q.color }}>{q.label}</span>
+              <span style={{ ...serif, fontSize: '10px', color: T.inkMuted, marginLeft: '8px' }}>{q.sub}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ position: 'relative', width: '100%', height: '340px' }}>
+          <canvas ref={canvasRef} />
+        </div>
+      </div>
+
+      {/* Current reading strip */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: T.border, borderRadius: '2px', overflow: 'hidden', marginTop: '12px' }}>
+        <div style={{ background: T.bgCard, padding: '1rem 1.25rem', borderTop: `3px solid ${T.terra}` }}>
+          <p style={{ ...serif, margin: '0 0 4px', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: T.inkMuted }}>Day {latest.day} — Fuckedness</p>
+          <p style={{ ...display, margin: '0 0 6px', fontSize: '2rem', color: T.red, lineHeight: 1 }}>{latest.x}<span style={{ fontSize: '1rem', color: T.inkMuted }}>/100</span></p>
+          <p style={{ ...serif, margin: 0, fontSize: '11px', color: T.inkMid, lineHeight: 1.6 }}>{latest.xNote}</p>
+        </div>
+        <div style={{ background: T.bgCard, padding: '1rem 1.25rem', borderTop: `3px solid ${T.slateMid}` }}>
+          <p style={{ ...serif, margin: '0 0 4px', fontSize: '10px', letterSpacing: '0.14em', textTransform: 'uppercase', color: T.inkMuted }}>Day {latest.day} — Ease of Unfuckability</p>
+          <p style={{ ...display, margin: '0 0 6px', fontSize: '2rem', color: T.slateMid, lineHeight: 1 }}>{latest.y}<span style={{ fontSize: '1rem', color: T.inkMuted }}>/10</span></p>
+          <p style={{ ...serif, margin: 0, fontSize: '11px', color: T.inkMid, lineHeight: 1.6 }}>{latest.yNote}</p>
+        </div>
+      </div>
+
+      {/* Floor conditions */}
+      <div style={{ marginTop: '12px', padding: '1rem 1.25rem', background: T.bgTint, border: `1px solid ${T.border}`, borderRadius: '2px' }}>
+        <p style={{ ...serif, margin: '0 0 8px', fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: T.terra }}>
+          Structural Floor: {CURRENT_FLOOR}/100 — conditions holding score above "Very Fucked Up"
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 16px' }}>
+          {FLOOR_CONDITIONS.map((c, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', padding: '3px 0' }}>
+              <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: c.active ? T.red : T.green, flexShrink: 0, marginTop: '4px' }}/>
+              <div>
+                <span style={{ ...serif, fontSize: '11px', color: c.active ? T.inkMid : T.inkMuted }}>
+                  {c.label} <span style={{ color: T.terra, fontWeight: 600 }}>+{c.contribution}</span>
+                </span>
+                {c.active && (
+                  <p style={{ ...serif, margin: '1px 0 0', fontSize: '10px', color: T.inkMuted, fontStyle: 'italic', lineHeight: 1.4 }}>
+                    Reversal: {c.reversal}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '8px 0 0', fontStyle: 'italic', lineHeight: 1.7 }}>
+        X axis (Fuckedness): structural floor conditions + event push above floor, decaying 0.5pts/quiet day.
+        Y axis (Ease of Unfuckability): analyst judgment call — 10 = adults in the room fix it tomorrow, 1 = chiseled in rock.
+        Hover each point for full rationale. Score ceiling: $150+ sustained oil or nuclear weapons use.
+        Analyst: Bryan Del Monte / The Long Memo.
+      </p>
+    </div>
+  );
 }
 
 /* ─── Gauge ─────────────────────────────────────────────────────────────────── */
@@ -1041,6 +1321,18 @@ export default function Home() {
                 <span style={{ color: T.terra, fontWeight: 600 }}>WTI that day: ~$76. Today: ${price.toFixed(2)}.</span>
               </p>
             </div>
+          </div>
+
+          {/* XY Trajectory */}
+          <div style={{ ...section }}>
+            <p style={{ ...sectionHead }}>War Trajectory — State vs. Reversibility</p>
+            <p style={{ ...serif, fontSize: '13px', color: T.inkMid, margin: '0 0 1.25rem', lineHeight: 1.7 }}>
+              Two independent measures. X axis: how fucked is it right now — anchored to structural floor conditions
+              that don&apos;t move until something physically reverses (Hormuz reopens, mine-clearance assets arrive,
+              Iran negotiates). Y axis: how easy is it to unfuck — analyst judgment, updated daily, with evidence.
+              The trail of dots is the story. Hover each for full rationale.
+            </p>
+            <FuckupXYPlot chartReady={chartReady}/>
           </div>
 
           {/* Trump Said vs Reality */}
