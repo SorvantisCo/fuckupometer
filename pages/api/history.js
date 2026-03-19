@@ -29,6 +29,7 @@ const WTI_MILESTONES = [
   { date: '2026-03-10', close: 112.00 }, // Trump floats Hormuz takeover; Russia sanctions waiver
   { date: '2026-03-12', close: 96.00 },  // Mojtaba first statement; UK confirms Iran mining Strait
   { date: '2026-03-13', close: 98.71 },  // IEA 400M-bbl release fails to move prices
+  { date: '2026-03-19', close: 106.50 }, // Iran strikes Qatar/Saudi/UAE/Kuwait energy in retaliation for South Pars; infrastructure war loop begins
 ];
 
 const BRENT_MILESTONES = [
@@ -49,6 +50,7 @@ const BRENT_MILESTONES = [
   { date: '2026-03-10', close: 115.00 },
   { date: '2026-03-12', close: 100.46 },
   { date: '2026-03-13', close: 103.14 },
+  { date: '2026-03-19', close: 110.50 }, // Brent above $110 — +50% since Feb 28; Gulf energy infrastructure exchange
 ];
 
 async function fetchLive(ticker) {
