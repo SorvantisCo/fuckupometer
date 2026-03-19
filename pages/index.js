@@ -119,10 +119,15 @@ const TRUMP_SAID = [
     said: '"Do you mind if I take a little excursion? Because we have to do something. And it\'ll be a short-term excursion."',
     reality: "Day 19. Confirmed at a Capitol Hill lunch honoring the Irish PM. On the same day: Iran\'s Intelligence Minister killed by Israel. Iran issues named evacuation warnings for Saudi, UAE, and Qatar energy infrastructure. South Pars — the world\'s largest gas field — struck for the first time. Brent hits $108.60. Iran\'s FM: \"I do not know why the Americans and Israelis still have not understood this point.\" Joe Kent, Trump\'s NCC Director, resigns, stating Iran \"posed no imminent threat to our nation.\"",
   },
+  {
+    date: 'Mar 19, 2026',
+    said: '\"Israel, out of anger for what has taken place in the Middle East, has violently lashed out at a major facility known as South Pars Gas Field in Iran... The United States knew nothing about this particular attack, and the country of Qatar was in no way, shape, or form, involved with it.\"',
+    reality: "Axios reported within hours that the South Pars strike was US-approved and coordinated with the White House before execution — directly contradicting Trump\'s public statement. Iran, not knowing this, struck Qatar\'s Ras Laffan LNG complex — the world\'s largest — in direct retaliation for a strike the US publicly disavowed but secretly greenlit. Al Udeid Air Base, hosting 10,000 US troops, is in Qatar. Saudi FM Faisal bin Farhan: \"What little trust there was has completely been shattered.\" Brent: above $110. Day 20.",
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
-/* Status as of Mar 16: Effectively closed to US/Western-allied shipping.
+/* Status as of Mar 19: Effectively closed to US/Western-aligned shipping.
    Iran selectively allowing passage for China-linked, Pakistan, India, Turkey vessels
    transacted in yuan or under bilateral arrangement. First full transit (Karachi, PAK-flagged)
    confirmed Mar 16. Insurance withdrawn for Western operators Mar 5 — commercially unnavigable
@@ -219,7 +224,11 @@ const EVENTS_2026 = [
   { date: 'Mar 18', tier: 'today',   label: 'Israel confirms killing of Iranian Intelligence Minister Esmail Khatib — sanctioned by the US and EU for cyber operations against Western targets. Netanyahu and Defense Minister Katz have now granted the IDF standing authorization to eliminate additional senior Iranian officials with no case-by-case approval required. Israel\'s decapitation campaign is, in Katz\'s framing, on autopilot. Iran\'s FM Araghchi: "I do not know why the Americans and the Israelis still have not understood this point. The Islamic Republic of Iran has a strong political structure with established political, economic, and social [institutions]."' },
   { date: 'Mar 18', tier: 'today',   label: 'Iran launches missile barrage at Israel. Two Israeli civilians — a man and woman — killed by shrapnel in Ramat Gan, near Tel Aviv, per Magen David Adom. Saudi Arabia, Qatar, Kuwait, and UAE air defenses simultaneously engaged Iranian drones and ballistic missiles. Israel launches limited ground operations in southern Lebanon against Hezbollah. At least 6 killed in Israeli strikes on Beirut.' },
   { date: 'Mar 18', tier: 'today',   label: 'Joe Kent, Trump\'s Director of the National Counterterrorism Center, resigns — stating Iran "posed no imminent threat to our nation." Kent is the first senior Trump administration official to publicly break with the president over the war. The EU\'s top diplomat: "nobody is ready to put their people in harm\'s way in the Strait of Hormuz." Trump, at a Capitol Hill lunch honoring the Irish PM, describes the war as a "little excursion" he asked chief of staff Susie Wiles if she "minded."' },
-  { date: 'Mar 18', tier: 'today',   label: 'Hormuz transit data: 8 non-Iranian vessels detected transiting Monday per AIS — nearly double recent daily figures (Windward). All assessed as permission-based transits through Iranian territorial waters: Chinese, Indian, Pakistani-flagged. Western shipping remains shut out. US separately drops GBU-72 5,000-lb bunker-buster bombs on hardened Iranian missile sites along the Strait coastline — first combat use against hardened targets of this type. Brent closes near $108. WTI near $100. Day 19.' },
+  { date: 'Mar 18', tier: 'critical', label: 'Hormuz transit data: 8 non-Iranian vessels detected transiting Monday per AIS — nearly double recent daily figures (Windward). All assessed as permission-based transits through Iranian territorial waters: Chinese, Indian, Pakistani-flagged. Western shipping remains shut out. US separately drops GBU-72 5,000-lb bunker-buster bombs on hardened Iranian missile sites along the Strait coastline — first combat use against hardened targets of this type. Brent closes near $108. WTI near $100. Day 19.' },
+  { date: 'Mar 19', tier: 'today',   label: 'Iran follows through on named threats: strikes Qatar\'s Ras Laffan LNG complex (world\'s largest), UAE gas fields, Saudi oil refinery, and Kuwait\'s Mina Al-Ahmadi refinery — one of the largest in the Middle East. Direct retaliation for Israel\'s South Pars strike. Gulf energy infrastructure war is now a confirmed exchange, not a threat. Brent above $110 — up 50% since Feb 28. Day 20.' },
+  { date: 'Mar 19', tier: 'today',   label: 'Axios: South Pars strike was US-approved and coordinated with the White House before execution — directly contradicting Trump\'s Truth Social post claiming "The United States knew nothing about this particular attack." Qatar was struck in retaliation for a US operation the US publicly disavowed. Al Udeid Air Base, hosting 10,000 US troops, is in Qatar. Saudi FM Faisal bin Farhan: "What little trust there was has completely been shattered, on multiple levels. The patience being exhibited is not unlimited."' },
+  { date: 'Mar 19', tier: 'today',   label: 'Trump Truth Social: "The United States of America, with or without the help or consent of Israel, will massively blow up the entirety of the South Pars Gas Field at an amount of strength and power that Iran has never seen or witnessed before" — conditional on further Iranian attacks on Qatar\'s LNG. The field is shared with Qatar. Trump simultaneously claimed the US "knew nothing" about the strike that triggered this retaliation cycle. Japan PM Takaichi visits White House — first allied leader since the Hormuz ask. Japan has no plans to send warships.' },
+  { date: 'Mar 19', tier: 'today',   label: 'Fed SEP (Mar 18): hawkish hold confirmed. Funds rate held 3.5–3.75%. Core PCE revised to 2.7% from 2.5%. One cut projected for 2026 — explicitly conditional on inflation progress. Powell: "If we don\'t see that progress, you won\'t see the rate cut." CME FedWatch: no cut priced in 2026. Oxford Economics: war poses a "stagflationary shock." The Fed cannot cushion the domestic political fallout — no rate cut bridge to the midterms.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -228,7 +237,7 @@ const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: 
 /* Each condition holds until explicitly reversed by a named, observable event.
    Floors stack additively. Current floor = sum of all active contributions.
    Ceiling: $150+ sustained oil or nuclear weapons use = 96–100.
-   Floor calibrated so all-active = ~55 (Significantly → Very Fucked Up boundary).
+   Floor calibrated so all-active = ~59 (firmly in Very Fucked Up territory).
    Events push score above floor; score decays 0.5pts/quiet day back toward floor. */
 const FLOOR_CONDITIONS = [
   { id: 'hormuz',       label: 'Hormuz closed to Western/US-aligned shipping',  contribution: 18, active: true,  reversal: 'Confirmed Western-flagged commercial transit without Iranian escort or yuan settlement' },
@@ -239,6 +248,7 @@ const FLOOR_CONDITIONS = [
   { id: 'yuan',         label: 'Yuan-denominated transit arrangement in place',  contribution: 5,  active: true,  reversal: 'Arrangement formally dissolved or Western vessels granted equivalent access' },
   { id: 'arsenal',      label: "Iran's newer-generation arsenal undeployed",     contribution: 4,  active: true,  reversal: 'IRGC confirms or deploys — score rises on deployment, floor condition removed' },
   { id: 'dissent',      label: 'US internal dissent confirmed public (Kent)',     contribution: 2,  active: true,  reversal: 'Confirmed replacement, no further senior public resignations' },
+  { id: 'gcc_trust',    label: 'GCC host-nation trust explicitly broken (Saudi FM Mar 19)', contribution: 4,  active: true,  reversal: 'Formal US acknowledgment + confirmed repair of bilateral relationship with Saudi Arabia and Qatar' },
 ];
 
 const CURRENT_FLOOR = FLOOR_CONDITIONS.filter(c => c.active).reduce((s, c) => s + c.contribution, 0);
@@ -298,6 +308,9 @@ const DAILY_ASSESSMENTS = [
   { day: 19, date: 'Mar 18', x: 68, y: 3.5,
     xNote: 'South Pars struck — first upstream energy asset. Brent $108.60 (+5%). Iran names Gulf infrastructure targets. Khatib killed. Kent resigns.',
     yNote: 'TLM Assessment Day 19: 3.5/10. Path exists but losing lanes, not just getting longer. No architect of a deal on either side. South Pars strike likely eliminates Iranian economic incentive to negotiate short-term.' },
+  { day: 20, date: 'Mar 19', x: 73, y: 3.0,
+    xNote: 'Infrastructure war loop now active: South Pars → Ras Laffan LNG → Saudi refinery → Kuwait Mina Al-Ahmadi → UAE gas field, all struck in direct exchange. Brent above $110 (+50% since Feb 28). Axios: South Pars was US-approved — Trump\'s public disavowal was false. Qatar struck in retaliation for a US strike the US denied. Al Udeid in play. Saudi FM: trust \"completely shattered.\" Fed SEP (Mar 18): stagflationary posture confirmed — core PCE revised up, one cut now explicitly conditional on inflation progress that war trajectory makes unlikely. CME FedWatch: no cut in 2026.',
+    yNote: 'TLM Assessment Day 20: 3.0/10. The conflict has crossed from military to full-spectrum energy infrastructure exchange. The US damaged its credibility with its own host nation (Qatar) through a strike it secretly approved and publicly denied. The Fed confirmed it cannot cushion the domestic political fallout — no rate cut bridge to the midterms. Larijani gone. No deal architect. Floor rose 4 points on GCC trust fracture. The lanes aren\'t just fewer — some are now structurally closed.' },
 ];
 
 const BILL = [
@@ -305,8 +318,8 @@ const BILL = [
   { label: 'US WIA',          value: '~140',     sub: '108 returned to duty; 8 remain severe', src: 'Pentagon, Mar 10' },
   { label: 'Iranian dead',    value: '1,444+',   sub: "Per Iranian Red Crescent (Mar 16). HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Iranian Red Crescent / Al Jazeera, Mar 16' },
   { label: 'Iranian injured', value: '18,551+',  sub: "Per Iranian Red Crescent Society as of March 16.", src: 'Iranian Red Crescent, Mar 16' },
-  { label: 'Lebanon dead',    value: '779+',     sub: 'Since Israel renewed widespread attacks Mar 2. Includes 98 children. At least 6 more killed in Beirut strikes Mar 18.', src: 'Lebanon Health Ministry / ABC News, Mar 18' },
-  { label: 'Lebanon injured',  value: '1,957+',   sub: 'Since Israel renewed widespread attacks Mar 2. 24 additional injured in Mar 18 Beirut strikes.', src: 'Lebanon Health Ministry / ABC News, Mar 18' },
+  { label: 'Lebanon dead',    value: '850+',     sub: 'Since Israel renewed widespread attacks Mar 2. Over 900,000 displaced. Israeli ground operations in southern Lebanon ongoing as of Mar 19.', src: 'Lebanon Health Ministry / NPR, Mar 19' },
+  { label: 'Lebanon injured',  value: '2,000+',   sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry, Mar 19' },
   { label: 'Israel dead',      value: '16',       sub: '14 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28. Two killed (man and woman) by shrapnel in Ramat Gan, Mar 18.', src: 'Magen David Adom / ABC News, Mar 18' },
   { label: 'Minab school',    value: '170+',     sub: 'Girls school, Minab. Amnesty International investigation (Mar 17) confirms US responsibility — at least 170 killed, 160+ of them schoolgirls. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Iranian govt / Britannica' },
   { label: 'Ships struck',    value: '21+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel. Latest: tanker struck at anchor 23nm east of Fujairah, Mar 17.', src: 'UKMTO / Reuters / Al Jazeera, Mar 17' },
