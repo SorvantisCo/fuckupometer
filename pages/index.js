@@ -1160,13 +1160,24 @@ export default function Home() {
   const liveCost = useLiveCost(dayCount);
 
   const fetchAll = useCallback(async () => {
-    try {
-      const [oilRes, comRes] = await Promise.all([fetch('/api/oil'), fetch('/api/commodities')]);
-      const [oil, com] = await Promise.all([oilRes.json(), comRes.json()]);
-      setData(oil); setCommodities(com.commodities);
-      setLastUpdated(new Date()); setError(null);
-    } catch { setError('Live data unavailable — markets may be closed.'); }
-    finally { setLoading(false); }
+    // Fetch oil and commodities independently so one failure doesn't block the other
+    const [oilResult, comResult] = await Promise.allSettled([
+      fetch('/api/oil').then(r => r.json()),
+      fetch('/api/commodities').then(r => r.json()),
+    ]);
+    if (oilResult.status === 'fulfilled') {
+      setData(oilResult.value);
+      setError(null);
+    } else {
+      setError('Live oil data unavailable — markets may be closed.');
+    }
+    if (comResult.status === 'fulfilled' && comResult.value?.commodities?.length) {
+      setCommodities(comResult.value.commodities);
+    } else {
+      setCommodities(null); // triggers retry UI
+    }
+    setLastUpdated(new Date());
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -1318,10 +1329,20 @@ export default function Home() {
                   </p>
                 </div>
                 <Gauge pct={DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].x} accentColor={T.slateMid}/>
-                <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, margin: '10px 0 0', lineHeight: 1.6 }}>
-                  Floor: <strong style={{ color: T.slateMid }}>{CURRENT_FLOOR}/100</strong> (structural conditions, all active).
-                  Event push today: <strong style={{ color: T.slateMid }}>+{DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].x - CURRENT_FLOOR}</strong>.
-                  Ceiling = $150+ sustained oil or nuclear use. Does not reset on a tweet.
+                <div style={{ display: 'flex', justifyContent: 'space-between', margin: '6px 0 8px', padding: '0 2px' }}>
+                  {[['0–20','Fine'],['21–40','Elevated'],['41–60','Significant'],['61–80','Very'],['81–100','Nuclear/etc']].map(([range, label]) => (
+                    <div key={range} style={{ textAlign: 'center' }}>
+                      <p style={{ ...serif, margin: 0, fontSize: '9px', color: T.inkMuted }}>{range}</p>
+                      <p style={{ ...serif, margin: 0, fontSize: '8px', color: T.inkMuted, fontStyle: 'italic' }}>{label}</p>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, margin: '0 0 6px', lineHeight: 1.6 }}>
+                  Score = structural floor ({CURRENT_FLOOR} pts, 9 active conditions) + daily event push (+{DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].x - CURRENT_FLOOR} pts today).
+                  Does not reset on a tweet. Ceiling = nuclear use or $150+ sustained oil.
+                </p>
+                <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, margin: 0, lineHeight: 1.6 }}>
+                  Floor contributions: Hormuz closed (18), active kinetic ops (8), no mine-clearance ships in theater (7), Iran refusing talks (6), no allied coalition (5), yuan transit (5), newer arsenal undeployed (4), GCC trust broken (4), internal dissent confirmed (2). Reversal criteria for each listed in the Floor Conditions table below.
                 </p>
               </div>
             </div>
@@ -1553,13 +1574,16 @@ export default function Home() {
             <p style={{ ...serif, fontSize: '13px', color: T.inkMid, margin: '0 0 1.25rem', lineHeight: 1.7 }}>
               What else moves when a Strait closes and a president promises cheap energy.
             </p>
-            {commodities ? (
+            {commodities && commodities.length > 0 ? (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1px', background: T.border, borderRadius: '2px', overflow: 'hidden' }}>
                 {commodities.map((c, i) => <CommodityCard key={i} c={c}/>)}
               </div>
             ) : (
-              <div style={{ height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', ...serif, fontSize: '13px', color: T.inkMuted }}>
-                Loading commodity data…
+              <div style={{ height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', ...serif, fontSize: '13px', color: T.inkMuted }}>
+                <span>Commodity data unavailable.</span>
+                <button onClick={fetchAll} style={{ ...serif, fontSize: '12px', background: 'none', border: `1px solid ${T.border}`, color: T.terra, borderRadius: '2px', padding: '4px 10px', cursor: 'pointer' }}>
+                  Retry
+                </button>
               </div>
             )}
             <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: '10px 0 0', fontStyle: 'italic', lineHeight: 1.6 }}>
