@@ -318,6 +318,7 @@ const DAILY_ASSESSMENTS = [
     yNote: 'TLM Assessment Day 20: 3.0/10. The conflict has crossed from military to full-spectrum energy infrastructure exchange. The US damaged its credibility with its own host nation (Qatar) through a strike it secretly approved and publicly denied. The Fed confirmed it cannot cushion the domestic political fallout — no rate cut bridge to the midterms. Larijani gone. No deal architect. Floor rose 4 points on GCC trust fracture. The lanes aren\'t just fewer — some are now structurally closed.' },
   { day: 21, date: 'Mar 20', x: 75, y: 3.0,
     label: 'Day 21 — Nowruz. Eid. War. Kuwait\'s largest refinery struck again. Qatar LNG offline 3–5 years. IRGC spokesman killed mid-broadcast. Pentagon requests $200B supplemental. Israel pledges no more South Pars strikes after triggering the largest gas supply disruption in decades.',
+    xNote: '75/100: Floor is 59 (9 structural conditions, all active). Event push of +16 reflects three compounding factors: Qatar LNG damage is now confirmed at 17% capacity offline with a 3–5 year repair window — this is permanent energy architecture damage, not a disruption. The Pentagon\'s $200B supplemental signals a sustained campaign posture, not an endgame. And Israel\'s pledge to stop South Pars strikes came the day after its strike triggered the worst gas supply shock in decades — the reversal does not undo the damage. Score is 75, not higher, because no new structural floor conditions were crossed today. Score is 75, not lower, because the Qatar LNG timeline materially narrows the resolution path.',
     yNote: 'TLM Assessment Day 21: 3.0/10. The floor holds but the structural damage is compounding. Qatar\'s LNG capacity is not a six-month problem. A 3–5 year repair timeline means the energy architecture of the global gas market has been permanently altered — not disrupted. The Pentagon\'s $200B ask signals the administration is planning a sustained campaign, not an exit. The IRGC spokesman dying mid-sentence while saying Iran is still building missiles is the most honest summary of the information environment anyone has produced in three weeks.' },
 ];
 
@@ -1341,9 +1342,15 @@ export default function Home() {
                   Score = structural floor ({CURRENT_FLOOR} pts, 9 active conditions) + daily event push (+{DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].x - CURRENT_FLOOR} pts today).
                   Does not reset on a tweet. Ceiling = nuclear use or $150+ sustained oil.
                 </p>
-                <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, margin: 0, lineHeight: 1.6 }}>
+                <p style={{ ...serif, fontSize: '11px', color: T.inkMuted, margin: '0 0 8px', lineHeight: 1.6 }}>
                   Floor contributions: Hormuz closed (18), active kinetic ops (8), no mine-clearance ships in theater (7), Iran refusing talks (6), no allied coalition (5), yuan transit (5), newer arsenal undeployed (4), GCC trust broken (4), internal dissent confirmed (2). Reversal criteria for each listed in the Floor Conditions table below.
                 </p>
+                {DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].xNote && (
+                  <div style={{ borderTop: `1px solid ${T.border}`, paddingTop: '8px', marginTop: '4px' }}>
+                    <p style={{ ...serif, margin: '0 0 3px', fontSize: '9px', letterSpacing: '0.14em', textTransform: 'uppercase', color: T.slateMid }}>Why {DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].x}/100 today</p>
+                    <p style={{ ...serif, margin: 0, fontSize: '11px', color: T.inkMid, lineHeight: 1.6 }}>{DAILY_ASSESSMENTS[DAILY_ASSESSMENTS.length - 1].xNote}</p>
+                  </div>
+                )}
               </div>
             </div>
 
