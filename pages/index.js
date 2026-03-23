@@ -128,6 +128,7 @@ const TRUMP_SAID = [
     date: 'Mar 21, 2026',
     said: '\"We are getting very close to meeting our objectives as we consider winding down our great Military efforts in the Middle East with respect to the Terrorist Regime of Iran.\"',
     reality: "Officials confirmed on the same day that thousands more US troops are heading to the region. Brent settled at $112.19 — the highest of the war. The DIA\'s internal assessment, now circulating in the Pentagon, determined Iran could keep the Strait closed 1–6 months. A senior Iranian official dismissed the Truth Social post as \'Trump\'s psychological operations to control the markets.\' The Axios Kharg Island story published the same day: the White House is considering a ground operation to occupy or blockade the island. \'We need about a month to weaken the Iranians more with strikes, take the island and then get them by the balls and use it for negotiations.\' Day 22.",
+  },
   {
     date: 'Mar 22, 2026',
     said: '"If Iran doesn\'t FULLY OPEN, WITHOUT THREAT, the Strait of Hormuz, within 48 HOURS from this exact point in time, the United States of America will hit and obliterate their various POWER PLANTS, STARTING WITH THE BIGGEST ONE FIRST!"',
