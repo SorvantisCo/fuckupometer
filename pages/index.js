@@ -1411,6 +1411,17 @@ export default function Home() {
             </p>
           </div>
 
+          {/* ── Inline CTA — BLUF position ──────────────────────────────────────── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', background: T.slatePale, border: `1px solid ${T.border}`, borderLeft: `3px solid ${T.slate}`, borderRadius: '2px', padding: '0.875rem 1.25rem', marginBottom: '2rem' }}>
+            <p style={{ ...serif, fontSize: '13px', color: T.slateDk, margin: 0, lineHeight: 1.6 }}>
+              The analysis continues in your inbox — institutional-grade threat appraisal, free.
+            </p>
+            <a href="https://thelongmemo.com/subscribe" target="_blank" rel="noopener noreferrer"
+              style={{ ...serif, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: T.bgCard, background: T.slate, padding: '0.45rem 1rem', borderRadius: '2px', textDecoration: 'none', whiteSpace: 'nowrap', fontWeight: 600 }}>
+              Subscribe Free →
+            </a>
+          </div>
+
           {error && (
             <div style={{ background: '#FEF3EE', border: `1px solid ${T.terraPale}`, borderRadius: '2px', padding: '10px 14px', marginBottom: '1.25rem', ...serif, fontSize: '13px', color: T.terra }}>
               {error}
