@@ -1819,17 +1819,39 @@ export default function Home() {
           </div>
 
           {/* CTA */}
-          <div style={{ background: T.slateDk, borderRadius: '2px', padding: '2rem', textAlign: 'center', marginBottom: '1.25rem', borderTop: `3px solid ${T.terra}` }}>
-            <p style={{ ...display, fontSize: '1.5rem', fontStyle: 'italic', color: '#F5F1EB', margin: '0 0 8px' }}>
-              Want the actual analysis?
-            </p>
-            <p style={{ ...serif, fontSize: '13px', color: T.inkMuted, margin: '0 0 1.25rem' }}>
-              Read The Long Memo — institutional analysis for people who need to know what&apos;s actually happening.
-            </p>
-            <a href="https://thelongmemo.com" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'inline-block', padding: '10px 28px', background: 'transparent', color: T.terraPale, border: `1px solid ${T.terra}`, borderRadius: '2px', fontSize: '12px', fontWeight: 400, textDecoration: 'none', ...serif, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Read The Long Memo →
-            </a>
+          <div style={{ marginBottom: '1.25rem' }}>
+
+            {/* Free tier — TLM */}
+            <div style={{ background: T.slateDk, borderRadius: '2px 2px 0 0', padding: '2rem 2rem 1.75rem', textAlign: 'center', borderTop: `3px solid ${T.terra}` }}>
+              <p style={{ ...serif, fontSize: '10px', letterSpacing: '0.22em', color: T.terra, textTransform: 'uppercase', margin: '0 0 0.6rem' }}>
+                Free — The Long Memo
+              </p>
+              <p style={{ ...display, fontSize: '1.6rem', fontStyle: 'italic', color: '#F5F1EB', margin: '0 0 0.6rem', lineHeight: 1.15 }}>
+                You&apos;ve been reading Day {dayCount}.
+              </p>
+              <p style={{ ...serif, fontSize: '13px', color: 'rgba(245,241,235,0.6)', margin: '0 0 1.5rem', lineHeight: 1.7, maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
+                The analysis continues in your inbox. The Long Memo is institutional-grade threat appraisal for people who need to know what&apos;s actually happening — free, no paywall.
+              </p>
+              <a href="https://thelongmemo.com/subscribe" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-block', padding: '11px 32px', background: T.terra, color: '#F5F1EB', border: 'none', borderRadius: '2px', fontSize: '12px', textDecoration: 'none', ...serif, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
+                Subscribe Free →
+              </a>
+            </div>
+
+            {/* Paid tier — BL */}
+            <div style={{ background: T.slateMid, borderRadius: '0 0 2px 2px', padding: '1.5rem 2rem', textAlign: 'center', borderTop: `1px solid rgba(255,255,255,0.08)` }}>
+              <p style={{ ...serif, fontSize: '10px', letterSpacing: '0.22em', color: 'rgba(245,241,235,0.5)', textTransform: 'uppercase', margin: '0 0 0.5rem' }}>
+                Paid — Borderless Living
+              </p>
+              <p style={{ ...serif, fontSize: '13px', color: 'rgba(245,241,235,0.75)', margin: '0 0 1rem', lineHeight: 1.7, maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
+                The Fuckupometer tracks the problem. Borderless Living is the answer — sovereign strategy, jurisdictional optionality, and the Borderless Sovereignty Index for internationally mobile Americans.
+              </p>
+              <a href="https://borderlessliving.com/subscribe" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-block', padding: '9px 28px', background: 'transparent', color: 'rgba(245,241,235,0.85)', border: `1px solid rgba(245,241,235,0.3)`, borderRadius: '2px', fontSize: '12px', textDecoration: 'none', ...serif, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                Go Deeper →
+              </a>
+            </div>
+
           </div>
 
           {/* Footer */}
