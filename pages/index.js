@@ -200,8 +200,7 @@ const TRUMP_SAID = [
     date: 'Apr 3, 2026',
     said: '"Iran\'s New Regime President asked us for a ceasefire."',
     reality: 'Iran FM Araghchi denied any such request within hours — told Al Jazeera there are "zero" trust and "no negotiations," only message exchanges with Witkoff. Within 24 hours of Trump\'s ceasefire claim, US-Israeli forces struck the B1 bridge in Karaj, killing 8 civilians on a national holiday. Trump used the false claim to frame escalation as a response to Iranian bad faith. Day 35.',
-  }
-
+  },
   {
     date: 'Apr 6, 2026',
     said: '"Iran is an active, willing participant" in negotiations to end the war, with talks "going well."',
