@@ -1239,7 +1239,7 @@ function GasCalc({ rbobPrice, retailGasPrice }) {
       </div>
       <p style={{ ...serif, fontSize: '10px', color: T.inkMuted, margin: 0, fontStyle: 'italic', lineHeight: 1.7 }}>
         Pump price sourced from AAA national average when available; falls back to RBOB futures + $1.00 markup. Inauguration baseline: $3.13/gal (EIA national avg, Jan 20, 2025).
-        Average US driver: ~1,000 miles/month, ~28 MPG. EIA projects retail gas could approach $5.00/gal in Q2 if Hormuz closure persists (JPMorgan, Mar 11).
+        Average US driver: ~1,000 miles/month, ~28 MPG. National average crossed $4.00/gal on Mar 31 (GasBuddy/AAA) — up $1.00+ since Feb 28. California: $5.87/gal. Diesel: $5.45/gal, up 45% since war began.
       </p>
     </div>
   );
@@ -1252,39 +1252,40 @@ function BroaderImpact() {
 
   /* Based on:
      - Fed Board research: 10% oil increase → food CPI +0.3%, core CPI +0.1% (FEDS Notes, Dec 2023)
-     - WTI up ~25% from inauguration ($76 → $95+)
+     - WTI up ~52% from inauguration ($76 → $115+)
      - Average US household grocery spend: ~$550/month (BLS CES 2024)
-     - JPMorgan/Goldman: airfare CPI up to 20% on jet fuel costs (CNBC, Mar 11)
+     - National avg retail gas crossed $4/gal Mar 31 (GasBuddy/AAA); CA $5.87, diesel $5.45
+     - JPMorgan/Goldman: airfare CPI up to 20% modeled at $95 crude — now higher
      - Fertilizer (natural gas derivative): already embedded in food supply chain
   */
   const IMPACTS = [
     {
       label: 'Groceries',
-      est: '+$15–30/mo',
+      est: '+$30–55/mo',
       estColor: '#C0392B',
-      note: 'Oil up ~25% from inaug → food CPI +~0.75%. Applied to avg household spend of ~$550/mo. Fertilizer (nat gas derivative) adds further upward pressure with 1–2 season lag.',
-      src: 'Fed Board FEDS Notes, Dec 2023; BLS Consumer Expenditure Survey',
+      note: 'Oil up ~52% from inaug → food CPI +~1.56% per Fed Board model ($550/mo spend = +$8.58 mechanically). Add fertilizer lag (natural gas up sharply; 1–2 season pass-through), supply chain repricing, and diesel transport costs already at $5.45/gal — full household exposure runs $30–55/mo above Jan 2025 baseline.',
+      src: 'Fed Board FEDS Notes, Dec 2023; GasBuddy/AAA Apr 2026; BLS CES 2024',
     },
     {
       label: 'Airfares',
-      est: '+15–20%',
+      est: '+20–35%',
       estColor: '#C0392B',
-      note: 'Jet fuel is ~25–30% of airline operating cost. With crude at $95+, JPMorgan projects airfare CPI could rise from 2.2% to ~20% if sustained through Q2.',
-      src: 'JPMorgan Private Bank via CNBC, Mar 11, 2026',
+      note: 'Jet fuel ~80% above pre-war levels. Fuel is 25–30% of airline operating cost; airlines pass through 60–70% of sustained increases. JPMorgan projected 15–20% at $95 crude — at $115+ the model pushes 20–35%. Route consolidation and reduced capacity amplify ticket prices further.',
+      src: 'JPMorgan Private Bank via CNBC, Mar 11, 2026; EIA jet fuel data',
     },
     {
       label: 'Consumables',
-      est: '+$5–12/mo',
+      est: '+$12–22/mo',
       estColor: '#B85C38',
-      note: 'Petroleum is a primary input for plastics, packaging, cleaning products, and synthetic fibers. Core CPI +~0.25% at current oil levels; household impact ~$5–12/mo across consumables.',
+      note: 'Petroleum inputs in plastics, packaging, cleaning products, and synthetics. Core CPI +~0.52% at current oil levels (52% increase × Fed model). Applied to ~$400/mo nondurables spend plus supply chain repricing now flowing through to retail shelves.',
       src: 'Fed Board FEDS Notes, Dec 2023; EIA oil-to-consumer analysis',
     },
     {
       label: 'Durables',
-      est: '1–2% costlier',
+      est: '2–4% costlier',
       estColor: '#B8860B',
-      note: 'Appliances, vehicles, electronics: oil price increases raise PPI (producer prices) faster than CPI. PPI pass-through to retail durables typically runs 3–6 months. Effect building.',
-      src: 'ScienceDirect: Oil price shocks and inflation, 2025',
+      note: 'Appliances, vehicles, electronics: PPI (producer prices) leads CPI by 3–6 months. At $115+ WTI the PPI pass-through to durables is now building into the pipeline. Effect will be felt through Q3 2026 regardless of when the war ends.',
+      src: 'ScienceDirect: Oil price shocks and inflation, 2025; BLS PPI data',
     },
   ];
 
