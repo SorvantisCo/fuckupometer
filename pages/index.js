@@ -530,16 +530,16 @@ const DAILY_ASSESSMENTS = [
 ];
 
 const BILL = [
-  { label: 'US KIA',          value: '13',       sub: '6 killed Kuwait (Mar 1), 1 non-combat (Mar 9), 6 killed KC-135 crash Iraq (Mar 13). CNN confirms all aboard lost.', src: 'CENTCOM / CNN, Mar 13' },
-  { label: 'US WIA',          value: '~140',     sub: '108 returned to duty; 8 remain severe', src: 'Pentagon, Mar 10' },
-  { label: 'Iranian dead',    value: '1,444+',   sub: "Per Iranian Red Crescent (Mar 16). HRANA estimates up to 7,000. Trump administration claims 32,000.", src: 'Iranian Red Crescent / Al Jazeera, Mar 16' },
-  { label: 'Iranian injured', value: '18,551+',  sub: "Per Iranian Red Crescent Society as of March 16.", src: 'Iranian Red Crescent, Mar 16' },
-  { label: 'Lebanon dead',    value: '850+',     sub: 'Since Israel renewed widespread attacks Mar 2. Over 900,000 displaced. Israeli ground operations in southern Lebanon ongoing as of Mar 19.', src: 'Lebanon Health Ministry / NPR, Mar 19' },
-  { label: 'Lebanon injured',  value: '2,000+',   sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry, Mar 19' },
-  { label: 'Israel dead',      value: '16',       sub: '14 civilians, 2 soldiers killed by Iranian missile/drone strikes since Feb 28. Two killed (man and woman) by shrapnel in Ramat Gan, Mar 18.', src: 'Magen David Adom / ABC News, Mar 18' },
-  { label: 'Minab school',    value: '170+',     sub: 'Girls school, Minab. Amnesty International investigation (Mar 17) confirms US responsibility — at least 170 killed, 160+ of them schoolgirls. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Iranian govt / Britannica' },
-  { label: 'Ships struck',    value: '21+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. Includes tankers, cargo, and one US-flagged vessel. Latest: tanker struck at anchor 23nm east of Fujairah, Mar 17.', src: 'UKMTO / Reuters / Al Jazeera, Mar 17' },
-  { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes', src: 'Reuters / official statements' },
+  { label: 'US KIA',          value: '15+',      sub: '6 killed Kuwait (Mar 1), 1 non-combat (Mar 9), 6 killed KC-135 crash Iraq (Mar 13), 1 enemy attack Prince Sultan AB Saudi Arabia (Mar 1), 1 non-combat Kuwait (Apr 1). The Intercept (Apr 1): Pentagon sending outdated figures — a defense official called it a "casualty cover-up."', src: 'Wikipedia / The Intercept, Apr 1' },
+  { label: 'US WIA',          value: '303+',     sub: 'CENTCOM confirmed 303 as of Mar 28 — already an undercount per The Intercept, which excluded at least 15 wounded in a Mar 28 Prince Sultan attack. Majority: traumatic brain injuries from Iranian ballistic missile/drone barrages. Pentagon has refused to provide updated figures.', src: 'CENTCOM Mar 28 / The Intercept Apr 1' },
+  { label: 'Iranian dead',    value: '2,076+',   sub: 'Iran Health Ministry (Apr 2): victims aged 8 months to 88 years. HRANA: 7,007+ documented (Mar 31). Iran International: 4,700+ security forces killed (Mar 31). Trump administration claims 32,000.', src: 'Iran Health Ministry / HRANA, Apr 2' },
+  { label: 'Iranian injured', value: '26,500+',  sub: 'Iran Health Ministry as of early April. Includes at least 4,000 women and 1,621 children.', src: 'Iran Health Ministry, Apr 2' },
+  { label: 'Lebanon dead',    value: '1,001+',   sub: 'Killed by Israeli strikes since Israel renewed widespread attacks Mar 2. Over 1 million Lebanese displaced — roughly 1/6 of the country. Israel claims 1,000+ Hezbollah fighters killed. Lebanon\'s Council of Ministers voted to ban Hezbollah military activity and demanded disarmament.', src: 'Lebanon Health Ministry / Wikipedia, Apr 4' },
+  { label: 'Lebanon injured',  value: '2,584+',   sub: 'Since Israel renewed widespread attacks Mar 2.', src: 'Lebanon Health Ministry, Apr 4' },
+  { label: 'Israel dead',      value: '26+',      sub: 'Killed by Iranian missile/drone strikes since Feb 28. Includes Apr 5 Haifa strike: 2 killed in residential building. 7,183+ wounded. 10 IDF soldiers killed in southern Lebanon ground operations.', src: 'Al Jazeera tracker / Magen David Adom, Apr 5' },
+  { label: 'Minab school',    value: '175+',     sub: 'Girls school, Minab, Feb 28. Amnesty International (Mar 17) confirms US responsibility. Iranian state media: more than 175 killed, mostly schoolgirls; 95 wounded. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Wikipedia' },
+  { label: 'Ships struck',    value: '21+',      sub: 'Vessels hit in Strait of Hormuz and Persian Gulf since Feb 28. 8-day UKMTO-confirmed attack pause Mar 19–27. Latest confirmed: tanker struck at anchor 23nm east of Fujairah, Mar 17.', src: 'UKMTO / Reuters / Al Jazeera, Mar 17' },
+  { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes on energy and government infrastructure. Kuwait: power plants, desalination, KPC facilities (Apr 4). Iraqi dead: 109+ (Health Ministry).', src: 'Reuters / official statements / Al Jazeera' },
 ];
 
 /* ─── Oil price journey visual ───────────────────────────────────────────────── */
