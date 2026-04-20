@@ -265,6 +265,11 @@ const TRUMP_SAID = [
     said: '"Iran has agreed to stop backing terrorist groups, including Hezbollah and Hamas."',
     reality: 'A senior Iranian official directly disputed Trump\'s characterization, stating there is "no ambiguity regarding any part of the negotiations" and that Iran had made no such commitment. Iran\'s positions on armed group support remain publicly unchanged. Day 49.',
   },
+  {
+    date: 'Apr 20, 2026',
+    said: '"Iran decided to fire bullets yesterday in the Strait of Hormuz — A Total Violation of our Ceasefire Agreement!"',
+    reality: 'Iran\'s military responded that the US violated the ceasefire by boarding and seizing the Iranian cargo ship Touska in the Sea of Oman, calling it "armed piracy" and vowing retaliation. Both sides claimed the other fired first. Day 52.',
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
@@ -471,10 +476,14 @@ const EVENTS_2026 = [
   { date: 'Apr 18', tier: 'critical', label: 'Iran re-closes Strait of Hormuz. US refuses to lift naval blockade; Iran says it has "regained control" of the strait within hours of yesterday\'s opening. The 24-hour Hormuz window closes. Day 50.' },
   { date: 'Apr 18', tier: 'critical', label: 'Rubio urges European allies to reimpose sanctions on Iran urgently, warning Tehran is approaching nuclear weapons capability. Also signals Iran may retain civilian nuclear energy program in final deal. Day 50.' },
   { date: 'Apr 18', tier: 'critical', label: 'No date confirmed for second Islamabad round. Pakistan: talks still in channel, delegations unconfirmed. Ceasefire expires April 21 — 3 days. Oil rebounds sharply from yesterday\'s -10% drop on Hormuz re-closure. Day 50.' },
-  { date: 'Apr 19', tier: 'today', label: 'Iran Deputy FM Khatibzadeh: no date set for second Islamabad round, slams US "maximalist" demands. Ghalibaf in national address: "progress" but "big distance" remains, "many gaps and some fundamental points." Day 51.' },
-  { date: 'Apr 19', tier: 'today', label: 'Iran FM spokesperson: enriched uranium "as sacred to us as the soil of Iran" — transfer to US not on the table. Torpedoes Trump\'s claim of imminent uranium deal. Day 51.' },
-  { date: 'Apr 19', tier: 'today', label: 'IRGC gunboats fired on Indian-flagged tankers during April 17 Hormuz re-opening. India summons Iran\'s ambassador. ~200 vessels and 20,000 seafarers remain stranded in Gulf. Day 51.' },
-  { date: 'Apr 19', tier: 'today', label: 'Trump: might not extend ceasefire, "we\'ll have to start dropping bombs again." Also says deal could still happen. Ceasefire expires Monday April 21 — 2 days. No extension confirmed by either side. Day 51.' },
+  { date: 'Apr 19', tier: 'critical', label: 'Iran Deputy FM Khatibzadeh: no date set for second Islamabad round, slams US "maximalist" demands. Ghalibaf in national address: "progress" but "big distance" remains, "many gaps and some fundamental points." Day 51.' },
+  { date: 'Apr 19', tier: 'critical', label: 'Iran FM spokesperson: enriched uranium "as sacred to us as the soil of Iran" — transfer to US not on the table. Torpedoes Trump\'s claim of imminent uranium deal. Day 51.' },
+  { date: 'Apr 19', tier: 'critical', label: 'IRGC gunboats fired on Indian-flagged tankers during April 17 Hormuz re-opening. India summons Iran\'s ambassador. ~200 vessels and 20,000 seafarers remain stranded in Gulf. Day 51.' },
+  { date: 'Apr 19', tier: 'critical', label: 'Trump: might not extend ceasefire, "we\'ll have to start dropping bombs again." Also says deal could still happen. Ceasefire expires Monday April 21 — 2 days. No extension confirmed by either side. Day 51.' },
+  { date: 'Apr 20', tier: 'today', label: 'USS Spruance fires on and seizes Iranian cargo ship Touska in Gulf of Oman — first kinetic boarding of the war. Iran military calls it "maritime piracy," vows retaliation, says US has broken the ceasefire. Day 52.' },
+  { date: 'Apr 20', tier: 'today', label: 'Iran FM Baghaei: "As of now we have no plans for the next round of negotiations." US delegation (Vance, Witkoff, Kushner) confirmed heading to Islamabad. Iran has not confirmed attendance. Islamabad billboards up, hotel requisitioned. Day 52.' },
+  { date: 'Apr 20', tier: 'today', label: 'Zero tankers transited Strait of Hormuz on Sunday. ~200 vessels and 20,000 seafarers still stranded. Ceasefire expires 0000 GMT Wednesday (8pm ET Tuesday) — 1 day. Nuclear gap: US proposed 20-year enrichment pause; Iran countered 5 years; US rejected. Day 52.' },
+  { date: 'Apr 20', tier: 'today', label: 'WTI surges ~6% to ~$89 on ship seizure news. IMF warns global growth will take a hit even if ceasefire holds, citing Hormuz uncertainty as persistent drag. Gas national average $4.05/gal. Day 52.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -671,6 +680,9 @@ const DAILY_ASSESSMENTS = [
   { day: 51, date: 'Apr 19', x: 78, y: 1.5,
     xNote: '78/100: Floor is 59 (9 conditions, all active). Event push of +19. Hormuz closed and under IRGC kinetic control — gunboats fired on tankers during the brief Apr 17 re-opening. Ceasefire expires in 2 days with no extension confirmed. Trump threatening to resume bombing. X rises as the last-ditch-deal window is now measured in hours, not days.',
     yNote: 'TLM Assessment Day 51: 1.5/10. The geometry is about as bad as it gets without active kinetics. Ceasefire expires Monday. No Islamabad date. Uranium transfer explicitly off the table. Iran\'s own chief negotiator on national television calling the gaps "fundamental." The one thread keeping Y above 1.0 is that both sides are still talking through Pakistan — Ghalibaf said "progress" and "more realistic understanding," and Trump simultaneously threatened bombs and said a deal is possible. That is the architecture of a last-minute extension, not a collapse. But extensions require someone to blink first on the blockade-vs-Hormuz loop, and neither side has shown any sign of doing so. Watch for any ceasefire extension announcement before midnight Monday.' },
+  { day: 52, date: 'Apr 20', x: 84, y: 1.3,
+    xNote: '84/100: Floor is 59 (9 conditions, all active). Event push of +25. Ship seizure is new kinetic category — first armed US boarding of the war. Iran vowing retaliation. Zero Hormuz transits Sunday. Ceasefire expires in under 36 hours with no extension confirmed. Nuclear gap hardened: 20-year vs 5-year enrichment pause, both sides publicly locked. X spikes to its highest since Day 23.',
+    yNote: 'TLM Assessment Day 52: 1.3/10. The Touska seizure is the tell. The US boarded an Iranian merchant vessel while both sides were supposedly in a ceasefire and approaching talks. Iran called it piracy and vowed retaliation — that is IRGC operational language, not Parliament grandstanding. The Y thread holding above 1.0: Islamabad is physically prepared, US delegation is confirmed en route, and Iranian sources privately told CNN their team would also go. But the official Iranian position is "no plans." If Tehran sends a delegation despite that public stance, Y stays above 1.0. If Iran retaliates for the Touska before the ceasefire expires, Y goes to 0.5 and X goes to 90+. The 36-hour window is the entire ballgame.' },
 ];
 
 const BILL = [
