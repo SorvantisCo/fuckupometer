@@ -275,6 +275,11 @@ const TRUMP_SAID = [
     said: '"I expect to be bombing because I think that\'s a better attitude to go in with. We\'re ready to go."',
     reality: 'Hours later, Trump announced an open-ended ceasefire extension — the opposite of bombing — citing Iran\'s "seriously fractured" government. His stated expectation of bombing did not materialize. Day 53.',
   },
+  {
+    date: 'Apr 23, 2026',
+    said: '"We have total control over the Strait of Hormuz. No ship can enter or leave without the approval of the United States Navy. It is \'Sealed up Tight.\'"',
+    reality: 'IRGC seized two foreign container ships (MSC Francesca, Epaminondas) and fired on a third in the Strait of Hormuz on Apr 22 without US interference. Iran also collected its first Hormuz toll revenue on Apr 23. The strait remains under Iranian operational control. Day 55.',
+  },
 ];
 
 /* ─── Hormuz stat ────────────────────────────────────────────────────────────── */
@@ -287,8 +292,8 @@ const HORMUZ = {
   dropPct: 95,
   kplerDropPct: 92,
   src: 'S&P Global (95%, week of Mar 1); Kpler (92%, week of Mar 12); Bloomberg Mar 10',
-  shipsStruck: 26,
-  shipsSrc: 'Al Jazeera Apr 14 (22 confirmed) / Windward Maritime AI Apr 18-19 / UKMTO',
+  shipsStruck: 30,
+  shipsSrc: 'Euronews Apr 23 (30+) / UKMTO / Windward Maritime AI',
 };
 
 /* ─── War cost data (CSIS, Pentagon, Penn Wharton) ──────────────────────────── */
@@ -493,8 +498,14 @@ const EVENTS_2026 = [
   { date: 'Apr 21', tier: 'critical', label: 'US boards second vessel: Pentagon seizes sanctioned oil tanker M/T Tifani in Indian Ocean. Iran FM Araghchi: US blockade is "an act of war and thus a violation of the ceasefire." IRGC threatens to strike oil facilities in neighboring countries if bombing resumes. Day 53.' },
   { date: 'Apr 21', tier: 'critical', label: 'Trump extends ceasefire with no end date — waiting for Iran\'s "unified proposal" from its "seriously fractured" government. Vance Islamabad trip canceled for day. Iran adviser Mohammadi: "Trump\'s ceasefire extension means nothing, the losing side cannot dictate terms." Day 53.' },
   { date: 'Apr 21', tier: 'critical', label: 'Iran notifies Pakistan it will not send delegation to Islamabad talks. Iran domestic flights resume after 50-day wartime suspension. Brent settles ~$99.67 after retreating from $101 spike. Day 53.' },
-  { date: 'Apr 22', tier: 'today', label: 'Iran state media Tasnim: Tehran told US through Pakistani intermediary that "attending negotiations is a waste of time because the US prevents reaching any suitable agreement." Second Islamabad round effectively dead for now. Day 54.' },
-  { date: 'Apr 22', tier: 'today', label: 'Ceasefire technically holds under open-ended Trump extension. No Iranian kinetic retaliation for Touska seizure yet. Brent ~$99.81, WTI ~$90.86. Hormuz still closed. Both sides accusing each other of ceasefire violations. Day 54.' },
+  { date: 'Apr 22', tier: 'critical', label: 'Iran state media Tasnim: Tehran told US through Pakistani intermediary that "attending negotiations is a waste of time because the US prevents reaching any suitable agreement." Second Islamabad round effectively dead for now. Day 54.' },
+  { date: 'Apr 22', tier: 'critical', label: 'Ceasefire technically holds under open-ended Trump extension. No Iranian kinetic retaliation for Touska seizure yet. Brent ~$99.81, WTI ~$90.86. Hormuz still closed. Both sides accusing each other of ceasefire violations. Day 54.' },
+  { date: 'Apr 22', tier: 'critical', label: 'IRGC seizes two container ships — MSC Francesca and Epaminondas — in Strait of Hormuz hours after ceasefire extension. Fires on third ship Euphoria, causing heavy bridge damage. Iran\'s tit-for-tat response to US Touska seizure. Day 54.' },
+  { date: 'Apr 22', tier: 'critical', label: 'UK/France host 30-nation RAF summit to plan multinational Hormuz mine-clearing mission. Pentagon briefs Congress: 6 months to fully clear mines after war ends. Trump Truth Social: Iran losing $500M/day, "collapsing financially… SOS!!!" Day 54.' },
+  { date: 'Apr 22', tier: 'critical', label: 'Senate defeats 5th war powers resolution 55-46. Pezeshkian and Ghalibaf unified response to Trump\'s "seriously fractured" Iran claim: "We are all Iranian and revolutionary." Exposes limits of Trump\'s fracture theory. Day 54.' },
+  { date: 'Apr 23', tier: 'today', label: 'Trump orders US Navy to "shoot and kill any boat" placing mines in Strait of Hormuz. First explicit lethal-force order against Iranian mine-laying operations. Iran receives first toll revenue from Hormuz transit fees. Day 55.' },
+  { date: 'Apr 23', tier: 'today', label: 'Iranian air defenses engage over Tehran — reason unclear; Mehr News confirms "hostile targets." US boards Majestic X tanker in Indian Ocean — third vessel seized this week. CENTCOM: 31 ships turned back by blockade. Brent above $100. Day 55.' },
+  { date: 'Apr 23', tier: 'today', label: 'Trump: "no time frame" on war, ceasefire, or Iranian proposal deadline. Israel Defense Minister Katz: Israel ready to "return Iran to the dark ages," awaiting US green light. No talks date set. Both sides escalating at sea while ceasefire holds on land. Day 55.' },
 ];
 
 const tierDot = { baseline: T.green, neutral: T.amber, critical: T.terra, peak: T.red, today: T.red };
@@ -700,6 +711,9 @@ const DAILY_ASSESSMENTS = [
   { day: 54, date: 'Apr 22', x: 78, y: 2.2,
     xNote: '78/100: Floor is 59 (9 conditions, all active). Event push of +19. Ceasefire holds under open-ended extension. No Iranian kinetic retaliation for Touska yet despite IRGC threat language. Hormuz closed. X declines marginally on quiet day — no new escalation events. Structural floor unchanged.',
     yNote: 'TLM Assessment Day 54: 2.2/10. Iran officially refusing to attend Islamabad II is not a surprise — it is consistent with their stated "no plans" position since Day 50. What matters is whether the refusal is a hard no or a negotiating posture. Iran\'s language ("waste of time because US prevents reaching any suitable agreement") points at the blockade as the unlocking condition — the same loop since Day 46. The open-ended extension with no forcing function now defines the situation: both sides in a holding pattern, each waiting for the other to blink on blockade vs. Hormuz. Trafigura\'s estimate: even if this resolves tomorrow, 1 billion barrels of supply already lost. The meter keeps running.' },
+  { day: 55, date: 'Apr 23', x: 83, y: 1.8,
+    xNote: '83/100: Floor is 59 (9 conditions, all active). Event push of +24. IRGC seized two foreign ships and fired on a third — kinetic escalation at sea is now bidirectional. Trump shoot-to-kill mine order. Tehran air defenses engaged. Brent above $100. Both sides escalating operationally while the ceasefire nominally holds on land. Ships struck now 30+.',
+    yNote: 'TLM Assessment Day 55: 1.8/10. The Pezeshkian/Ghalibaf unified response to Trump\'s "seriously fractured" framing is the most analytically significant signal of the week. When the president and the parliament speaker post coordinated identical language — "we are all Iranian and revolutionary" — that is SNSC-level message discipline, not Parliament noise. It kills the fracture theory that Trump was using to justify waiting for a "unified proposal." There is no fracture to exploit. The maritime war is escalating hard: dual seizures, mine-laying, first toll revenue, shoot-to-kill orders. The ceasefire is a land ceasefire only. At sea, this is active conflict. Y stays above 1.0 only because both sides are still technically not bombing each other on land and Trump explicitly said no deadline. That thread is fraying.' },
 ];
 
 const BILL = [
@@ -711,7 +725,7 @@ const BILL = [
   { label: 'Lebanon injured',  value: '7,602+',   sub: 'Since Israel renewed widespread attacks Mar 2. As of Apr 20. 10-day ceasefire began Apr 17 but violations reported immediately.', src: 'Casualties Wikipedia / Lebanon Health Ministry, Apr 20' },
   { label: 'Israel dead',      value: '40+',      sub: 'As of Apr 7: 40 Israeli citizens killed including 27 civilians; 7,453 injured (418 military). Killed by Iranian missile/drone strikes Feb 28 onward. 15 IDF soldiers killed in southern Lebanon ground operations since Mar 2.', src: 'Casualties Wikipedia, Apr 7' },
   { label: 'Minab school',    value: '175+',     sub: 'Girls school, Minab, Feb 28. Amnesty International (Mar 17) confirms US responsibility. Iranian state media: more than 175 killed, mostly schoolgirls; 95 wounded. US has not acknowledged civilian casualties.', src: 'Amnesty International, Mar 17; Wikipedia' },
-  { label: 'Ships struck',    value: '26+',      sub: 'IRGC attacks on merchant vessels since Feb 28 (excludes 2 US seizures/boardings). Apr 18 cluster: Sanmar Herald (VLCC fired on by 2 gunboats), CMA CGM Everglade (struck by projectile), Jag Arnav (near-miss). US blockade has turned back 28 ships. 870 vessels stranded inside Gulf; ~200 ships and 20,000 seafarers unable to transit.', src: 'Al Jazeera Apr 14 (22 confirmed) / Windward Maritime AI Apr 19-20 / UKMTO' },
+  { label: 'Ships struck',    value: '30+',      sub: 'IRGC attacks on merchant vessels since Feb 28 (excludes 2 US seizures/boardings). Apr 18 cluster: Sanmar Herald (VLCC fired on by 2 gunboats), CMA CGM Everglade (struck by projectile), Jag Arnav (near-miss). US blockade has turned back 28 ships. 870 vessels stranded inside Gulf; ~200 ships and 20,000 seafarers unable to transit.', src: 'Al Jazeera Apr 14 (22 confirmed) / Windward Maritime AI Apr 19-20 / UKMTO' },
   { label: 'Gulf civilians',  value: 'Dozens',   sub: 'UAE, Kuwait, Saudi Arabia, Bahrain — Iranian retaliatory strikes on energy and government infrastructure. Kuwait: power plants, desalination, KPC facilities (Apr 4). Iraqi dead: 109+ (Health Ministry).', src: 'Reuters / official statements / Al Jazeera' },
 ];
 
