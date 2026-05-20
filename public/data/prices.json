@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-20T15:33:41.585Z",
+  "updatedAt": "2026-05-20T18:22:04.766Z",
   "oil": {
     "price": 100.31,
     "prevClose": 104.15,
@@ -19,19 +19,19 @@
     "fuckupFactor": 45,
     "marketOpen": false,
     "brent": {
-      "price": 105.65,
+      "price": 105.03,
       "prevClose": 111.28,
-      "change": -5.63,
-      "changePct": -5.06,
+      "change": -6.25,
+      "changePct": -5.62,
       "dayHigh": 111.49,
       "dayLow": 103.33,
       "marketState": "CLOSED",
       "lastTradeISO": "2026-05-20T23:00:00.000Z",
       "source": "stooq",
-      "sinceInaugPct": 33.7
+      "sinceInaugPct": 32.9
     },
     "retailGasPrice": 4.555,
-    "timestamp": "2026-05-20T15:33:40.857Z"
+    "timestamp": "2026-05-20T18:22:04.208Z"
   },
   "commodities": [
     {
@@ -40,11 +40,11 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 3.024,
+      "price": 2.999,
       "prev": 3.114,
-      "change": -0.09,
-      "changePct": -2.89,
-      "sinceInaugPct": -6.1
+      "change": -0.115,
+      "changePct": -3.69,
+      "sinceInaugPct": -6.9
     },
     {
       "ticker": "RB=F",
@@ -64,11 +64,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 535,
       "decimals": 2,
-      "price": 657.4,
+      "price": 660.87,
       "prev": 667.25,
-      "change": -9.85,
-      "changePct": -1.48,
-      "sinceInaugPct": 22.9
+      "change": -6.38,
+      "changePct": -0.96,
+      "sinceInaugPct": 23.5
     },
     {
       "ticker": "ZC=F",
@@ -76,11 +76,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 450,
       "decimals": 2,
-      "price": 463.62,
+      "price": 465.87,
       "prev": 475.25,
-      "change": -11.63,
-      "changePct": -2.45,
-      "sinceInaugPct": 3
+      "change": -9.38,
+      "changePct": -1.97,
+      "sinceInaugPct": 3.5
     },
     {
       "ticker": "CF",
@@ -88,11 +88,11 @@
       "unit": "$/sh",
       "inaugBaseline": 110,
       "decimals": 2,
-      "price": 122.48,
+      "price": 121.69,
       "prev": 127.86,
-      "change": -5.38,
-      "changePct": -4.21,
-      "sinceInaugPct": 11.3
+      "change": -6.17,
+      "changePct": -4.83,
+      "sinceInaugPct": 10.6
     }
   ]
 }
