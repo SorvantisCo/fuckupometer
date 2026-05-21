@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-05-21T19:00:39.409Z",
+  "updatedAt": "2026-05-21T21:39:51.479Z",
   "oil": {
-    "price": 97.93,
+    "price": 98,
     "prevClose": 98.26,
-    "change": -0.33,
-    "changePct": -0.34,
+    "change": -0.26,
+    "changePct": -0.26,
     "dayHigh": 102.61,
     "dayLow": 95.79,
     "marketState": "CLOSED",
@@ -14,24 +14,24 @@
     "inaugurationPrice": 76,
     "peakPrice": 130,
     "conflictPeakActual": 119.48,
-    "sinceInauguration": 21.93,
+    "sinceInauguration": 22,
     "sinceInaugurationPct": 28.9,
-    "fuckupFactor": 40.6,
+    "fuckupFactor": 40.7,
     "marketOpen": false,
     "brent": {
-      "price": 104.57,
+      "price": 104.82,
       "prevClose": 105.02,
-      "change": -0.45,
-      "changePct": -0.43,
+      "change": -0.2,
+      "changePct": -0.19,
       "dayHigh": 109.24,
       "dayLow": 102.18,
       "marketState": "CLOSED",
       "lastTradeISO": "2026-05-21T23:00:00.000Z",
       "source": "stooq",
-      "sinceInaugPct": 32.4
+      "sinceInaugPct": 32.7
     },
     "retailGasPrice": 4.564,
-    "timestamp": "2026-05-21T19:00:38.532Z"
+    "timestamp": "2026-05-21T21:39:51.056Z"
   },
   "commodities": [
     {
@@ -40,11 +40,11 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 3.005,
+      "price": 3.001,
       "prev": 3.004,
-      "change": 0.001,
-      "changePct": 0.03,
-      "sinceInaugPct": -6.7
+      "change": -0.003,
+      "changePct": -0.1,
+      "sinceInaugPct": -6.8
     },
     {
       "ticker": "RB=F",
@@ -88,11 +88,11 @@
       "unit": "$/sh",
       "inaugBaseline": 110,
       "decimals": 2,
-      "price": 121.94,
+      "price": 121.69,
       "prev": 123.3,
-      "change": -1.36,
-      "changePct": -1.11,
-      "sinceInaugPct": 10.9
+      "change": -1.61,
+      "changePct": -1.31,
+      "sinceInaugPct": 10.6
     }
   ]
 }
