@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-22T21:16:10.480Z",
+  "updatedAt": "2026-05-22T23:06:15.825Z",
   "oil": {
     "price": 97,
     "prevClose": 96.35,
@@ -31,7 +31,7 @@
       "sinceInaugPct": 31.7
     },
     "retailGasPrice": 4.552,
-    "timestamp": "2026-05-22T21:16:09.752Z"
+    "timestamp": "2026-05-22T23:06:14.933Z"
   },
   "commodities": [
     {
@@ -40,11 +40,11 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 2.921,
+      "price": 2.907,
       "prev": 3.018,
-      "change": -0.097,
-      "changePct": -3.21,
-      "sinceInaugPct": -9.3
+      "change": -0.111,
+      "changePct": -3.68,
+      "sinceInaugPct": -9.7
     },
     {
       "ticker": "RB=F",
@@ -64,11 +64,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 535,
       "decimals": 2,
-      "price": 647,
+      "price": 646.25,
       "prev": 647.5,
-      "change": -0.5,
-      "changePct": -0.08,
-      "sinceInaugPct": 20.9
+      "change": -1.25,
+      "changePct": -0.19,
+      "sinceInaugPct": 20.8
     },
     {
       "ticker": "ZC=F",
@@ -76,11 +76,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 450,
       "decimals": 2,
-      "price": 463.75,
+      "price": 463.25,
       "prev": 462.25,
-      "change": 1.5,
-      "changePct": 0.32,
-      "sinceInaugPct": 3.1
+      "change": 1,
+      "changePct": 0.22,
+      "sinceInaugPct": 2.9
     },
     {
       "ticker": "CF",
