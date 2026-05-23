@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-22T23:06:15.825Z",
+  "updatedAt": "2026-05-23T03:42:09.003Z",
   "oil": {
     "price": 97,
     "prevClose": 96.35,
@@ -19,19 +19,19 @@
     "fuckupFactor": 38.9,
     "marketOpen": false,
     "brent": {
-      "price": 104.05,
+      "price": 103.54,
       "prevClose": 102.58,
-      "change": 1.47,
-      "changePct": 1.43,
+      "change": 0.96,
+      "changePct": 0.94,
       "dayHigh": 106.36,
-      "dayLow": 101.41,
+      "dayLow": 101.34,
       "marketState": "CLOSED",
       "lastTradeISO": "2026-05-22T23:00:00.000Z",
       "source": "stooq",
-      "sinceInaugPct": 31.7
+      "sinceInaugPct": 31.1
     },
     "retailGasPrice": 4.552,
-    "timestamp": "2026-05-22T23:06:14.933Z"
+    "timestamp": "2026-05-23T03:42:08.033Z"
   },
   "commodities": [
     {
