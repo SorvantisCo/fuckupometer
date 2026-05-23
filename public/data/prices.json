@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-23T15:05:06.525Z",
+  "updatedAt": "2026-05-23T17:06:01.263Z",
   "oil": {
     "price": 96.6,
     "prevClose": 96.35,
@@ -31,7 +31,7 @@
       "sinceInaugPct": 31.1
     },
     "retailGasPrice": 4.529,
-    "timestamp": "2026-05-23T15:05:06.008Z"
+    "timestamp": "2026-05-23T17:06:00.791Z"
   },
   "commodities": [
     {
