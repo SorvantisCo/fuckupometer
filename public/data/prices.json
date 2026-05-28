@@ -1,22 +1,22 @@
 {
-  "updatedAt": "2026-05-28T21:58:27.449Z",
+  "updatedAt": "2026-05-28T23:26:02.646Z",
   "oil": {
-    "price": 88.53,
-    "prevClose": 88.68,
-    "change": -0.15,
-    "changePct": -0.17,
-    "dayHigh": 92.51,
-    "dayLow": 87.27,
+    "price": 88.48,
+    "prevClose": 88.53,
+    "change": -0.05,
+    "changePct": -0.06,
+    "dayHigh": 88.82,
+    "dayLow": 88.22,
     "marketState": "CLOSED",
-    "lastTradeISO": "2026-05-28T23:00:00.000Z",
+    "lastTradeISO": "2026-05-29T23:00:00.000Z",
     "source": "stooq",
     "primarySource": "wti",
     "inaugurationPrice": 76,
     "peakPrice": 130,
     "conflictPeakActual": 119.48,
-    "sinceInauguration": 12.53,
-    "sinceInaugurationPct": 16.5,
-    "fuckupFactor": 23.2,
+    "sinceInauguration": 12.48,
+    "sinceInaugurationPct": 16.4,
+    "fuckupFactor": 23.1,
     "marketOpen": false,
     "brent": {
       "price": 92.48,
@@ -31,7 +31,7 @@
       "sinceInaugPct": 17.1
     },
     "retailGasPrice": 4.426,
-    "timestamp": "2026-05-28T21:58:26.812Z"
+    "timestamp": "2026-05-28T23:26:01.994Z"
   },
   "commodities": [
     {
@@ -40,11 +40,11 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 3.285,
-      "prev": 3.095,
-      "change": 0.19,
-      "changePct": 6.14,
-      "sinceInaugPct": 2
+      "price": 3.297,
+      "prev": 3.285,
+      "change": 0.012,
+      "changePct": 0.37,
+      "sinceInaugPct": 2.4
     },
     {
       "ticker": "RB=F",
@@ -64,11 +64,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 535,
       "decimals": 2,
-      "price": 624,
-      "prev": 622.5,
-      "change": 1.5,
-      "changePct": 0.24,
-      "sinceInaugPct": 16.6
+      "price": 624.75,
+      "prev": 624,
+      "change": 0.75,
+      "changePct": 0.12,
+      "sinceInaugPct": 16.8
     },
     {
       "ticker": "ZC=F",
@@ -76,10 +76,10 @@
       "unit": "cents/bu",
       "inaugBaseline": 450,
       "decimals": 2,
-      "price": 456,
-      "prev": 452.5,
-      "change": 3.5,
-      "changePct": 0.77,
+      "price": 455.75,
+      "prev": 456,
+      "change": -0.25,
+      "changePct": -0.05,
       "sinceInaugPct": 1.3
     },
     {
