@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-05-29T16:46:36.569Z",
+  "updatedAt": "2026-05-29T19:33:51.091Z",
   "oil": {
-    "price": 86.74,
+    "price": 87.75,
     "prevClose": 88.9,
-    "change": -2.16,
-    "changePct": -2.43,
+    "change": -1.15,
+    "changePct": -1.29,
     "dayHigh": 89.02,
     "dayLow": 86.36,
     "marketState": "CLOSED",
@@ -14,24 +14,24 @@
     "inaugurationPrice": 76,
     "peakPrice": 130,
     "conflictPeakActual": 119.48,
-    "sinceInauguration": 10.74,
-    "sinceInaugurationPct": 14.1,
-    "fuckupFactor": 19.9,
+    "sinceInauguration": 11.75,
+    "sinceInaugurationPct": 15.5,
+    "fuckupFactor": 21.8,
     "marketOpen": false,
     "brent": {
-      "price": 90.59,
+      "price": 91.6,
       "prevClose": 92.7,
-      "change": -2.11,
-      "changePct": -2.28,
+      "change": -1.1,
+      "changePct": -1.19,
       "dayHigh": 92.96,
       "dayLow": 89.95,
       "marketState": "CLOSED",
       "lastTradeISO": "2026-05-29T23:00:00.000Z",
       "source": "stooq",
-      "sinceInaugPct": 14.7
+      "sinceInaugPct": 15.9
     },
     "retailGasPrice": 4.391,
-    "timestamp": "2026-05-29T16:46:35.975Z"
+    "timestamp": "2026-05-29T19:33:50.381Z"
   },
   "commodities": [
     {
@@ -40,11 +40,11 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 3.333,
+      "price": 3.285,
       "prev": 3.285,
-      "change": 0.048,
-      "changePct": 1.46,
-      "sinceInaugPct": 3.5
+      "change": 0,
+      "changePct": 0,
+      "sinceInaugPct": 2
     },
     {
       "ticker": "RB=F",
@@ -64,10 +64,10 @@
       "unit": "cents/bu",
       "inaugBaseline": 535,
       "decimals": 2,
-      "price": 610.6,
+      "price": 610.25,
       "prev": 624,
-      "change": -13.4,
-      "changePct": -2.15,
+      "change": -13.75,
+      "changePct": -2.2,
       "sinceInaugPct": 14.1
     },
     {
@@ -76,11 +76,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 450,
       "decimals": 2,
-      "price": 447.12,
+      "price": 447,
       "prev": 455.75,
-      "change": -8.63,
-      "changePct": -1.89,
-      "sinceInaugPct": -0.6
+      "change": -8.75,
+      "changePct": -1.92,
+      "sinceInaugPct": -0.7
     },
     {
       "ticker": "CF",
@@ -88,11 +88,11 @@
       "unit": "$/sh",
       "inaugBaseline": 110,
       "decimals": 2,
-      "price": 112.33,
+      "price": 111.92,
       "prev": 116.5,
-      "change": -4.17,
-      "changePct": -3.58,
-      "sinceInaugPct": 2.1
+      "change": -4.58,
+      "changePct": -3.93,
+      "sinceInaugPct": 1.7
     }
   ]
 }
