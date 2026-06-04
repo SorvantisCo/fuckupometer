@@ -1,22 +1,22 @@
 {
-  "updatedAt": "2026-06-04T21:44:55.023Z",
+  "updatedAt": "2026-06-04T23:12:33.097Z",
   "oil": {
-    "price": 92.91,
-    "prevClose": 96.02,
-    "change": -3.11,
-    "changePct": -3.24,
-    "dayHigh": 95.92,
-    "dayLow": 91.95,
+    "price": 92.85,
+    "prevClose": 92.91,
+    "change": -0.06,
+    "changePct": -0.06,
+    "dayHigh": 92.89,
+    "dayLow": 92.64,
     "marketState": "CLOSED",
-    "lastTradeISO": "2026-06-04T23:00:00.000Z",
+    "lastTradeISO": "2026-06-05T23:00:00.000Z",
     "source": "stooq",
     "primarySource": "wti",
     "inaugurationPrice": 76,
     "peakPrice": 130,
     "conflictPeakActual": 119.48,
-    "sinceInauguration": 16.91,
+    "sinceInauguration": 16.85,
     "sinceInaugurationPct": 22.2,
-    "fuckupFactor": 31.3,
+    "fuckupFactor": 31.2,
     "marketOpen": false,
     "brent": {
       "price": 95.32,
@@ -31,7 +31,7 @@
       "sinceInaugPct": 20.7
     },
     "retailGasPrice": 4.241,
-    "timestamp": "2026-06-04T21:44:54.152Z"
+    "timestamp": "2026-06-04T23:12:32.378Z"
   },
   "commodities": [
     {
@@ -40,10 +40,10 @@
       "unit": "$/MMBtu",
       "inaugBaseline": 3.22,
       "decimals": 3,
-      "price": 3.357,
-      "prev": 3.214,
-      "change": 0.143,
-      "changePct": 4.45,
+      "price": 3.358,
+      "prev": 3.336,
+      "change": 0.022,
+      "changePct": 0.66,
       "sinceInaugPct": 4.3
     },
     {
@@ -65,9 +65,9 @@
       "inaugBaseline": 535,
       "decimals": 2,
       "price": 581.75,
-      "prev": 587.25,
-      "change": -5.5,
-      "changePct": -0.94,
+      "prev": 581.75,
+      "change": 0,
+      "changePct": 0,
       "sinceInaugPct": 8.7
     },
     {
@@ -76,11 +76,11 @@
       "unit": "cents/bu",
       "inaugBaseline": 450,
       "decimals": 2,
-      "price": 423.75,
-      "prev": 431.5,
-      "change": -7.75,
-      "changePct": -1.8,
-      "sinceInaugPct": -5.8
+      "price": 424.5,
+      "prev": 424,
+      "change": 0.5,
+      "changePct": 0.12,
+      "sinceInaugPct": -5.7
     },
     {
       "ticker": "CF",
