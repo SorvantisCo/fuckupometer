@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-06-05T15:57:52.154Z",
+  "updatedAt": "2026-06-05T20:49:38.142Z",
   "oil": {
-    "price": 90.68,
+    "price": 90.26,
     "prevClose": 93.04,
-    "change": -2.36,
-    "changePct": -2.54,
+    "change": -2.78,
+    "changePct": -2.99,
     "dayHigh": 93.62,
-    "dayLow": 90.52,
+    "dayLow": 89.69,
     "marketState": "CLOSED",
     "lastTradeISO": "2026-06-05T23:00:00.000Z",
     "source": "stooq",
@@ -14,26 +14,38 @@
     "inaugurationPrice": 76,
     "peakPrice": 130,
     "conflictPeakActual": 119.48,
-    "sinceInauguration": 14.68,
-    "sinceInaugurationPct": 19.3,
-    "fuckupFactor": 27.2,
+    "sinceInauguration": 14.26,
+    "sinceInaugurationPct": 18.8,
+    "fuckupFactor": 26.4,
     "marketOpen": false,
     "brent": {
-      "price": 93.4,
+      "price": 92.96,
       "prevClose": 95.03,
-      "change": -1.63,
-      "changePct": -1.72,
+      "change": -2.07,
+      "changePct": -2.18,
       "dayHigh": 95.89,
-      "dayLow": 93.11,
+      "dayLow": 92.67,
       "marketState": "CLOSED",
       "lastTradeISO": "2026-06-05T23:00:00.000Z",
       "source": "stooq",
-      "sinceInaugPct": 18.2
+      "sinceInaugPct": 17.7
     },
     "retailGasPrice": 4.22,
-    "timestamp": "2026-06-05T15:57:51.611Z"
+    "timestamp": "2026-06-05T20:49:37.634Z"
   },
   "commodities": [
+    {
+      "ticker": "NG=F",
+      "label": "Natural Gas",
+      "unit": "$/MMBtu",
+      "inaugBaseline": 3.22,
+      "decimals": 3,
+      "price": 3.222,
+      "prev": 3.336,
+      "change": -0.114,
+      "changePct": -3.42,
+      "sinceInaugPct": 0.1
+    },
     {
       "ticker": "RB=F",
       "label": "Gasoline (RBOB)",
@@ -47,40 +59,16 @@
       "sinceInaugPct": 44.7
     },
     {
-      "ticker": "ZW=F",
-      "label": "Wheat",
-      "unit": "cents/bu",
-      "inaugBaseline": 535,
-      "decimals": 2,
-      "price": 581.1,
-      "prev": 581.75,
-      "change": -0.65,
-      "changePct": -0.11,
-      "sinceInaugPct": 8.6
-    },
-    {
-      "ticker": "ZC=F",
-      "label": "Corn",
-      "unit": "cents/bu",
-      "inaugBaseline": 450,
-      "decimals": 2,
-      "price": 417.1,
-      "prev": 424.5,
-      "change": -7.4,
-      "changePct": -1.74,
-      "sinceInaugPct": -7.3
-    },
-    {
       "ticker": "CF",
       "label": "Fertilizer",
       "unit": "$/sh",
       "inaugBaseline": 110,
       "decimals": 2,
-      "price": 115.63,
+      "price": 113.49,
       "prev": 117.52,
-      "change": -1.89,
-      "changePct": -1.61,
-      "sinceInaugPct": 5.1
+      "change": -4.03,
+      "changePct": -3.43,
+      "sinceInaugPct": 3.2
     }
   ]
 }
