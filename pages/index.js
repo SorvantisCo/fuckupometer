@@ -1993,10 +1993,12 @@ export default function Home() {
     setLoading(false);
   }, []);
 
+  // FROZEN: live polling disabled on retirement. The /api/oil and
+  // /api/commodities routes are no longer fed by the hourly Action, so we do a
+  // single best-effort fetch on mount only (it will fall back to static
+  // defaults if the routes 500) and never poll. No interval.
   useEffect(() => {
-    fetchAll();
-    const t = setInterval(fetchAll, 5 * 60 * 1000);
-    return () => clearInterval(t);
+    fetchAll().catch(() => setLoading(false));
   }, [fetchAll]);
 
   const price        = data ? parseFloat(data.price) : 96.34;
@@ -2040,6 +2042,44 @@ export default function Home() {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛢️</text></svg>"/>
       </Head>
       <Script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" onReady={() => setChartReady(true)}/>
+
+      {/* ─── FROZEN / RETIRED BANNER ─────────────────────────────────────────
+          The Fuckupometer stopped updating after Day 94 (Jun 1, 2026). The
+          upstream price feeds (Yahoo, Stooq) became unreliable from CI egress,
+          and the project had run its course. Everything below this banner is
+          preserved as a static archive of the conflict's first 94 days. */}
+      <div style={{
+        maxWidth: 920, margin: '24px auto 0', padding: '20px 22px',
+        border: '1px solid #5a4a2a', borderRadius: 10,
+        background: 'linear-gradient(180deg,#1c1813,#141210)',
+        color: '#e8dcc2', fontFamily: 'Georgia, serif', lineHeight: 1.55,
+      }}>
+        <div style={{
+          fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.14em',
+          textTransform: 'uppercase', color: '#b58b3a', marginBottom: 10,
+        }}>
+          Instrument retired · No longer updating
+        </div>
+        <p style={{ margin: '0 0 12px', fontSize: 16 }}>
+          The Fuckupometer stopped reading on <strong>Day 94 — June 1, 2026</strong>.
+          Ninety-four days of watching one needle twitch against the price of crude
+          and the odds of a deal that kept not arriving. The final mark: an exit
+          score of <strong>3.0</strong> — a more-specified path to the door than at
+          any prior point, and the guns still arguing with the paper.
+        </p>
+        <p style={{ margin: '0 0 12px', fontSize: 16 }}>
+          It stops here for the dull reason most instruments stop: the feeds got
+          unreliable, the data stopped coming cleanly, and a tracker that can't
+          trust its inputs is worse than no tracker at all. Better to put it down
+          on a known reading than let it drift into quiet nonsense.
+        </p>
+        <p style={{ margin: 0, fontSize: 14, color: '#c9bda3' }}>
+          What follows is left exactly as it stood — the timeline, the events,
+          the daily scoring — as a record of the first ninety-four days. Read it
+          as history, not as a live gauge.
+        </p>
+      </div>
+
 
       {showShare && (
         <ShareCard
