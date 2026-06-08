@@ -1,17 +1,14 @@
 name: Update Prices
 
-# Refreshes public/data/prices.json hourly using GitHub Actions runner egress
-# (which is not IP-blocked by Yahoo / Stooq the way Vercel's Lambda IPs are).
-# The /api/oil and /api/commodities routes serve this file via raw.githubusercontent.com
-# as a last-resort fallback when both Yahoo and Stooq fail in the Vercel runtime.
+# RETIRED 2026-06-08: The Fuckupometer was frozen at Day 94. The hourly price
+# refresh is disabled because the upstream feeds (Yahoo/Stooq) became unreliable
+# from CI egress and the site no longer displays live data. The job body is kept
+# (and manual-only via workflow_dispatch) so it can be revived if ever needed,
+# but it no longer runs on a schedule.
 
 on:
-  schedule:
-    # Top of every hour. GitHub may delay or skip runs during high load.
-    - cron: '0 * * * *'
-  workflow_dispatch: # allow manual trigger from the Actions tab
+  workflow_dispatch: # manual trigger only — scheduled runs disabled on retirement
 
-# Only one update at a time; cancel any in-flight run when a new one starts.
 concurrency:
   group: update-prices
   cancel-in-progress: true
@@ -41,7 +38,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No price changes; nothing to commit."
           else
-            # [skip ci] keeps GitHub Actions from looping on its own commits.
             git commit -m "Hourly price refresh [skip ci]"
             git push
           fi
